@@ -43,7 +43,7 @@
         </div>
         <ul>
             <div>
-                <button type="submit" class="btn btn-info">Proceed here</button>
+                <button type="submit" class="btn btn-info">Proceed</button>
             </div>
         </ul>
     </form>
