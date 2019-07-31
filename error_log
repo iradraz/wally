@@ -1,0 +1,294 @@
+[07-Apr-2019 20:32:06 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:37:16 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:37:16 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:37:18 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:37:18 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:45:12 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 20:46:45 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:10:14 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/iradra/public_html/caspero/application/modules/copythis/controllers/Copythis.php on line 82
+[07-Apr-2019 21:27:34 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:28:05 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:32:57 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:32:57 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:32:58 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:32:58 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:33:50 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[07-Apr-2019 21:33:51 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 300
+[24-Apr-2019 21:19:55 UTC] PHP Fatal error:  Call to undefined function base_url() in /home/iradra/public_html/caspero/application/modules/templates/views/user.php on line 18
+[24-Apr-2019 21:25:52 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:26:14 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:26:15 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:27:01 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:27:05 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:29:05 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:31:53 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:31:54 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 21:39:25 UTC] PHP Fatal error:  Call to undefined function redirect() in /home/iradra/public_html/caspero/application/controllers/Welcome.php on line 23
+[24-Apr-2019 22:44:45 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:47:01 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:47:02 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:49:20 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:49:21 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:49:53 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:49:54 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:50:42 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:50:57 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:50:59 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:51:20 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:51:21 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:51:48 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:51:49 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:52:50 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:52:51 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:53:21 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:53:22 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:54:17 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:54:18 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 22:56:55 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:00:22 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:00:25 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:00:40 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:00:47 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:04:51 UTC] PHP Fatal error:  Call to a member function hello() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:05:22 UTC] PHP Fatal error:  Call to a member function user() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:05:32 UTC] PHP Fatal error:  Call to a member function user() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:06:54 UTC] PHP Fatal error:  Call to a member function user() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:08:55 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/iradra/public_html/caspero/application/modules/templates/views/landing_v.php on line 10
+[24-Apr-2019 23:09:51 UTC] PHP Fatal error:  Call to a member function user() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:10:33 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:20 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:21 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:27 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:29 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:34 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:11:58 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 16
+[24-Apr-2019 23:12:58 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:12:59 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 15
+[24-Apr-2019 23:13:48 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:18:59 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:19:00 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:19:09 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:19:13 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:19:15 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 11
+[24-Apr-2019 23:19:29 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[24-Apr-2019 23:19:31 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[24-Apr-2019 23:20:07 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[24-Apr-2019 23:23:26 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[24-Apr-2019 23:23:29 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 17
+[25-Apr-2019 06:40:39 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 17
+[25-Apr-2019 06:40:55 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 17
+[25-Apr-2019 06:41:20 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 17
+[25-Apr-2019 06:41:46 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 17
+[25-Apr-2019 06:53:17 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 06:53:20 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 06:53:38 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 06:53:38 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 06:54:08 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 06:54:09 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 12
+[25-Apr-2019 07:02:22 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 20
+[25-Apr-2019 07:03:53 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:03:54 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:04:11 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:04:12 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:04:58 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:05:59 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 07:05:59 UTC] PHP Fatal error:  Call to a member function landing() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 19
+[25-Apr-2019 09:26:48 UTC] PHP Fatal error:  Call to a member function simple_query() on null in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 21
+[21-May-2019 14:21:43 UTC] PHP Fatal error:  Call to undefined function base_Url() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:21:49 UTC] PHP Fatal error:  Call to undefined function base_url() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:21:55 UTC] PHP Fatal error:  Call to undefined function baseurl() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:22:02 UTC] PHP Fatal error:  Call to undefined function baseurl() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:22:11 UTC] PHP Fatal error:  Call to undefined function base_url() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:23:27 UTC] PHP Fatal error:  Call to undefined function baseurl() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:24:12 UTC] PHP Fatal error:  Call to undefined function baseurl() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:25:13 UTC] PHP Fatal error:  Call to undefined function baseurl() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:25:27 UTC] PHP Fatal error:  Call to undefined function base_url() in /home/iradra/public_html/caspero/application/modules/home/views/home_v.php on line 8
+[21-May-2019 14:41:35 UTC] PHP Fatal error:  Call to undefined function form_open() in /home/iradra/public_html/caspero/application/modules/user/views/register_v.php on line 2
+[21-May-2019 14:41:37 UTC] PHP Fatal error:  Call to undefined function form_open() in /home/iradra/public_html/caspero/application/modules/user/views/register_v.php on line 2
+[21-May-2019 16:57:26 UTC] PHP Fatal error:  Call to undefined function base_url() in /home/iradra/public_html/caspero/application/modules/user/views/register_v.php on line 3
+[27-May-2019 11:22:29 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 15
+[27-May-2019 11:45:31 UTC] PHP Fatal error:  Call to undefined method User::hash_password() in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 15
+[27-May-2019 12:20:28 UTC] PHP Fatal error:  Call to undefined method User::password_verify() in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 17
+[27-May-2019 20:34:32 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 20:34:33 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 20:35:19 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 20:40:10 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 62
+[27-May-2019 20:40:34 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 20:43:04 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 20:43:06 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:25:44 UTC] PHP Fatal error:  Call to a member function _update() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:26:10 UTC] PHP Fatal error:  Call to a member function _set_where() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:26:53 UTC] PHP Fatal error:  Call to a member function _set_where() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:26:54 UTC] PHP Fatal error:  Call to a member function _set_where() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:26:59 UTC] PHP Fatal error:  Call to a member function _set_where() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 21:58:17 UTC] PHP Fatal error:  Call to a member function _set_where() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 61
+[27-May-2019 22:04:45 UTC] PHP Fatal error:  Call to a member function result_array() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 72
+[27-May-2019 22:04:45 UTC] PHP Fatal error:  Call to a member function result_array() on null in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 72
+[14-Jun-2019 07:27:02 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 22
+[14-Jun-2019 07:27:15 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/iradra/public_html/caspero/application/modules/home/controllers/Home.php on line 22
+[14-Jun-2019 08:01:39 UTC] PHP Fatal error:  Unsupported operand types in /home/iradra/public_html/caspero/application/modules/user/controllers/User.php on line 76
+[14-Jun-2019 20:40:38 UTC] PHP Fatal error:  Class 'Mdl_feedback' not found in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 228
+[14-Jun-2019 20:41:06 UTC] PHP Fatal error:  Class 'Mdl_feedback' not found in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 228
+[14-Jun-2019 20:41:24 UTC] PHP Fatal error:  Class 'Mdl_feedback' not found in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 228
+[14-Jun-2019 20:41:39 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 20:42:45 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 20:43:42 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 20:45:49 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 20:47:18 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 20:48:24 UTC] PHP Fatal error:  Call to a member function _insert() on null in /home/iradra/public_html/caspero/application/modules/feedback/controllers/Feedback.php on line 49
+[14-Jun-2019 21:13:03 UTC] PHP Fatal error:  Call to undefined method Free::register() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 19
+[14-Jun-2019 21:31:50 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting '(' in /home/iradra/public_html/caspero/application/modules/admin/controllers/Admin.php on line 23
+[14-Jun-2019 21:31:51 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting '(' in /home/iradra/public_html/caspero/application/modules/admin/controllers/Admin.php on line 23
+[14-Jun-2019 21:34:04 UTC] PHP Parse error:  syntax error, unexpected 'in' (T_STRING) in /home/iradra/public_html/caspero/application/modules/admin/controllers/Admin.php on line 22
+[14-Jun-2019 21:40:59 UTC] PHP Fatal error:  Call to a member function get_where_custom() on null in /home/iradra/public_html/caspero/application/modules/admin/controllers/Admin.php on line 23
+[14-Jun-2019 21:41:04 UTC] PHP Fatal error:  Class 'Mdl_admin' not found in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 228
+[14-Jun-2019 21:41:18 UTC] PHP Fatal error:  Class 'Mdl_admin' not found in /home/iradra/public_html/caspero/application/third_party/MX/Loader.php on line 228
+[14-Jun-2019 21:48:48 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 46
+[14-Jun-2019 21:52:00 UTC] PHP Fatal error:  Cannot use [] for reading in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 38
+[14-Jun-2019 21:52:02 UTC] PHP Fatal error:  Cannot use [] for reading in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 38
+[14-Jun-2019 21:52:06 UTC] PHP Fatal error:  Cannot use [] for reading in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 38
+[14-Jun-2019 21:52:21 UTC] PHP Fatal error:  Cannot use [] for reading in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 38
+[14-Jun-2019 21:52:31 UTC] PHP Fatal error:  Cannot use [] for reading in /home/iradra/public_html/caspero/application/modules/admin/views/feedback_v.php on line 38
+[12-Jul-2019 16:57:21 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/iradra/public_html/caspero/application/modules/templates/views/landing_v.php on line 24
+[12-Jul-2019 16:57:23 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/iradra/public_html/caspero/application/modules/templates/views/landing_v.php on line 24
+[13-Jul-2019 12:06:57 UTC] PHP Fatal error:  Call to undefined function CASE_UPPER() in /home/iradra/public_html/caspero/application/modules/free/views/add_funds_step_2_v.php on line 8
+[13-Jul-2019 12:07:18 UTC] PHP Fatal error:  Call to undefined function CASE_UPPER() in /home/iradra/public_html/caspero/application/modules/free/views/add_funds_step_2_v.php on line 8
+[13-Jul-2019 13:03:02 UTC] PHP Fatal error:  Call to undefined method CI_Security::security() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:03:18 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:03:33 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:04:54 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:05:44 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:06:39 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:11:46 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:11:47 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:11:48 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:12:19 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:13:06 UTC] PHP Fatal error:  Call to a member function load() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:17:55 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:18:26 UTC] PHP Fatal error:  Call to a member function security_test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:18:52 UTC] PHP Fatal error:  Call to a member function security_test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:18:53 UTC] PHP Fatal error:  Call to a member function security_test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:18:55 UTC] PHP Fatal error:  Call to a member function security_test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:20:08 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 62
+[13-Jul-2019 13:21:37 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 60
+[13-Jul-2019 13:21:39 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 60
+[13-Jul-2019 13:21:41 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 60
+[13-Jul-2019 13:22:35 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 60
+[13-Jul-2019 13:26:17 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 61
+[13-Jul-2019 13:27:18 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 13
+[13-Jul-2019 13:27:20 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 13
+[13-Jul-2019 13:27:53 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 61
+[13-Jul-2019 13:29:40 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 61
+[13-Jul-2019 13:30:01 UTC] PHP Fatal error:  Call to undefined method Free::security() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 61
+[13-Jul-2019 13:30:42 UTC] PHP Fatal error:  Call to undefined method CI_Security::test() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 61
+[16-Jul-2019 12:15:03 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 75
+[16-Jul-2019 12:16:26 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://tempuri.org/' : Extra content at the end of the document
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 75
+[16-Jul-2019 12:17:08 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 75
+[16-Jul-2019 12:17:56 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 75
+[16-Jul-2019 12:17:58 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 75
+[16-Jul-2019 12:20:43 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:30 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:33 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:36 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:40 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:47 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:26:51 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:27:06 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:27:12 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:27:21 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:31:28 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:31:31 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:39:14 UTC] PHP Fatal error:  Call to undefined method stdClass::resultarray() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 79
+[16-Jul-2019 12:39:22 UTC] PHP Fatal error:  Call to undefined method stdClass::result_array() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 79
+[16-Jul-2019 12:46:29 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:48:08 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 12:59:33 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://www.w3schools.com/xml/tempconvert.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 13:05:05 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx?WDSL' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 13:05:10 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx?WDSL' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 13:05:17 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 13:05:23 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx?wdsl' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[16-Jul-2019 13:05:33 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'https://corporate-uat.globalreachgroup.com/tradeservice.asmx?wdsl' : Premature end of data in tag html line 3
+ in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 76
+[17-Jul-2019 09:23:17 UTC] PHP Fatal error:  Call to undefined method User::update() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 114
+[17-Jul-2019 09:34:08 UTC] PHP Fatal error:  Unsupported operand types in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 118
+[17-Jul-2019 09:34:34 UTC] PHP Fatal error:  Unsupported operand types in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 118
+[17-Jul-2019 09:38:42 UTC] PHP Fatal error:  Call to undefined function CASE_LOWER() in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 115
+[17-Jul-2019 13:38:23 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/iradra/public_html/caspero/application/modules/free/views/wallet_v.php on line 40
+[17-Jul-2019 13:38:51 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/iradra/public_html/caspero/application/modules/free/views/wallet_v.php on line 40
+[17-Jul-2019 13:42:28 UTC] PHP Fatal error:  Call to a member function get_where_custom() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 46
+[17-Jul-2019 13:44:36 UTC] PHP Fatal error:  Call to a member function result_array() on array in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 49
+[17-Jul-2019 15:19:29 UTC] PHP Fatal error:  Call to a member function get_where_custom() on null in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 49
+[17-Jul-2019 15:51:09 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/iradra/public_html/caspero/application/modules/free/views/wallet_v.php on line 109
+[17-Jul-2019 15:56:15 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/iradra/public_html/caspero/application/modules/free/views/wallet_v.php on line 116
+[17-Jul-2019 20:43:12 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/admin/controllers/Admin.php on line 13
+[19-Jul-2019 13:11:02 UTC] PHP Parse error:  syntax error, unexpected 'CURLOPT_POSTFIELDS' (T_STRING), expecting ']' in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 144
+[19-Jul-2019 14:41:19 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/iradra/public_html/caspero/application/modules/free/controllers/Free.php on line 155
+[19-Jul-2019 16:04:41 UTC] PHP Fatal error:  Call to undefined method CI_Security::security_test() in /home/iradra/public_html/caspero/application/modules/api/controllers/Api.php on line 14
+[26-Jul-2019 13:50:34 UTC] PHP Fatal error:  Call to undefined method Currencies::register() in /home/iradra/public_html/wally/application/modules/currencies/controllers/Currencies.php on line 20
+[26-Jul-2019 13:51:49 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/iradra/public_html/wally/system/core/Common.php on line 111
+[26-Jul-2019 13:52:41 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/iradra/public_html/wally/system/core/Common.php on line 111
+[26-Jul-2019 14:26:52 UTC] PHP Fatal error:  Call to a member function get() on null in /home/iradra/public_html/wally/application/modules/currencies/controllers/Currencies.php on line 28
+[26-Jul-2019 14:27:08 UTC] PHP Fatal error:  Call to a member function get() on null in /home/iradra/public_html/wally/application/modules/currencies/controllers/Currencies.php on line 28
+[26-Jul-2019 16:05:17 UTC] PHP Fatal error:  Call to a member function input() on null in /home/iradra/public_html/wally/application/modules/admin/controllers/Admin.php on line 29
+[26-Jul-2019 16:05:19 UTC] PHP Fatal error:  Call to a member function input() on null in /home/iradra/public_html/wally/application/modules/admin/controllers/Admin.php on line 29
+[26-Jul-2019 16:05:38 UTC] PHP Fatal error:  Call to a member function input() on null in /home/iradra/public_html/wally/application/modules/admin/controllers/Admin.php on line 29
+[26-Jul-2019 16:24:05 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 16:24:22 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 16:24:41 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 16:24:44 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 17:12:23 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 17:12:27 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 17:12:29 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/add_funds_step_1_v.php on line 23
+[26-Jul-2019 18:32:44 UTC] PHP Fatal error:  Call to a member function result_array() on null in /home/iradra/public_html/wally/application/modules/transactions/controllers/Transactions.php on line 14
+[26-Jul-2019 18:35:11 UTC] PHP Fatal error:  Call to a member function result_array() on boolean in /home/iradra/public_html/wally/application/modules/transactions/models/Mdl_transactions.php on line 27
+[26-Jul-2019 18:52:18 UTC] PHP Fatal error:  Call to a member function result_array() on null in /home/iradra/public_html/wally/application/modules/transactions/controllers/Transactions.php on line 14
+[26-Jul-2019 19:05:32 UTC] PHP Fatal error:  Call to a member function result_array() on array in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 174
+[26-Jul-2019 19:05:52 UTC] PHP Fatal error:  Call to a member function result_array() on array in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 174
+[26-Jul-2019 20:07:51 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::groupby() in /home/iradra/public_html/wally/application/modules/client/models/Mdl_client.php on line 36
+[26-Jul-2019 20:17:45 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/iradra/public_html/wally/application/modules/client/views/wallet_v.php on line 90
+[26-Jul-2019 21:52:39 UTC] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /home/iradra/public_html/wally/application/modules/client/views/start_exchange_v.php on line 73
+[27-Jul-2019 00:21:06 UTC] PHP Fatal error:  Call to a member function test() on null in /home/iradra/public_html/wally/application/modules/currencies/controllers/Currencies.php on line 28
+[27-Jul-2019 09:24:57 UTC] PHP Fatal error:  Call to undefined method Currencies::join_fees() in /home/iradra/public_html/wally/application/modules/admin/controllers/Admin.php on line 22
+[27-Jul-2019 10:22:53 UTC] PHP Fatal error:  Call to undefined function base_site() in /home/iradra/public_html/wally/application/modules/templates/views/landing_v.php on line 13
+[31-Jul-2019 17:47:07 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 181
+[31-Jul-2019 17:47:10 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 181
+[31-Jul-2019 17:47:20 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 17:49:21 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 181
+[31-Jul-2019 17:50:39 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 181
+[31-Jul-2019 17:55:42 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 181
+[31-Jul-2019 18:03:39 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 18:03:43 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 18:52:24 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 19:07:26 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 19:07:35 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join_group_by() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 182
+[31-Jul-2019 19:07:49 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 19:20:02 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 19:59:43 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 19:59:44 UTC] PHP Fatal error:  Call to undefined method Mdl_client::join() in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 173
+[31-Jul-2019 20:00:27 UTC] PHP Fatal error:  Call to a member function result_array() on null in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 49
+[31-Jul-2019 20:31:46 UTC] PHP Parse error:  syntax error, unexpected '$data' (T_VARIABLE) in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 192
+[31-Jul-2019 20:36:45 UTC] PHP Parse error:  syntax error, unexpected 'user_id' (T_STRING) in /home/iradra/public_html/wally/application/modules/client/controllers/Client.php on line 177
