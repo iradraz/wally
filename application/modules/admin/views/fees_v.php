@@ -17,7 +17,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!--test-->
                 <?php foreach ($currencies_data as $key => $value) { ?>
                     <?php echo '<tr>'; ?>
                     <?php echo '<th scope="row">' . $currencies_data[$key]['currency_id'] . '</th>'; ?>
