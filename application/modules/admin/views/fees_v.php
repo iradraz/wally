@@ -10,6 +10,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Currency</th>
                     <th scope="col">Fee Rate</th>
+                    <th scope="col">Change Date</th>
+
+                    <th scope="col">Action</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -23,10 +26,8 @@
                     $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                     $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                     ?>
-                    <?php
-                    echo '<td>' . $symbol . ' ' . $currencies_data[$key]['fee_rate'] . '</td>';
-                    ;
-                    ?>
+                    <?php echo '<td>' . $symbol . ' ' . $currencies_data[$key]['fee_rate'] . '</td>'; ?>
+                    <?php echo '<td>' . $currencies_data[$key]['change_date'] . '</td>'; ?>
                     <?php echo '<td id="' . $currencies_data[$key]['currency_id'] . '"><a href="#" class="delete_data btn btn-danger btn-sm" id="' . $currencies_data[$key]['currency_id'] . '"><span class="glyphicon glyphicon-remove"></span> Edit </a></td>'; ?>
                     <?php
                     echo '</tr>';

@@ -36,7 +36,7 @@ class Currencies extends MY_Controller {
 
     function _join_fees() {
         $this->security->security_test('admin');
-        $mysql_query = 'select currencies.currency_id, fees.fee_id, currencies.currency_name, fees.fee_rate from currencies,fees where currencies.currency_id = fees.currency_id';
+        $mysql_query = 'select currencies.currency_id, fees.fee_id, currencies.currency_name, fees.fee_rate,fees.change_date from currencies,fees where currencies.currency_id = fees.currency_id';
         $query = $this->_custom_query($mysql_query);
         return $query;
     }

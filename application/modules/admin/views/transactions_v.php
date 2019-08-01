@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-5" style="min-width: 250px;">
@@ -35,9 +36,9 @@
                                 <?php echo '<td scope="row">' . $transactions[$key]['transaction_id'] . '</td>'; ?>
                                 <?php echo '<td scope="row">' . $transactions[$key]['user_id'] . '</td>'; ?>                            
                                 <?php echo '<td scope="row">' . $transactions[$key]['action'] .  '</td>'; ?>
-                                <?php echo '<td>' . $transactions[$key]['currency'] . '</td>'; ?>
+                                <?php echo '<td>' . $transactions[$key]['currency_name'] . '</td>'; ?>
                                 <?php
-                                $currency = $transactions[$key]['currency'];
+                                $currency = $transactions[$key]['currency_name'];
                                 $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                                 $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                                 ?>

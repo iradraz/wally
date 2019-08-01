@@ -24,10 +24,21 @@ class Admin extends MY_Controller {
         $this->templates->admin($data);
     }
 
+    function get_transactions_data() {
+        $this->security->security_test('admin');
+
+        $query = 'select transactions.transaction_id,transactions.user_id,transactions.currency_id,currencies.currency_name,transactions.action,transactions.amount,transactions.fee_paid,transactions.transaction_date from transactions,currencies where transactions.currency_id=currencies.currency_id';
+        $result = $this->transactions->_custom_query($query);
+
+        return $result;
+    }
+
     function transactions() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
-        $data['transactions'] = $this->transactions->get('transaction_id')->result_array();
+        
+        $data['transactions'] = $this->get_transactions_data()->result_array();
+
         $data['content_view'] = 'admin/transactions_v';
         $this->templates->admin($data);
     }
