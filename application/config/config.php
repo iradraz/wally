@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://iradra.mtacloud.co.il/wally';
-$config['base_url'] = 'localhost/wally';
+$config['base_url'] = 'http://localhost/wally';
 
 /*
 |--------------------------------------------------------------------------
