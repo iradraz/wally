@@ -8,11 +8,12 @@ class User extends MY_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->module('security');
     }
 
-    function index() { 
-     //   $data['content_view'] = 'user/login_v';
-     //   $this->templates->temp($data);
+    function index() {
+        //   $data['content_view'] = 'user/login_v';
+        //   $this->templates->temp($data);
     }
 
     private function hash_password($password) {
@@ -78,15 +79,10 @@ class User extends MY_Controller {
         $this->templates->landing($data);
     }
 
-    function login_user() {
+    function _login_user() {
         $post_data = $this->input->post();
         $data = $this->get_where_custom('user_email', $post_data['email'])->result_array();
-        if (!isset($data[0])) {
-            session_destroy();
-            redirect('http://iradra.mtacloud.co.il/wally');
-        }
         if (password_verify($post_data['password'], $data[0]['user_password']) == 1) {
-            echo 'can proceed';
             $session_data = array(
                 'user_id' => $data[0]['user_id'],
                 'user_firstname' => $data[0]['user_firstname'],
@@ -99,15 +95,25 @@ class User extends MY_Controller {
             $this->_update($session_data['user_id'], $last_seen);
             redirect(base_url('/home/'));
         } else {
-            session_destroy();
-            redirect('http://iradra.mtacloud.co.il/wally');
+            redirect(base_url('user/login'));
         }
     }
 
     function login() {
+        $session_data = $this->session->userdata();
+        if (!isset($session_data['user_id'])) {
 
-        $data['content_view'] = 'user/login_v';
-        $this->templates->landing($data);
+            $post_data = $this->input->post();
+            if (isset($post_data['email'])) {
+                $this->_login_user();
+            } else {
+                $data['content_view'] = 'user/login_v';
+                $this->templates->landing($data);
+            }
+        }else
+        {
+            redirect(base_url('/home/'));
+        }
     }
 
     function get($order_by) {
