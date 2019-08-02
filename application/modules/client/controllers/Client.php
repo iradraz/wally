@@ -184,7 +184,7 @@ class Client extends MY_Controller {
         $session_data = $this->session->userdata();
         $user_id = $session_data['user_id'];
 
-        $query = 'select transactions.user_id, SUM(transactions.amount),SUM(transactions.fee_paid),currencies.currency_id,currencies.currency_name '
+        $query = 'select transactions.user_id, transactions.amount,transactions.fee_paid,currencies.currency_id,currencies.currency_name '
         . 'from user,transactions,currencies where '
         . 'transactions.currency_id=currencies.currency_id and transactions.user_id='.$user_id. ' '
         . 'GROUP BY currencies.currency_name;';

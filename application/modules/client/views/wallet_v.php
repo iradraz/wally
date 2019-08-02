@@ -38,7 +38,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php echo '<th scope="col">' . $symbol . ($currencies_summary[$key]['SUM(transactions.amount)'] + $currencies_summary[$key]['SUM(transactions.fee_paid)']) . '</th>'; ?>
+                        <?php echo '<th scope="col">' . $symbol . ($currencies_summary[$key]['amount'] + $currencies_summary[$key]['fee_paid']) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>
