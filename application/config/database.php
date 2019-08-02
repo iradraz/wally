@@ -75,9 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'zebra.mtacloud.co.il',
-	'username' => 'iradra',
-	'password' => 'project123',
+	//'hostname' => 'zebra.mtacloud.co.il',
+	//'username' => 'iradra',
+	//'password' => 'project123',
+    	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '1234',
 	'database' => 'iradra_wally',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
