@@ -69,7 +69,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         });
                     },
                     error: function () {
-                        alert("Error");
+                        alert("Cannot remove currency that is already used by a client");
                     }
                 });
             } else {

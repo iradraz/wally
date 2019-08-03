@@ -12,6 +12,62 @@ class Api extends MY_Controller {
         $this->security->security_test('client');
     }
 
+    function test_payment() {
+        $data['accountID'] = "1";
+        $data['secretKey'] = "2";
+        $data['mode'] = "TEST";
+
+        $payment = new bluepay($data);
+//        echo '<pre>';
+//        print_r($payment);
+//        echo '</pre>';
+        $payment->setCustomerInformation(array(
+            'firstName' => 'Bob',
+            'lastName' => 'Tester',
+            'addr1' => '1234 Test St.',
+            'addr2' => 'Apt #500',
+            'city' => 'Testville',
+            'state' => 'IL',
+            'zip' => '54321',
+            'country' => 'USA',
+            'phone' => '1231231234',
+            'email' => 'test@bluepay.com'
+        ));
+
+
+
+        $payment->setCCInformation(array(
+            'cardNumber' => '4111111111111111', // Card Number: 4111111111111111
+            'cardExpire' => '1225', // Card Expire: 12/25
+            'cvv2' => '123' // Card CVV2: 123
+        ));
+
+        $payment->sale('300.00'); // Sale Amount: $300.00
+        // Makes the API request with BluePAy
+        $payment->process();
+
+// Reads the response from BluePay
+        $payment->getStatus();
+        die;
+        if ($payment->isSuccessfulResponse()) {
+            echo
+            'Transaction Status: ' . $payment->getStatus() . "\n" .
+            'Transaction Message: ' . $payment->getMessage() . "\n" .
+            'Transaction ID: ' . $payment->getTransID() . "\n" .
+            'AVS Response: ' . $payment->getAVSResponse() . "\n" .
+            'CVS Response: ' . $payment->getCVV2Response() . "\n" .
+            'Masked Account: ' . $payment->getMaskedAccount() . "\n" .
+            'Card Type: ' . $payment->getCardType() . "\n" .
+            'Authorization Code: ' . $payment->getAuthCode() . "\n";
+        } else {
+            echo $payment->getMessage() . "\n";
+        }
+        echo '<pre>';
+        print_r($payment);
+        echo '</pre>';
+        die;
+    }
+
     function get_auth_1() {
 
         $url = "https://devapi.currencycloud.com/v2/authenticate/api";

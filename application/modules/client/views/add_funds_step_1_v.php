@@ -34,17 +34,19 @@
         </div>
         <div class="form-group text-info col-md-6">
             <label for="creditcard">Credit Card Info:</label>
-            <input type="" class="form-control" id="amount" placeholder="Credit Card #" name="creditcard" disabled>
+            <input type="" class="form-control" id="amount" placeholder="Credit Card #" name="creditcard">
             <label for="exp_date">Expiration Date:</label>
-            <input type="number" step="1" min="1" max="12" class="form-control" id="expmm" placeholder="Expiration Month" name="exp_date_mm" disabled>
-            <input type="number" step="1" min="2014" max="2040" class="form-control" id="expyyyy" placeholder="Expiration Year" name="exp_date_yyyy" disabled>
+            <input type="number" step="1" min="1" max="12" class="form-control" id="expmm" placeholder="Expiration Month" name="exp_date_mm">
+            <input type="number" step="1" min="2014" max="2040" class="form-control" id="expyyyy" placeholder="Expiration Year" name="exp_date_yyyy">
             <label for="exp_date">CVV:</label>
-            <input type="number" step="1" min="100" max="999" class="form-control" id="cvv" placeholder="CVV" name="cvv" disabled>
+            <input type="number" step="1" min="100" max="999" class="form-control" id="cvv" placeholder="CVV" name="cvv">
         </div>
         <ul>
             <div>
                 <button type="submit" class="btn btn-info">Proceed</button>
             </div>
         </ul>
+
     </form>
+
 </div>

@@ -9,10 +9,7 @@ class Security extends MY_Controller {
     function __construct() {
         parent::__construct();
     }
-    function test(){
-        echo 'testing';
-        die;
-    }
+
     function security_test($role) {
         $session_data = $this->session->userdata();
         if ($session_data['user_id']==null){

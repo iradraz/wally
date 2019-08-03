@@ -80,22 +80,30 @@ class User extends MY_Controller {
     }
 
     function _login_user() {
-        $post_data = $this->input->post();
-        $data = $this->get_where_custom('user_email', $post_data['email'])->result_array();
-        if (password_verify($post_data['password'], $data[0]['user_password']) == 1) {
-            $session_data = array(
-                'user_id' => $data[0]['user_id'],
-                'user_firstname' => $data[0]['user_firstname'],
-                'user_lastname' => $data[0]['user_lastname'],
-                'user_role' => $data[0]['user_role'],
-                'user_email' => $data[0]['user_email']
-            );
-            $this->session->set_userdata($session_data);
-            $last_seen = array('user_last_login' => date("Y-m-d H:i:s"));
-            $this->_update($session_data['user_id'], $last_seen);
-            redirect(base_url('/home/'));
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['content_view'] = 'user/login_v';
+            $this->templates->landing($data);
         } else {
-            redirect(base_url('user/login'));
+            $post_data = $this->input->post();
+            $data = $this->get_where_custom('user_email', $post_data['email'])->result_array();
+            if (password_verify($post_data['password'], $data[0]['user_password']) == 1) {
+                $session_data = array(
+                    'user_id' => $data[0]['user_id'],
+                    'user_firstname' => $data[0]['user_firstname'],
+                    'user_lastname' => $data[0]['user_lastname'],
+                    'user_role' => $data[0]['user_role'],
+                    'user_email' => $data[0]['user_email']
+                );
+                $this->session->set_userdata($session_data);
+                $last_seen = array('user_last_login' => date("Y-m-d H:i:s"));
+                $this->_update($session_data['user_id'], $last_seen);
+                redirect(base_url('/home/'));
+            } else {
+                redirect(base_url('user/login'));
+            }
         }
     }
 
@@ -110,8 +118,7 @@ class User extends MY_Controller {
                 $data['content_view'] = 'user/login_v';
                 $this->templates->landing($data);
             }
-        }else
-        {
+        } else {
             redirect(base_url('/home/'));
         }
     }

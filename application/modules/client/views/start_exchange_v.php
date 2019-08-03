@@ -16,8 +16,9 @@
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
                     <tr>
+                        <?php // echo '<pre>' ;print_r($currencies_summary); echo '</pre>'; die;?>
                         <?php foreach ($currencies_summary as $key => $value) { ?>
-                            <?php echo ($currencies_summary[$key]['SUM(transactions.amount)'] == 0 ? '' : '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'); ?>
+                            <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'); ?>
                         <?php } ?>
                     </tr>
                 </thead>
@@ -29,7 +30,7 @@
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php echo ($currencies_summary[$key]['SUM(transactions.amount)'] == 0 ? '' : '<th scope="col">' . $symbol . ($currencies_summary[$key]['SUM(transactions.amount)'] + $currencies_summary[$key]['SUM(transactions.fee_paid)'])) . '</th>'; ?>
+                        <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $symbol . ($currencies_summary[$key]['amount'] + $currencies_summary[$key]['fee_paid'])) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>

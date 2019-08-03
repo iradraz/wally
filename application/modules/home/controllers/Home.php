@@ -32,7 +32,7 @@ class Home extends MY_Controller {
 
     function logout() {
         session_destroy();
-        redirect('http://iradra.mtacloud.co.il/wally');
+        redirect(base_url());
     }
 
 }
