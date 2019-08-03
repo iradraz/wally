@@ -4,14 +4,16 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-6">
-                    <form id="login-form" class="form" action="<?php echo base_url('/user/login_user'); ?>" method="post">
+                    <form id="login-form" class="form" action="<?php echo base_url('/user/login'); ?>" method="post">
                         <div class="form-group wow fadeInLeft" data-wow-duration="2s">
                             <label for="email" class="text-info">Email:</label><br>
                             <input type="text" name="email" id="email" class="form-control">
+                            <span class="text-danger"><?php echo form_error('email'); ?></span>
                         </div>
                         <div class="form-group wow fadeInLeft" data-wow-duration="2s">
                             <label for="password" class="text-info">Password:</label><br>
                             <input type="password" name="password" id="password" class="form-control">
+                            <span class="text-danger"><?php echo form_error('password'); ?></span>
                         </div>
                         <div class="form-group">
                             <label for="remember-me" class="text-info wow fadeIn" data-wow-duration="5s"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
