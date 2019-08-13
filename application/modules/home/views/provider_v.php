@@ -50,24 +50,36 @@
     <p class="text-warning">Fill the form at the bottom of the page and send it to our BackOffice directly.</p>
 </div>
 <div class="bg">
-    <div class="wrap">
-        <div class="newsletter-bg"></div>  
-        <div class="newsletter-text">
-            <h2>type in your email</h2>
-
-            <form action="#">
-                <div>
-                    <label for="name" class="sr-only">Text Input:</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="john@snow.com" />
-                </div>
-
-
-                <div>
-                    <input type="submit" value="Submit" class="form-control" />
-                </div>
-            </form>  
+    <form action="<?php echo base_url('/home/provider'); ?>" method="post">
+        <div class="form-group text-info col-md-6">
+            <label for="provider">* Provider Name:</label>
+            <input type="provider" class="form-control" value="<?php echo set_value('provider'); ?>" placeholder="Cloud Currency" name="provider">
+            <span class="text-danger"><?php echo form_error('first'); ?></span>
+            <span class="text-danger"><?php echo form_error('last'); ?></span>
+        </div>
+        <div class="form-group text-info col-md-6">
+            <label for="currencies">* Supported Currencies:</label>
+            <textarea type="text" class="form-control" value="<?php echo set_value('provider'); ?>" placeholder="Cloud Currency" name="provider"></textarea>
+            <span class="text-danger"><?php echo form_error('currencies'); ?></span>
+        </div>
+        <div class="form-group text-info col-md-6">
+            <label for="email">* Email: </label>
+            <input type="email" class="form-control" id="email" value="<?php echo set_value('email'); ?>" placeholder="Enter Email" name="email">
+            <span class="text-danger"><?php echo form_error('email'); ?></span>
+        </div>
+        <div class="form-group text-info col-md-6">
+            <label for="phone">Phone Number:</label>
+            <input type="phone" class="form-control" id="phone" value="<?php echo set_value('phone'); ?>" placeholder="Enter Phone Number" name="phone">
+            <span class="text-danger"><?php echo form_error('phone'); ?></span>
         </div>
 
-    </div>
+        <ul>
+            <div>
+                <button type="submit" class="btn btn-info">Submit</button>
 
+
+
+            </div>
+        </ul>
+    </form>
 </div>

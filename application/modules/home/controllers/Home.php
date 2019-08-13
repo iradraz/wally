@@ -24,7 +24,9 @@ class Home extends MY_Controller {
             $this->templates->landing($data);
         }
     }
-
+    function provider(){
+        $this->load->view('home/provider_sign_thank_you_v');
+    }
     function about() {
         $data['content_view'] = 'home/about_v';
         $this->templates->landing($data);

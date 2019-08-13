@@ -30,7 +30,6 @@ class Client extends MY_Controller {
     }
 
     function subscribe() {
-        //  echo 'thank you!';
         $this->load->view('client/thank_you_v');
     }
 

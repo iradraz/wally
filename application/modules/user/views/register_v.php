@@ -35,8 +35,10 @@
                 <button type="submit" class="btn btn-info">Submit</button>
 
                 </form>
-                <a href="<?php echo base_url('/home');?>" class="ml-5">Back Home</a>
-                    <div class="mt-2">
-                        <span class="text-center text-danger">all fields with <b>*</b> mark are required!</span>
-                    </div>
+                <a href="<?php echo base_url('/home'); ?>" class="ml-5">Back Home</a>
+                <div class="mt-2">
+                    <span class="text-center text-danger">all fields with <b>*</b> mark are required!</span>
+                </div>
             </div>
+        </ul>
+</div>
