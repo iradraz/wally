@@ -67,9 +67,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('/client/exchange'); ?>">Exchange Funds</a>
                         </li>                            
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url('/client/withdraw'); ?>">Withdraw Funds</a>
-                        </li>
+<!--                        <li class="nav-item">
+                            <a class="nav-link" href="<?php // echo base_url('/client/withdraw'); ?>">Withdraw Funds</a>
+                        </li>-->
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('/client/feedback'); ?>">Feedback</a>
