@@ -1,6 +1,7 @@
 <?php $post_data = $this->input->post(); ?>
 
     <h2 class="text-center text-warning">Exchange funds in your account</h2>
+    <br><br>
     
     <div class="row justify-content-center">
         <div class="col-3">
@@ -31,7 +32,7 @@
         </div>
     </div>
 
-  
+    <br> <br>
     <div class="container wow fadeIn" data-wow-duration="2s">
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="1"
