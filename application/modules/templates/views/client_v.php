@@ -41,7 +41,7 @@
     </head>
     <body>
         <header class="text-warning wow bounceInDown" data-wow-duration="2s">
-            <h1><?php echo $session_data['user_firstname']; ?> Wallet</h1>
+            <h1><?php echo $session_data['user_firstname'] . "'s"; ?> Wallet</h1>
         </header>
         <div id="wrapper" class="animate">
             <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
