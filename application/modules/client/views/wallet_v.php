@@ -54,8 +54,8 @@ header("Content-Type: text/html; charset=UTF-8;");
             <table class="table table-striped table-secondary table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" style="width: 1.33%"></th> 
-                        <!--    <th scope="col" style="width: 8.33%">Transaction ID#</th> -->
+                         <!--   <th scope="col" style="width: 1.33%"></th>  -->
+                        <th scope="col" style="width: 8.33%">Transaction ID#</th>
                         <th scope="col" style="width: 8.33%">Action</th>
 
                         <th scope="col" style="width: 8.33%">Currency</th>
@@ -68,7 +68,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                 <tbody>
                     <?php foreach ($transactions as $key => $value) { ?>
                         <?php echo '<tr>'; ?>
-                        <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?>
+                       <!--     <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?> -->
                         <?php echo '<td scope="row">' . $transactions[$key]['transaction_id'] . '</td>'; ?>
                         <?php echo '<td scope="row">' . $transactions[$key]['action'] . '</td>'; ?>
                         <?php echo '<td>' . $transactions[$key]['currency_name'] . '</td>'; ?>
