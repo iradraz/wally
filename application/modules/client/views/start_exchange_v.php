@@ -1,6 +1,6 @@
 <?php $post_data = $this->input->post(); ?>
 
-    <h3 class="text-center text-info">Exchange funds in your account</h3>
+    <h2 class="text-center text-info">Exchange funds in your account</h2>
   
     <div class="container wow fadeIn" data-wow-duration="2s">
     <h5 class="text-info"> your progress bar </h5>
