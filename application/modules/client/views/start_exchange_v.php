@@ -8,7 +8,7 @@
         </div>
     </div>
         <br>
-    <h2 class="text-center text-warning">Exchange funds in your account</h2>
+    <h2 class="text-center text-info">Exchange funds in your account</h2>
     <br><br>
     
     <div class="row justify-content-center">
