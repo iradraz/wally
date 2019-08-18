@@ -1,7 +1,16 @@
 <?php $post_data = $this->input->post(); ?>
 
-    <h3 class="text-center text-info">Exchange funds in your account</h3>
+    <h3 class="text-center .bg-info">Exchange funds in your account</h3>
   
+    <div class="container wow fadeIn" data-wow-duration="2s">
+    <h5 class="text-info"> your progress bar </h5>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="1"
+             aria-valuemin="0" aria-valuemax="100" style="width:1%">
+            <span class="sr-only">10% Complete</span>
+        </div>
+    </div>
+    
     <br>
     <div class="row justify-content-center">
         <form action="<?php echo base_url('/client/deposit/2'); ?>" method="post">
@@ -92,16 +101,6 @@
                     <?php echo '</tr>'; ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-   
-    
-    <div class="container wow fadeIn" data-wow-duration="2s">
-    <h5 class="text-info"> your progress bar </h5>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="1"
-             aria-valuemin="0" aria-valuemax="100" style="width:1%">
-            <span class="sr-only">10% Complete</span>
         </div>
     </div>
     
