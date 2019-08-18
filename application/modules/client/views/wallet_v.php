@@ -77,7 +77,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                <br><br>
+                <br>
                         <?php echo '<td>' . $symbol . ' ' . $transactions[$key]['amount'] . '</td>'; ?>
                         <?php echo '<td>' . (($transactions[$key]['fee_paid'] == 0) ? '0' : $symbol . ' ' . $transactions[$key]['fee_paid']) . '</td>'; ?>    
                         <?php echo '<td>' . $transactions[$key]['transaction_date'] . '</td>'; ?>
