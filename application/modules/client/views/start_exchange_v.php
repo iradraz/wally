@@ -1,9 +1,38 @@
 <?php $post_data = $this->input->post(); ?>
 
+    
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <h5 class="text-center text-info">Current Account Statement</h5>
+            <table class="table table-success">
+                <thead class="table-stiped thead-light">
+                    <tr>
+                        <?php // echo '<pre>' ;print_r($currencies_summary); echo '</pre>'; die;?>
+                        <?php foreach ($currencies_summary as $key => $value) { ?>
+                            <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'); ?>
+                        <?php } ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo '<tr>'; ?>
+                    <?php foreach ($currencies_summary as $key => $value) { ?>
+                        <?php
+                        $currency = $currencies_summary[$key]['currency_name'];
+                        $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
+                        $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
+                        ?>
+                        <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $symbol . ($currencies_summary[$key]['amount'] + $currencies_summary[$key]['fee_paid'])) . '</th>'; ?>
+                    <?php } ?>
+
+                    <?php echo '</tr>'; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <h2 class="text-center text-info">Exchange funds in your account</h2>
   
     <div class="container wow fadeIn" data-wow-duration="2s">
-    <h5 class="text-info"> your progress bar </h5>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="1"
              aria-valuemin="0" aria-valuemax="100" style="width:1%">
@@ -72,36 +101,6 @@
                 </div>
             </ul>
         </form>
-    </div>
-    
-    
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <h5 class="text-center text-info">Current Account Statement</h5>
-            <table class="table table-success">
-                <thead class="table-stiped thead-light">
-                    <tr>
-                        <?php // echo '<pre>' ;print_r($currencies_summary); echo '</pre>'; die;?>
-                        <?php foreach ($currencies_summary as $key => $value) { ?>
-                            <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'); ?>
-                        <?php } ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php echo '<tr>'; ?>
-                    <?php foreach ($currencies_summary as $key => $value) { ?>
-                        <?php
-                        $currency = $currencies_summary[$key]['currency_name'];
-                        $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
-                        $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
-                        ?>
-                        <?php echo ($currencies_summary[$key]['amount'] == 0 ? '' : '<th scope="col">' . $symbol . ($currencies_summary[$key]['amount'] + $currencies_summary[$key]['fee_paid'])) . '</th>'; ?>
-                    <?php } ?>
-
-                    <?php echo '</tr>'; ?>
-                </tbody>
-            </table>
-        </div>
     </div>
     
 </div>
