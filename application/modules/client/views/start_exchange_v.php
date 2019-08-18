@@ -39,7 +39,7 @@
             </table>
         </div>
     </div>
-        <br>
+    <br><br>
     <div class="row justify-content-center">
         <form action="<?php echo base_url('/client/deposit/2'); ?>" method="post">
             <div class="form-group text-warning col-md-12" style="display: inline-block;font-size:20px;font-weight: bold">
@@ -88,7 +88,7 @@
                 <span style="clear: clear"></span>
                 <div class="form-group text-warning col-md-12" style="margin-top: 150px;font-size:20px;font-weight: bold">
 
-                    <label for="amount" style="">Amount:</label>
+                    <label for="amount" style="text-align: center">Amount:</label>
                     <input type="number" step="0.01" class="form-control" id="amount" min="20" value="<?php echo set_value('amount'); ?>" placeholder="Enter amount of currency to sell" name="amount">
                     <span class="text-danger"><?php echo form_error('amount'); ?></span>
                 </div>
