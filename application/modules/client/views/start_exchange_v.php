@@ -7,8 +7,8 @@
             <span class="sr-only">10% Complete</span>
         </div>
     </div>
-    
-    <h2 class="text-center text-primary">Exchange funds in your account</h2>
+        <br>
+    <h2 class="text-center text-warning">Exchange funds in your account</h2>
     <br><br>
     
     <div class="row justify-content-center">
