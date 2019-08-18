@@ -1,6 +1,6 @@
 <?php $post_data = $this->input->post(); ?>
 <div class="container wow fadeIn" data-wow-duration="2s">
- 
+    <h3 class="text-info"> your progress bar </h3>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="1"
              aria-valuemin="0" aria-valuemax="100" style="width:1%">
