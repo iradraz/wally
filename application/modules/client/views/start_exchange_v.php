@@ -9,7 +9,7 @@
     </div>
  <br>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-start">
         <div class="col-3">
             <h5 class="text-center text-warning">Current Account Statement</h5>
             <table class="table table-success">
