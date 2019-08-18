@@ -6,7 +6,7 @@ $locale = 'he-IL'; //browser or user locale
 header("Content-Type: text/html; charset=UTF-8;");
 ?>
 <div class="container-fluid wow fadeIn" data-wow-duration="2s">
-
+<!-- 
     <div class="row justify-content-center">
         <div class="col-3" style="min-width: 250px;">
             <div class="card text-center">
@@ -18,10 +18,9 @@ header("Content-Type: text/html; charset=UTF-8;");
             </div>
         </div>
     </div>
-
+-->
     <div class="row justify-content-center">
         <div class="col-3">
-            <div class="p-3 mb-2 bg-secondary text-white">Current Account Statement</div>
             <h5 class="text-center text-primary">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
@@ -55,7 +54,7 @@ header("Content-Type: text/html; charset=UTF-8;");
             <table class="table table-striped table-secondary table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" style="width: 1.33%"></th>
+                      <!--   <th scope="col" style="width: 1.33%"></th>   -->
                         <th scope="col" style="width: 8.33%">Transaction ID#</th>
                         <th scope="col" style="width: 8.33%">Action</th>
 
