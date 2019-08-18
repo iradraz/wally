@@ -1,6 +1,6 @@
 <?php $post_data = $this->input->post(); ?>
 <div class="container wow fadeIn" data-wow-duration="2s">
-    <h3 class="text-info"> your progress bar </h3>
+    <h5 class="text-info"> your progress bar </h5>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="1"
              aria-valuemin="0" aria-valuemax="100" style="width:1%">
@@ -10,7 +10,7 @@
  <br>
 
     <div class="row justify-content-center">
-        <div class="col-6">
+        <div class="col-3">
             <h5 class="text-center text-warning">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
