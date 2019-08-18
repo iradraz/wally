@@ -12,7 +12,7 @@
     <br><br>
     
     <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-5">
             <h5 class="text-center text-info">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
