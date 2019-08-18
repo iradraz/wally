@@ -39,6 +39,7 @@
             </table>
         </div>
     </div>
+        <br>
     <div class="row justify-content-center">
         <form action="<?php echo base_url('/client/deposit/2'); ?>" method="post">
             <div class="form-group text-warning col-md-12" style="display: inline-block;font-size:20px;font-weight: bold">
