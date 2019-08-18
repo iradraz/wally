@@ -50,6 +50,7 @@ header("Content-Type: text/html; charset=UTF-8;");
 
     <div class="row justify-content-center">
         <div class="col-8 col-centered" >
+            <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
             <h5 class="text-primary text-center">Transaction Log</h5>
             <table class="table table-striped table-secondary table-hover">
                 <thead class="thead-light">
