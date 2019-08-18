@@ -1,14 +1,15 @@
 <?php $post_data = $this->input->post(); ?>
 <div class="container wow fadeIn" data-wow-duration="2s">
-
+    
+    <h3 class="text-center text-info">Exchange funds in your account</h3>
+      
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="1"
              aria-valuemin="0" aria-valuemax="100" style="width:1%">
             <span class="sr-only">10% Complete</span>
         </div>
     </div>
-    <h3 class="text-center text-info">Exchange funds in your account</h3>
-
+  
 
     <div class="row justify-content-center">
         <div class="col-6">
@@ -42,7 +43,7 @@
         <form action="<?php echo base_url('/client/deposit/2'); ?>" method="post">
             <div class="form-group text-warning col-md-12" style="display: inline-block;font-size:20px;font-weight: bold">
                 <div style="float: left;">
-                    <label for="exch_from_currency">EXCHANGE FROM(SELL):</label>
+                    <label for="exch_from_currency">EXCHANGE FROM:</label>
                     <select name="exch_from_currency">
                         <?php
                         if (isset($post_data['exch_from_currency'])) {
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div style="float: right;margin-left: 50px;font-size:20px;font-weight: bold">
-                    <label for="exch_to_currency">EXCHANGE TO(BUY):</label>
+                    <label for="exch_to_currency">EXCHANGE TO:</label>
                     <select name="exch_to_currency">
                         <?php
                         if (isset($post_data['exch_to_currency'])) {
@@ -94,7 +95,7 @@
 
             <ul>
                 <div>
-                    <button type="submit" class="btn btn-warning position-relative wow bounceInLeft" data-wow-duration="3s" style="left:300px;">Proceed >>></button>
+                    <button type="submit" class="btn btn-warning position-relative wow bounceInLeft" data-wow-duration="3s" >Proceed >>></button>
                 </div>
             </ul>
         </form>
