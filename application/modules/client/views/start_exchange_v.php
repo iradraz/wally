@@ -89,7 +89,7 @@
                 <span style="clear: clear"></span>
                 <div class="form-group text-warning col-md-12" style="margin-top: 150px;font-size:20px;font-weight: bold">
 
-                    <label for="amount" class="text-center">Amount:</label>
+                    <div class="text-center" > <label for="amount">Amount:</label></div>
                     <input type="number" step="0.01" class="form-control" id="amount" min="20" value="<?php echo set_value('amount'); ?>" placeholder="Enter amount of currency to sell" name="amount">
                     <span class="text-danger"><?php echo form_error('amount'); ?></span>
                 </div>
