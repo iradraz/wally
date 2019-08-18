@@ -1,6 +1,6 @@
 <?php $post_data = $this->input->post(); ?>
 
-    <h2 class="text-center text-info">Exchange funds in your account</h2>
+    <h2 class="text-center text-warning">Exchange funds in your account</h2>
     
     <div class="row justify-content-center">
         <div class="col-3">
