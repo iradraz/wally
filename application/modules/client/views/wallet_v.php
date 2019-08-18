@@ -21,6 +21,7 @@ header("Content-Type: text/html; charset=UTF-8;");
 
     <div class="row justify-content-center">
         <div class="col-3">
+            <div class="p-3 mb-2 bg-secondary text-white">Current Account Statement</div>
             <h5 class="text-center text-primary">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
