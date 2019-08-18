@@ -1,6 +1,14 @@
 <?php $post_data = $this->input->post(); ?>
 
-    <h2 class="text-center text-warning">Exchange funds in your account</h2>
+    <div class="container wow fadeIn" data-wow-duration="2s">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="1"
+             aria-valuemin="0" aria-valuemax="100" style="width:1%">
+            <span class="sr-only">10% Complete</span>
+        </div>
+    </div>
+    
+    <h2 class="text-center text-primary">Exchange funds in your account</h2>
     <br><br>
     
     <div class="row justify-content-center">
@@ -32,15 +40,6 @@
         </div>
     </div>
 
-    <br> <br>
-    <div class="container wow fadeIn" data-wow-duration="2s">
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="1"
-             aria-valuemin="0" aria-valuemax="100" style="width:1%">
-            <span class="sr-only">10% Complete</span>
-        </div>
-    </div>
-    
     <br>
     <div class="row justify-content-center">
         <form action="<?php echo base_url('/client/deposit/2'); ?>" method="post">
