@@ -12,6 +12,19 @@ class Api extends MY_Controller {
         $this->security->security_test('client');
     }
 
+    function test_form_2() {
+        $session_data = $this->session->userdata();
+        $data['content_view'] = 'client/test_fund_2_v';
+        $this->templates->client($data);
+    }
+
+    function test_form() {
+        $this->security->security_test('client');
+        $session_data = $this->session->userdata();
+        $data['content_view'] = 'client/test_fund_v';
+        $this->templates->client($data);
+    }
+
     function test_payment() {
         $data['accountID'] = "1";
         $data['secretKey'] = "2";

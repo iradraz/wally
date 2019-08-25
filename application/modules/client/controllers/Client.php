@@ -71,7 +71,6 @@ class Client extends MY_Controller {
 
     function deposit() {
         $this->security->security_test('client');
-
         $session_data = $this->session->userdata();
         $post_data = $this->input->post();
         if ($post_data == null) {
@@ -79,16 +78,18 @@ class Client extends MY_Controller {
             $data['content_view'] = 'client/add_funds_step_1_v';
             $this->templates->client($data);
         } else {
-            $this->form_validation->set_rules('amount', 'Amount', 'required|greater_than[0]|numeric|');
-            $this->form_validation->set_rules('currency', 'Currency', 'required|greater_than[0]|numeric|');
-
-
-            $data['post_data'] = $post_data;
-            $session_data = $this->session->userdata();
-            //  if ($session_data['user_role'] == 'client') {
-            $data['content_view'] = 'client/add_funds_step_2_v';
-            $this->templates->client($data);
+            
         }
+    }
+
+    function approve() {
+        $this->security->security_test('client');
+
+        $get_data = $this->input->get();
+        $data['get_data'] = $get_data;
+        $session_data = $this->session->userdata();
+        $data['content_view'] = 'client/add_funds_step_2_v';
+        $this->templates->client($data);
     }
 
     function settings() {
@@ -184,9 +185,9 @@ class Client extends MY_Controller {
         $user_id = $session_data['user_id'];
 
         $query = 'select transactions.user_id, transactions.amount,transactions.fee_paid,currencies.currency_id,currencies.currency_name '
-        . 'from user,transactions,currencies where '
-        . 'transactions.currency_id=currencies.currency_id and transactions.user_id='.$user_id. ' '
-        . 'GROUP BY currencies.currency_name;';
+                . 'from user,transactions,currencies where '
+                . 'transactions.currency_id=currencies.currency_id and transactions.user_id=' . $user_id . ' '
+                . 'GROUP BY currencies.currency_name;';
         $data = $this->_custom_query($query);
         // $data = $this->mdl_client->join_group_by($session_data['user_id']);
         return $data;
