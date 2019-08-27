@@ -82,12 +82,31 @@ class Client extends MY_Controller {
         }
     }
 
+    function _approve() {
+        echo 'simple test';
+    }
+
     function approve() {
         $this->security->security_test('client');
-
-        $get_data = $this->input->get();
-        $data['get_data'] = $get_data;
         $session_data = $this->session->userdata();
+        $get_data= $this->input->get();
+        //add database funding into a client here
+
+        $data['currency'] = 'USD';
+        $data['currency_id'] = $this->currencies->get_where_custom('currency_name', $data['currency'])->result_array()[0]['currency_id'];
+
+        //need to check if possible data directly from blueplay, this method using GET is a serious security breach
+
+        $this->transactions->_insert(
+                array(
+                    'user_id' => $session_data['user_id'],
+                    'currency_id' => $data['currency_id'],
+                    'action' => 'DEPOSIT',
+                    'amount' => $get_data['AMOUNT']
+                )
+        );
+        $data['get_data'] = $get_data;
+
         $data['content_view'] = 'client/add_funds_step_2_v';
         $this->templates->client($data);
     }

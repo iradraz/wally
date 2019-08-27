@@ -1,9 +1,6 @@
-<?php $post_data = $this->input->post(); ?>
 <?php
+$post_data = $this->input->post();
 $session_data = $this->session->userdata();
-echo md5('100746732112TESTAUTH');
-//MERCHANT + TRANSACTION_TYPE + AMOUNT + REBILLING + REB_FIRST_DATE + REB_EXPR + REB_CYCLES + REB_AMOUNT + AVS_ALLOWED + AUTOCAP + MODE 
-
 ?>
 
 <div class="progress">
@@ -17,11 +14,11 @@ echo md5('100746732112TESTAUTH');
 <div class="container wow fadeIn" data-wow-duration="2s">
     <!-- Default form register -->
     <div style="background: #475d62">
-        <form class="text-center border border-light p-5" method="post"  action="https://secure.bluepay.com/interfaces/bp10emu">
+        <form class="text-center border border-light p-5" action="https://secure.bluepay.com/interfaces/bp10emu" method="post">
             <input type=hidden name=MERCHANT value="100746732112">
             <input name="PROCESS" type="hidden" value="PROCESS" />
-            <input type=hidden name=TRANSACTION_TYPE value="AUTH">
-            <input type=hidden name=TAMPER_PROOF_SEAL  value="6fc0489fb59d21e6fd0fcc21a635e7a5">
+            <input type=hidden name=TRANSACTION_TYPE value="SALE">
+            <input type=hidden name=TAMPER_PROOF_SEAL  value="a93d8d3d6f38e42b78b0e4d536bf1034">
             <input type=hidden name=APPROVED_URL       value="<?php echo base_url('client/approve'); ?>">
             <!--<input type=hidden name=DECLINED_URL       value="http://decline.com">-->
             <!--<input type=hidden name=MISSING_URL        value="http://err.com">-->
@@ -68,40 +65,47 @@ echo md5('100746732112TESTAUTH');
             </div>
 
             <!-- Sign up button -->
-            <button class="btn btn-info my-4 " type="submit">Proceed</button>
+
 
             <!-- Terms of service -->
             <p class="text-warning">By clicking "Proceed"<em></em> you agree to our <a href="" target="_blank">terms of service</a>
-
+                <button class="btn btn-info my-4 proceed" type="submit">Proceed</button>
         </form>
-    </div>
 
+    </div>
+    <script>
+        $(function () {
+            var AMOUNT = $('input[name=AMOUNT]').val(); //amount
+            $('.proceed').click(function (e) {
+                e.preventDefault();
+                var c = confirm("Click OK to confirm deposit " + AMOUNT + " USD$ Into your account");
+                if (c) {
+                    $('form').submit();
+                }
+            });
+        });
+    </script>
     <script>
         var card =
                 /******/ (function (modules) { // webpackBootstrap
                     /******/ 	// The module cache
                     /******/ 	var installedModules = {};
-
                     /******/ 	// The require function
                     /******/ 	function __webpack_require__(moduleId) {
 
                         /******/ 		// Check if module is in cache
                         /******/ 		if (installedModules[moduleId])
                             /******/ return installedModules[moduleId].exports;
-
                         /******/ 		// Create a new module (and put it into the cache)
                         /******/ 		var module = installedModules[moduleId] = {
                             /******/ 			exports: {},
                             /******/ 			id: moduleId,
                             /******/ 			loaded: false
                                     /******/};
-
                         /******/ 		// Execute the module function
                         /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
                         /******/ 		// Flag the module as loaded
                         /******/ 		module.loaded = true;
-
                         /******/ 		// Return the exports of the module
                         /******/ 		return module.exports;
                         /******/ 	}
@@ -109,13 +113,10 @@ echo md5('100746732112TESTAUTH');
 
                     /******/ 	// expose the modules object (__webpack_modules__)
                     /******/ 	__webpack_require__.m = modules;
-
                     /******/ 	// expose the module cache
                     /******/ 	__webpack_require__.c = installedModules;
-
                     /******/ 	// __webpack_public_path__
                     /******/ 	__webpack_require__.p = "";
-
                     /******/ 	// Load entry module and return exports
                     /******/ 	return __webpack_require__(0);
                     /******/ })
@@ -126,19 +127,13 @@ echo md5('100746732112TESTAUTH');
 
                                 var $, Card,
                                         slice = [].slice;
-
                                 Card = __webpack_require__(1);
-
                                 $ = __webpack_require__(11);
-
                                 $.card = {};
-
                                 $.card.fn = {};
-
                                 $.fn.card = function (opts) {
                                     return $.card.fn.construct.apply(this, opts);
                                 };
-
                                 $.fn.extend({
                                     card: function () {
                                         var args, option;
@@ -164,8 +159,6 @@ echo md5('100746732112TESTAUTH');
                                         });
                                     }
                                 });
-
-
                                 /***/ }),
                             /* 1 */
                             /***/ (function (module, exports, __webpack_require__) {
@@ -177,30 +170,20 @@ echo md5('100746732112TESTAUTH');
                                                     return fn.apply(me, arguments);
                                                 };
                                             };
-
                                     __webpack_require__(2);
-
                                     QJ = __webpack_require__(6);
-
                                     payment = __webpack_require__(7);
-
                                     extend = __webpack_require__(8);
-
                                     Card = (function () {
                                         var bindVal;
-
                                         Card.prototype.initializedDataAttr = "data-jp-card-initialized";
-
                                         Card.prototype.cardTemplate = '' + '<div class="jp-card-container">' + '<div class="jp-card">' + '<div class="jp-card-front">' + '<div class="jp-card-logo jp-card-elo">' + '<div class="e">e</div>' + '<div class="l">l</div>' + '<div class="o">o</div>' + '</div>' + '<div class="jp-card-logo jp-card-visa">Visa</div>' + '<div class="jp-card-logo jp-card-visaelectron">Visa<div class="elec">Electron</div></div>' + '<div class="jp-card-logo jp-card-mastercard">Mastercard</div>' + '<div class="jp-card-logo jp-card-maestro">Maestro</div>' + '<div class="jp-card-logo jp-card-amex"></div>' + '<div class="jp-card-logo jp-card-discover">discover</div>' + '<div class="jp-card-logo jp-card-dinersclub"></div>' + '<div class="jp-card-logo jp-card-dankort"><div class="dk"><div class="d"></div><div class="k"></div></div></div>' + '<div class="jp-card-logo jp-card-jcb">' + '<div class="j">J</div>' + '<div class="c">C</div>' + '<div class="b">B</div>' + '</div>' + '<div class="jp-card-lower">' + '<div class="jp-card-shiny"></div>' + '<div class="jp-card-cvc jp-card-display">{{cvc}}</div>' + '<div class="jp-card-number jp-card-display">{{number}}</div>' + '<div class="jp-card-name jp-card-display">{{name}}</div>' + '<div class="jp-card-expiry jp-card-display" data-before="{{monthYear}}" data-after="{{validDate}}">{{expiry}}</div>' + '</div>' + '</div>' + '<div class="jp-card-back">' + '<div class="jp-card-bar"></div>' + '<div class="jp-card-cvc jp-card-display">{{cvc}}</div>' + '<div class="jp-card-shiny"></div>' + '</div>' + '</div>' + '</div>';
-
                                         Card.prototype.template = function (tpl, data) {
                                             return tpl.replace(/\{\{(.*?)\}\}/g, function (match, key, str) {
                                                 return data[key];
                                             });
                                         };
-
                                         Card.prototype.cardTypes = ['jp-card-amex', 'jp-card-dankort', 'jp-card-dinersclub', 'jp-card-discover', 'jp-card-jcb', 'jp-card-laser', 'jp-card-maestro', 'jp-card-mastercard', 'jp-card-unionpay', 'jp-card-visa', 'jp-card-visaelectron', 'jp-card-elo'];
-
                                         Card.prototype.defaults = {
                                             formatting: true,
                                             formSelectors: {
@@ -236,7 +219,6 @@ echo md5('100746732112TESTAUTH');
                                             },
                                             debug: false
                                         };
-
                                         function Card(opts) {
                                             this.maskCardNumber = bind(this.maskCardNumber, this);
                                             var toInitialize;
@@ -302,7 +284,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.addClass(this.$card, 'jp-card-ie-11');
                                             }
                                         };
-
                                         Card.prototype.attachHandlers = function () {
                                             var expiryFilters, numberInputFilters;
                                             numberInputFilters = [this.validToggler('cardNumber')];
@@ -341,7 +322,6 @@ echo md5('100746732112TESTAUTH');
                                                 join: ' '
                                             });
                                         };
-
                                         Card.prototype.handleInitialPlaceholders = function () {
                                             var el, name, ref, results, selector;
                                             ref = this.options.formSelectors;
@@ -360,7 +340,6 @@ echo md5('100746732112TESTAUTH');
                                             }
                                             return results;
                                         };
-
                                         Card.prototype.handle = function (fn) {
                                             return (function (_this) {
                                                 return function (e) {
@@ -371,7 +350,6 @@ echo md5('100746732112TESTAUTH');
                                                 };
                                             })(this);
                                         };
-
                                         Card.prototype.validToggler = function (validatorName) {
                                             var isValid;
                                             if (validatorName === "cardExpiry") {
@@ -405,12 +383,10 @@ echo md5('100746732112TESTAUTH');
                                                 };
                                             })(this);
                                         };
-
                                         Card.prototype.toggleValidClass = function (el, test) {
                                             QJ.toggleClass(el, this.options.classes.valid, test);
                                             return QJ.toggleClass(el, this.options.classes.invalid, !test);
                                         };
-
                                         Card.prototype.maskCardNumber = function (val, el, out) {
                                             var mask, numbers;
                                             mask = this.options.masks.cardNumber;
@@ -426,7 +402,6 @@ echo md5('100746732112TESTAUTH');
                                                 return val.replace(/\d/g, mask);
                                             }
                                         };
-
                                         Card.prototype.handlers = {
                                             setCardType: function ($el, e) {
                                                 var cardType;
@@ -446,7 +421,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.removeClass(this.$card, 'jp-card-flipped');
                                             }
                                         };
-
                                         bindVal = function (el, out, opts) {
                                             var joiner, o, outDefaults;
                                             if (opts == null) {
@@ -514,15 +488,10 @@ echo md5('100746732112TESTAUTH');
                                             });
                                             return el;
                                         };
-
                                         return Card;
-
                                     })();
-
                                     module.exports = Card;
-
                                     global.Card = Card;
-
                                     /* WEBPACK VAR INJECTION */}.call(exports, (function () {
                                     return this;
                                 }())))
@@ -568,7 +537,6 @@ echo md5('100746732112TESTAUTH');
 
                                 // module
                                 exports.push([module.id, ".jp-card.jp-card-safari.jp-card-identified .jp-card-front:before, .jp-card.jp-card-safari.jp-card-identified .jp-card-back:before {\n  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%);\n  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), linear-gradient(-25deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%); }\n\n.jp-card.jp-card-ie-10.jp-card-flipped, .jp-card.jp-card-ie-11.jp-card-flipped {\n  -webkit-transform: 0deg;\n  -moz-transform: 0deg;\n  -ms-transform: 0deg;\n  -o-transform: 0deg;\n  transform: 0deg; }\n  .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-front, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-front {\n    -webkit-transform: rotateY(0deg);\n    -moz-transform: rotateY(0deg);\n    -ms-transform: rotateY(0deg);\n    -o-transform: rotateY(0deg);\n    transform: rotateY(0deg); }\n  .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-back, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-back {\n    -webkit-transform: rotateY(0deg);\n    -moz-transform: rotateY(0deg);\n    -ms-transform: rotateY(0deg);\n    -o-transform: rotateY(0deg);\n    transform: rotateY(0deg); }\n    .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-back:after, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-back:after {\n      left: 18%; }\n    .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-back .jp-card-cvc, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-back .jp-card-cvc {\n      -webkit-transform: rotateY(180deg);\n      -moz-transform: rotateY(180deg);\n      -ms-transform: rotateY(180deg);\n      -o-transform: rotateY(180deg);\n      transform: rotateY(180deg);\n      left: 5%; }\n    .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-back .jp-card-shiny, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-back .jp-card-shiny {\n      left: 84%; }\n      .jp-card.jp-card-ie-10.jp-card-flipped .jp-card-back .jp-card-shiny:after, .jp-card.jp-card-ie-11.jp-card-flipped .jp-card-back .jp-card-shiny:after {\n        left: -480%;\n        -webkit-transform: rotateY(180deg);\n        -moz-transform: rotateY(180deg);\n        -ms-transform: rotateY(180deg);\n        -o-transform: rotateY(180deg);\n        transform: rotateY(180deg); }\n\n.jp-card.jp-card-ie-10.jp-card-amex .jp-card-back, .jp-card.jp-card-ie-11.jp-card-amex .jp-card-back {\n  display: none; }\n\n.jp-card-logo {\n  height: 36px;\n  width: 60px;\n  font-style: italic; }\n  .jp-card-logo, .jp-card-logo:before, .jp-card-logo:after {\n    box-sizing: border-box; }\n\n.jp-card-logo.jp-card-amex {\n  text-transform: uppercase;\n  font-size: 4px;\n  font-weight: bold;\n  color: white;\n  background-image: repeating-radial-gradient(circle at center, #FFF 1px, #999 2px);\n  background-image: repeating-radial-gradient(circle at center, #FFF 1px, #999 2px);\n  border: 1px solid #EEE; }\n  .jp-card-logo.jp-card-amex:before, .jp-card-logo.jp-card-amex:after {\n    width: 28px;\n    display: block;\n    position: absolute;\n    left: 16px; }\n  .jp-card-logo.jp-card-amex:before {\n    height: 28px;\n    content: \"american\";\n    top: 3px;\n    text-align: left;\n    padding-left: 2px;\n    padding-top: 11px;\n    background: #267AC3; }\n  .jp-card-logo.jp-card-amex:after {\n    content: \"express\";\n    bottom: 11px;\n    text-align: right;\n    padding-right: 2px; }\n\n.jp-card.jp-card-amex.jp-card-flipped {\n  -webkit-transform: none;\n  -moz-transform: none;\n  -ms-transform: none;\n  -o-transform: none;\n  transform: none; }\n\n.jp-card.jp-card-amex.jp-card-identified .jp-card-front:before, .jp-card.jp-card-amex.jp-card-identified .jp-card-back:before {\n  background-color: #108168; }\n\n.jp-card.jp-card-amex.jp-card-identified .jp-card-front .jp-card-logo.jp-card-amex {\n  opacity: 1; }\n\n.jp-card.jp-card-amex.jp-card-identified .jp-card-front .jp-card-cvc {\n  visibility: visible; }\n\n.jp-card.jp-card-amex.jp-card-identified .jp-card-front:after {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-discover {\n  background: #FF6600;\n  color: #111;\n  text-transform: uppercase;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 10px;\n  text-align: center;\n  overflow: hidden;\n  z-index: 1;\n  padding-top: 9px;\n  letter-spacing: .03em;\n  border: 1px solid #EEE; }\n  .jp-card-logo.jp-card-discover:before, .jp-card-logo.jp-card-discover:after {\n    content: \" \";\n    display: block;\n    position: absolute; }\n  .jp-card-logo.jp-card-discover:before {\n    background: white;\n    width: 200px;\n    height: 200px;\n    border-radius: 200px;\n    bottom: -5%;\n    right: -80%;\n    z-index: -1; }\n  .jp-card-logo.jp-card-discover:after {\n    width: 8px;\n    height: 8px;\n    border-radius: 4px;\n    top: 10px;\n    left: 27px;\n    background-color: #FF6600;\n    background-image: -webkit-radial-gradient(#FF6600, #fff);\n    background-image: radial-gradient(  #FF6600, #fff);\n    content: \"network\";\n    font-size: 4px;\n    line-height: 24px;\n    text-indent: -7px; }\n\n.jp-card .jp-card-front .jp-card-logo.jp-card-discover {\n  right: 12%;\n  top: 18%; }\n\n.jp-card.jp-card-discover.jp-card-identified .jp-card-front:before, .jp-card.jp-card-discover.jp-card-identified .jp-card-back:before {\n  background-color: #86B8CF; }\n\n.jp-card.jp-card-discover.jp-card-identified .jp-card-logo.jp-card-discover {\n  opacity: 1; }\n\n.jp-card.jp-card-discover.jp-card-identified .jp-card-front:after {\n  -webkit-transition: 400ms;\n  -moz-transition: 400ms;\n  transition: 400ms;\n  content: \" \";\n  display: block;\n  background-color: #FF6600;\n  background-image: -webkit-linear-gradient(#FF6600, #ffa366, #FF6600);\n  background-image: linear-gradient(#FF6600, #ffa366, #FF6600);\n  height: 50px;\n  width: 50px;\n  border-radius: 25px;\n  position: absolute;\n  left: 100%;\n  top: 15%;\n  margin-left: -25px;\n  box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.5); }\n\n.jp-card-logo.jp-card-visa {\n  text-transform: uppercase;\n  color: white;\n  text-align: center;\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 18px;\n  margin-top: 5px; }\n  .jp-card-logo.jp-card-visa:before, .jp-card-logo.jp-card-visa:after {\n    content: \" \";\n    display: block;\n    width: 100%;\n    height: 25%; }\n  .jp-card-logo.jp-card-visa:before {\n    position: absolute;\n    left: -4px;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    border-width: 0 12px 6px 0;\n    border-color: transparent #ffffff transparent transparent; }\n\n.jp-card.jp-card-visa.jp-card-identified .jp-card-front:before, .jp-card.jp-card-visa.jp-card-identified .jp-card-back:before {\n  background-color: #191278; }\n\n.jp-card.jp-card-visa.jp-card-identified .jp-card-logo.jp-card-visa {\n  opacity: 1;\n  box-shadow: none; }\n\n.jp-card-logo.jp-card-visaelectron {\n  background: white;\n  text-transform: uppercase;\n  color: #1A1876;\n  text-align: center;\n  font-weight: bold;\n  font-size: 15px;\n  line-height: 18px; }\n  .jp-card-logo.jp-card-visaelectron:before, .jp-card-logo.jp-card-visaelectron:after {\n    content: \" \";\n    display: block;\n    width: 100%;\n    height: 25%; }\n  .jp-card-logo.jp-card-visaelectron:before {\n    background: #1A1876; }\n  .jp-card-logo.jp-card-visaelectron:after {\n    background: #E79800; }\n  .jp-card-logo.jp-card-visaelectron .elec {\n    float: right;\n    font-family: arial;\n    font-size: 9px;\n    margin-right: 1px;\n    margin-top: -5px;\n    text-transform: none; }\n\n.jp-card.jp-card-visaelectron.jp-card-identified .jp-card-front:before, .jp-card.jp-card-visaelectron.jp-card-identified .jp-card-back:before {\n  background-color: #191278; }\n\n.jp-card.jp-card-visaelectron.jp-card-identified .jp-card-logo.jp-card-visaelectron {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-mastercard {\n  color: white;\n  font-style: normal;\n  text-transform: lowercase;\n  font-weight: bold;\n  text-align: center;\n  font-size: 9px;\n  line-height: 84px;\n  z-index: 1;\n  text-shadow: 1px 1px rgba(0, 0, 0, 0.6); }\n  .jp-card-logo.jp-card-mastercard:before, .jp-card-logo.jp-card-mastercard:after {\n    content: \" \";\n    display: block;\n    width: 36px;\n    top: 0;\n    position: absolute;\n    height: 36px;\n    border-radius: 18px; }\n  .jp-card-logo.jp-card-mastercard:before {\n    left: 0;\n    background: #EB001B;\n    z-index: -1;\n    opacity: 0.9; }\n  .jp-card-logo.jp-card-mastercard:after {\n    right: 0;\n    background: #FF5F00;\n    z-index: -2; }\n\n.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front .jp-card-logo.jp-card-mastercard, .jp-card.jp-card-mastercard.jp-card-identified .jp-card-back .jp-card-logo.jp-card-mastercard {\n  box-shadow: none; }\n\n.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front:before, .jp-card.jp-card-mastercard.jp-card-identified .jp-card-back:before {\n  background-color: #0061A8; }\n\n.jp-card.jp-card-mastercard.jp-card-identified .jp-card-logo.jp-card-mastercard {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-maestro {\n  color: white;\n  font-style: normal;\n  text-transform: lowercase;\n  font-weight: bold;\n  text-align: center;\n  font-size: 14px;\n  line-height: 84px;\n  z-index: 1;\n  text-shadow: 1px 1px rgba(0, 0, 0, 0.6); }\n  .jp-card-logo.jp-card-maestro:before, .jp-card-logo.jp-card-maestro:after {\n    content: \" \";\n    display: block;\n    width: 36px;\n    top: 0;\n    position: absolute;\n    height: 36px;\n    border-radius: 18px; }\n  .jp-card-logo.jp-card-maestro:before {\n    left: 0;\n    background: #EB001B;\n    z-index: -2; }\n  .jp-card-logo.jp-card-maestro:after {\n    right: 0;\n    background: #00A2E5;\n    z-index: -1;\n    opacity: 0.8; }\n\n.jp-card.jp-card-maestro.jp-card-identified .jp-card-front .jp-card-logo.jp-card-maestro, .jp-card.jp-card-maestro.jp-card-identified .jp-card-back .jp-card-logo.jp-card-maestro {\n  box-shadow: none; }\n\n.jp-card.jp-card-maestro.jp-card-identified .jp-card-front:before, .jp-card.jp-card-maestro.jp-card-identified .jp-card-back:before {\n  background-color: #0B2C5F; }\n\n.jp-card.jp-card-maestro.jp-card-identified .jp-card-logo.jp-card-maestro {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-dankort {\n  width: 60px;\n  height: 36px;\n  padding: 3px;\n  border-radius: 8px;\n  border: #000000 1px solid;\n  background-color: #FFFFFF; }\n  .jp-card-logo.jp-card-dankort .dk {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    overflow: hidden; }\n    .jp-card-logo.jp-card-dankort .dk:before {\n      background-color: #ED1C24;\n      content: '';\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      display: block;\n      border-radius: 6px; }\n    .jp-card-logo.jp-card-dankort .dk:after {\n      content: '';\n      position: absolute;\n      top: 50%;\n      margin-top: -7.7px;\n      right: 0;\n      width: 0;\n      height: 0;\n      border-style: solid;\n      border-width: 7px 7px 10px 0;\n      border-color: transparent #ED1C24 transparent transparent;\n      z-index: 1; }\n  .jp-card-logo.jp-card-dankort .d, .jp-card-logo.jp-card-dankort .k {\n    position: absolute;\n    top: 50%;\n    width: 50%;\n    display: block;\n    height: 15.4px;\n    margin-top: -7.7px;\n    background: white; }\n  .jp-card-logo.jp-card-dankort .d {\n    left: 0;\n    border-radius: 0 8px 10px 0; }\n    .jp-card-logo.jp-card-dankort .d:before {\n      content: '';\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      display: block;\n      background: #ED1C24;\n      border-radius: 2px 4px 6px 0px;\n      height: 5px;\n      width: 7px;\n      margin: -3px 0 0 -4px; }\n  .jp-card-logo.jp-card-dankort .k {\n    right: 0; }\n    .jp-card-logo.jp-card-dankort .k:before, .jp-card-logo.jp-card-dankort .k:after {\n      content: '';\n      position: absolute;\n      right: 50%;\n      width: 0;\n      height: 0;\n      border-style: solid;\n      margin-right: -1px; }\n    .jp-card-logo.jp-card-dankort .k:before {\n      top: 0;\n      border-width: 8px 5px 0 0;\n      border-color: #ED1C24 transparent transparent transparent; }\n    .jp-card-logo.jp-card-dankort .k:after {\n      bottom: 0;\n      border-width: 0 5px 8px 0;\n      border-color: transparent transparent #ED1C24 transparent; }\n\n.jp-card.jp-card-dankort.jp-card-identified .jp-card-front:before, .jp-card.jp-card-dankort.jp-card-identified .jp-card-back:before {\n  background-color: #0055C7; }\n\n.jp-card.jp-card-dankort.jp-card-identified .jp-card-logo.jp-card-dankort {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-elo {\n  height: 50px;\n  width: 50px;\n  border-radius: 100%;\n  background: black;\n  color: white;\n  text-align: center;\n  text-transform: lowercase;\n  font-size: 21px;\n  font-style: normal;\n  letter-spacing: 1px;\n  font-weight: bold;\n  padding-top: 13px; }\n  .jp-card-logo.jp-card-elo .e, .jp-card-logo.jp-card-elo .l, .jp-card-logo.jp-card-elo .o {\n    display: inline-block;\n    position: relative; }\n  .jp-card-logo.jp-card-elo .e {\n    -webkit-transform: rotate(-15deg);\n    -moz-transform: rotate(-15deg);\n    -ms-transform: rotate(-15deg);\n    -o-transform: rotate(-15deg);\n    transform: rotate(-15deg); }\n  .jp-card-logo.jp-card-elo .o {\n    position: relative;\n    display: inline-block;\n    width: 12px;\n    height: 12px;\n    right: 0;\n    top: 7px;\n    border-radius: 100%;\n    background-image: -webkit-linear-gradient( yellow 50%, red 50%);\n    background-image: linear-gradient( yellow 50%, red 50%);\n    -webkit-transform: rotate(40deg);\n    -moz-transform: rotate(40deg);\n    -ms-transform: rotate(40deg);\n    -o-transform: rotate(40deg);\n    transform: rotate(40deg);\n    text-indent: -9999px; }\n    .jp-card-logo.jp-card-elo .o:before {\n      content: \"\";\n      position: absolute;\n      width: 49%;\n      height: 49%;\n      background: black;\n      border-radius: 100%;\n      text-indent: -99999px;\n      top: 25%;\n      left: 25%; }\n\n.jp-card.jp-card-elo.jp-card-identified .jp-card-front:before, .jp-card.jp-card-elo.jp-card-identified .jp-card-back:before {\n  background-color: #6F6969; }\n\n.jp-card.jp-card-elo.jp-card-identified .jp-card-logo.jp-card-elo {\n  opacity: 1; }\n\n.jp-card-logo.jp-card-jcb {\n  border-radius: 5px 0px 5px 0px;\n  -moz-border-radius: 5px 0px 5px 0px;\n  -webkit-border-radius: 5px 0px 5px 0px;\n  background-color: white;\n  font-style: normal;\n  color: white;\n  width: 50px;\n  padding: 2px 0 0 2px; }\n  .jp-card-logo.jp-card-jcb > div {\n    width: 15px;\n    margin-right: 1px;\n    display: inline-block;\n    text-align: center;\n    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);\n    border-radius: 5px 0px 5px 0px;\n    -moz-border-radius: 5px 0px 5px 0px;\n    -webkit-border-radius: 5px 0px 5px 0px; }\n    .jp-card-logo.jp-card-jcb > div:before, .jp-card-logo.jp-card-jcb > div:after {\n      content: \" \";\n      display: block;\n      height: 8px; }\n    .jp-card-logo.jp-card-jcb > div.j {\n      background-color: #000063;\n      background-image: -webkit-linear-gradient(left, #000063, #008cff);\n      background-image: linear-gradient(to right,#000063, #008cff); }\n    .jp-card-logo.jp-card-jcb > div.c {\n      background-color: #630000;\n      background-image: -webkit-linear-gradient(left, #630000, #ff008d);\n      background-image: linear-gradient(to right,#630000, #ff008d); }\n    .jp-card-logo.jp-card-jcb > div.b {\n      background-color: #006300;\n      background-image: -webkit-linear-gradient(left, #006300, #00ff00);\n      background-image: linear-gradient(to right,#006300, #00ff00); }\n\n.jp-card.jp-card-jcb.jp-card-identified .jp-card-front:before, .jp-card.jp-card-jcb.jp-card-identified .jp-card-back:before {\n  background-color: #CB8000; }\n\n.jp-card.jp-card-jcb.jp-card-identified .jp-card-logo.jp-card-jcb {\n  opacity: 1;\n  box-shadow: none; }\n\n.jp-card-logo.jp-card-dinersclub {\n  font-family: serif;\n  height: 40px;\n  width: 100px;\n  color: white;\n  font-size: 17px;\n  font-style: normal;\n  letter-spacing: 1px; }\n  .jp-card-logo.jp-card-dinersclub::before, .jp-card-logo.jp-card-dinersclub::after {\n    display: block;\n    position: relative; }\n  .jp-card-logo.jp-card-dinersclub::before {\n    content: 'Diners Club'; }\n  .jp-card-logo.jp-card-dinersclub::after {\n    content: 'International';\n    text-transform: uppercase;\n    font-size: 0.6em; }\n\n.jp-card.jp-card-dinersclub .jp-card-front .jp-card-logo {\n  box-shadow: none !important; }\n\n.jp-card.jp-card-dinersclub.jp-card-identified .jp-card-front:before, .jp-card.jp-card-dinersclub.jp-card-identified .jp-card-back:before {\n  background-color: #999; }\n\n.jp-card.jp-card-dinersclub.jp-card-identified .jp-card-logo.jp-card-dinersclub {\n  opacity: 1; }\n\n.jp-card-container {\n  -webkit-perspective: 1000px;\n  -moz-perspective: 1000px;\n  perspective: 1000px;\n  width: 350px;\n  max-width: 100%;\n  height: 200px;\n  margin: auto;\n  z-index: 1;\n  position: relative; }\n\n.jp-card {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  line-height: 1;\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-width: 315px;\n  border-radius: 10px;\n  -webkit-transform-style: preserve-3d;\n  -moz-transform-style: preserve-3d;\n  -ms-transform-style: preserve-3d;\n  -o-transform-style: preserve-3d;\n  transform-style: preserve-3d;\n  -webkit-transition: all 400ms linear;\n  -moz-transition: all 400ms linear;\n  transition: all 400ms linear; }\n  .jp-card > *, .jp-card > *:before, .jp-card > *:after {\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    font-family: inherit; }\n  .jp-card.jp-card-flipped {\n    -webkit-transform: rotateY(180deg);\n    -moz-transform: rotateY(180deg);\n    -ms-transform: rotateY(180deg);\n    -o-transform: rotateY(180deg);\n    transform: rotateY(180deg); }\n  .jp-card .jp-card-front, .jp-card .jp-card-back {\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-transform-style: preserve-3d;\n    -moz-transform-style: preserve-3d;\n    -ms-transform-style: preserve-3d;\n    -o-transform-style: preserve-3d;\n    transform-style: preserve-3d;\n    -webkit-transition: all 400ms linear;\n    -moz-transition: all 400ms linear;\n    transition: all 400ms linear;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    overflow: hidden;\n    border-radius: 10px;\n    background: #DDD; }\n    .jp-card .jp-card-front:before, .jp-card .jp-card-back:before {\n      content: \" \";\n      display: block;\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n      opacity: 0;\n      border-radius: 10px;\n      -webkit-transition: all 400ms ease;\n      -moz-transition: all 400ms ease;\n      transition: all 400ms ease; }\n    .jp-card .jp-card-front:after, .jp-card .jp-card-back:after {\n      content: \" \";\n      display: block; }\n    .jp-card .jp-card-front .jp-card-display, .jp-card .jp-card-back .jp-card-display {\n      color: white;\n      font-weight: normal;\n      opacity: 0.5;\n      -webkit-transition: opacity 400ms linear;\n      -moz-transition: opacity 400ms linear;\n      transition: opacity 400ms linear; }\n      .jp-card .jp-card-front .jp-card-display.jp-card-focused, .jp-card .jp-card-back .jp-card-display.jp-card-focused {\n        opacity: 1;\n        font-weight: 700; }\n    .jp-card .jp-card-front .jp-card-cvc, .jp-card .jp-card-back .jp-card-cvc {\n      font-family: \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace;\n      font-size: 14px; }\n    .jp-card .jp-card-front .jp-card-shiny, .jp-card .jp-card-back .jp-card-shiny {\n      width: 50px;\n      height: 35px;\n      border-radius: 5px;\n      background: #CCC;\n      position: relative; }\n      .jp-card .jp-card-front .jp-card-shiny:before, .jp-card .jp-card-back .jp-card-shiny:before {\n        content: \" \";\n        display: block;\n        width: 70%;\n        height: 60%;\n        border-top-right-radius: 5px;\n        border-bottom-right-radius: 5px;\n        background: #d9d9d9;\n        position: absolute;\n        top: 20%; }\n  .jp-card .jp-card-front .jp-card-logo {\n    position: absolute;\n    opacity: 0;\n    right: 5%;\n    top: 8%;\n    -webkit-transition: 400ms;\n    -moz-transition: 400ms;\n    transition: 400ms; }\n  .jp-card .jp-card-front .jp-card-lower {\n    width: 80%;\n    position: absolute;\n    left: 10%;\n    bottom: 30px; }\n    @media only screen and (max-width: 480px) {\n      .jp-card .jp-card-front .jp-card-lower {\n        width: 90%;\n        left: 5%; } }\n    .jp-card .jp-card-front .jp-card-lower .jp-card-cvc {\n      visibility: hidden;\n      float: right;\n      position: relative;\n      bottom: 5px; }\n    .jp-card .jp-card-front .jp-card-lower .jp-card-number {\n      font-family: \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace;\n      font-size: 24px;\n      clear: both;\n      margin-bottom: 30px; }\n    .jp-card .jp-card-front .jp-card-lower .jp-card-expiry {\n      font-family: \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace;\n      letter-spacing: 0em;\n      position: relative;\n      float: right;\n      width: 25%; }\n      .jp-card .jp-card-front .jp-card-lower .jp-card-expiry:before, .jp-card .jp-card-front .jp-card-lower .jp-card-expiry:after {\n        font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n        font-weight: bold;\n        font-size: 7px;\n        white-space: pre;\n        display: block;\n        opacity: .5; }\n      .jp-card .jp-card-front .jp-card-lower .jp-card-expiry:before {\n        content: attr(data-before);\n        margin-bottom: 2px;\n        font-size: 7px;\n        text-transform: uppercase; }\n      .jp-card .jp-card-front .jp-card-lower .jp-card-expiry:after {\n        position: absolute;\n        content: attr(data-after);\n        text-align: right;\n        right: 100%;\n        margin-right: 5px;\n        margin-top: 2px;\n        bottom: 0; }\n    .jp-card .jp-card-front .jp-card-lower .jp-card-name {\n      text-transform: uppercase;\n      font-family: \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace;\n      font-size: 20px;\n      max-height: 45px;\n      position: absolute;\n      bottom: 0;\n      width: 190px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: horizontal;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n  .jp-card .jp-card-back {\n    -webkit-transform: rotateY(180deg);\n    -moz-transform: rotateY(180deg);\n    -ms-transform: rotateY(180deg);\n    -o-transform: rotateY(180deg);\n    transform: rotateY(180deg); }\n    .jp-card .jp-card-back .jp-card-bar {\n      background-color: #444;\n      background-image: -webkit-linear-gradient(#444, #333);\n      background-image: linear-gradient(#444, #333);\n      width: 100%;\n      height: 20%;\n      position: absolute;\n      top: 10%; }\n    .jp-card .jp-card-back:after {\n      content: \" \";\n      display: block;\n      background-color: #FFF;\n      background-image: -webkit-linear-gradient(#FFF, #FFF);\n      background-image: linear-gradient(#FFF, #FFF);\n      width: 80%;\n      height: 16%;\n      position: absolute;\n      top: 40%;\n      left: 2%; }\n    .jp-card .jp-card-back .jp-card-cvc {\n      position: absolute;\n      top: 40%;\n      left: 85%;\n      -webkit-transition-delay: 600ms;\n      -moz-transition-delay: 600ms;\n      transition-delay: 600ms; }\n    .jp-card .jp-card-back .jp-card-shiny {\n      position: absolute;\n      top: 66%;\n      left: 2%; }\n      .jp-card .jp-card-back .jp-card-shiny:after {\n        content: \"This card has been issued by Jesse Pollak and is licensed for anyone to use anywhere for free. It comes with no warranty. For support issues, please visit: github.com/jessepollak/card.\";\n        position: absolute;\n        left: 120%;\n        top: 5%;\n        color: white;\n        font-size: 7px;\n        width: 230px;\n        opacity: .5; }\n  .jp-card.jp-card-identified {\n    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }\n    .jp-card.jp-card-identified .jp-card-front, .jp-card.jp-card-identified .jp-card-back {\n      background-color: #000;\n      background-color: rgba(0, 0, 0, 0.5); }\n      .jp-card.jp-card-identified .jp-card-front:before, .jp-card.jp-card-identified .jp-card-back:before {\n        -webkit-transition: all 400ms ease;\n        -moz-transition: all 400ms ease;\n        transition: all 400ms ease;\n        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 15% 80%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%);\n        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-radial-gradient(circle at 15% 80%, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), linear-gradient(-25deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%);\n        opacity: 1; }\n      .jp-card.jp-card-identified .jp-card-front .jp-card-logo, .jp-card.jp-card-identified .jp-card-back .jp-card-logo {\n        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3); }\n    .jp-card.jp-card-identified.no-radial-gradient .jp-card-front:before, .jp-card.jp-card-identified.no-radial-gradient .jp-card-back:before {\n      background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%);\n      background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.03) 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), repeating-linear-gradient(210deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), linear-gradient(-25deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%); }\n", ""]);
-
                                 // exports
 
 
@@ -583,7 +551,6 @@ echo md5('100746732112TESTAUTH');
                                 // css base code, injected by the css-loader
                                 module.exports = function () {
                                     var list = [];
-
                                     // return the list of modules as css string
                                     list.toString = function toString() {
                                         var result = [];
@@ -597,7 +564,6 @@ echo md5('100746732112TESTAUTH');
                                         }
                                         return result.join("");
                                     };
-
                                     // import a list of modules into the list
                                     list.i = function (modules, mediaQuery) {
                                         if (typeof modules === "string")
@@ -626,8 +592,6 @@ echo md5('100746732112TESTAUTH');
                                     };
                                     return list;
                                 };
-
-
                                 /***/ }),
                             /* 5 */
                             /***/ (function (module, exports, __webpack_require__) {
@@ -654,7 +618,6 @@ echo md5('100746732112TESTAUTH');
                                         singletonElement = null,
                                         singletonCounter = 0,
                                         styleElementsInsertedAtTop = [];
-
                                 module.exports = function (list, options) {
                                     if (false) {
                                         if (typeof document !== "object")
@@ -666,14 +629,11 @@ echo md5('100746732112TESTAUTH');
                                     // tags it will allow on a page
                                     if (typeof options.singleton === "undefined")
                                         options.singleton = isOldIE();
-
                                     // By default, add <style> tags to the bottom of <head>.
                                     if (typeof options.insertAt === "undefined")
                                         options.insertAt = "bottom";
-
                                     var styles = listToStyles(list);
                                     addStylesToDom(styles, options);
-
                                     return function update(newList) {
                                         var mayRemove = [];
                                         for (var i = 0; i < styles.length; i++) {
@@ -780,7 +740,6 @@ echo md5('100746732112TESTAUTH');
 
                                 function addStyle(obj, options) {
                                     var styleElement, update, remove;
-
                                     if (options.singleton) {
                                         var styleIndex = singletonCounter++;
                                         styleElement = singletonElement || (singletonElement = createStyleElement(options));
@@ -808,7 +767,6 @@ echo md5('100746732112TESTAUTH');
                                     }
 
                                     update(obj);
-
                                     return function updateStyle(newObj) {
                                         if (newObj) {
                                             if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
@@ -822,16 +780,13 @@ echo md5('100746732112TESTAUTH');
 
                                 var replaceText = (function () {
                                     var textStore = [];
-
                                     return function (index, replacement) {
                                         textStore[index] = replacement;
                                         return textStore.filter(Boolean).join('\n');
                                     };
                                 })();
-
                                 function applyToSingletonTag(styleElement, index, remove, obj) {
                                     var css = remove ? "" : obj.css;
-
                                     if (styleElement.styleSheet) {
                                         styleElement.styleSheet.cssText = replaceText(index, css);
                                     } else {
@@ -850,7 +805,6 @@ echo md5('100746732112TESTAUTH');
                                 function applyToTag(styleElement, obj) {
                                     var css = obj.css;
                                     var media = obj.media;
-
                                     if (media) {
                                         styleElement.setAttribute("media", media)
                                     }
@@ -868,18 +822,14 @@ echo md5('100746732112TESTAUTH');
                                 function updateLink(linkElement, obj) {
                                     var css = obj.css;
                                     var sourceMap = obj.sourceMap;
-
                                     if (sourceMap) {
                                         // http://stackoverflow.com/a/26603875
                                         css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
                                     }
 
                                     var blob = new Blob([css], {type: "text/css"});
-
                                     var oldSrc = linkElement.href;
-
                                     linkElement.href = URL.createObjectURL(blob);
-
                                     if (oldSrc)
                                         URL.revokeObjectURL(oldSrc);
                                 }
@@ -892,20 +842,16 @@ echo md5('100746732112TESTAUTH');
                                 // Generated by CoffeeScript 1.10.0
                                 (function () {
                                     var QJ, rreturn, rtrim;
-
                                     QJ = function (selector) {
                                         if (QJ.isDOMElement(selector)) {
                                             return selector;
                                         }
                                         return document.querySelectorAll(selector);
                                     };
-
                                     QJ.isDOMElement = function (el) {
                                         return el && (el.nodeName != null);
                                     };
-
                                     rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-
                                     QJ.trim = function (text) {
                                         if (text === null) {
                                             return "";
@@ -913,9 +859,7 @@ echo md5('100746732112TESTAUTH');
                                             return (text + "").replace(rtrim, "");
                                         }
                                     };
-
                                     rreturn = /\r/g;
-
                                     QJ.val = function (el, val) {
                                         var ret;
                                         if (arguments.length > 1) {
@@ -933,7 +877,6 @@ echo md5('100746732112TESTAUTH');
                                             }
                                         }
                                     };
-
                                     QJ.preventDefault = function (eventObject) {
                                         if (typeof eventObject.preventDefault === "function") {
                                             eventObject.preventDefault();
@@ -942,7 +885,6 @@ echo md5('100746732112TESTAUTH');
                                         eventObject.returnValue = false;
                                         return false;
                                     };
-
                                     QJ.normalizeEvent = function (e) {
                                         var original;
                                         original = e;
@@ -960,7 +902,6 @@ echo md5('100746732112TESTAUTH');
                                         }
                                         return e;
                                     };
-
                                     QJ.on = function (element, eventName, callback) {
                                         var el, i, j, len, len1, multEventName, originalCallback, ref;
                                         if (element.length) {
@@ -992,7 +933,6 @@ echo md5('100746732112TESTAUTH');
                                         }
                                         element['on' + eventName] = callback;
                                     };
-
                                     QJ.addClass = function (el, className) {
                                         var e;
                                         if (el.length) {
@@ -1012,7 +952,6 @@ echo md5('100746732112TESTAUTH');
                                             return el.className += ' ' + className;
                                         }
                                     };
-
                                     QJ.hasClass = function (el, className) {
                                         var e, hasClass, i, len;
                                         if (el.length) {
@@ -1029,7 +968,6 @@ echo md5('100746732112TESTAUTH');
                                             return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
                                         }
                                     };
-
                                     QJ.removeClass = function (el, className) {
                                         var cls, e, i, len, ref, results;
                                         if (el.length) {
@@ -1055,7 +993,6 @@ echo md5('100746732112TESTAUTH');
                                             return el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
                                         }
                                     };
-
                                     QJ.toggleClass = function (el, className, bool) {
                                         var e;
                                         if (el.length) {
@@ -1077,7 +1014,6 @@ echo md5('100746732112TESTAUTH');
                                             return QJ.removeClass(el, className);
                                         }
                                     };
-
                                     QJ.append = function (el, toAppend) {
                                         var e;
                                         if (el.length) {
@@ -1093,14 +1029,12 @@ echo md5('100746732112TESTAUTH');
                                         }
                                         return el.insertAdjacentHTML('beforeend', toAppend);
                                     };
-
                                     QJ.find = function (el, selector) {
                                         if (el instanceof NodeList || el instanceof Array) {
                                             el = el[0];
                                         }
                                         return el.querySelectorAll(selector);
                                     };
-
                                     QJ.trigger = function (el, name, data) {
                                         var e, error, ev;
                                         try {
@@ -1118,12 +1052,8 @@ echo md5('100746732112TESTAUTH');
                                         }
                                         return el.dispatchEvent(ev);
                                     };
-
                                     module.exports = QJ;
-
                                 }).call(this);
-
-
                                 /***/ }),
                             /* 7 */
                             /***/ (function (module, exports, __webpack_require__) {
@@ -1138,11 +1068,8 @@ echo md5('100746732112TESTAUTH');
                                             }
                                             return -1;
                                         };
-
                                         QJ = __webpack_require__(6);
-
                                         defaultFormat = /(\d{1,4})/g;
-
                                         cards = [
                                             {
                                                 type: 'amex',
@@ -1237,7 +1164,6 @@ echo md5('100746732112TESTAUTH');
                                                 luhn: true
                                             }
                                         ];
-
                                         cardFromNumber = function (num) {
                                             var card, j, len;
                                             num = (num + '').replace(/\D/g, '');
@@ -1248,7 +1174,6 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                             }
                                         };
-
                                         cardFromType = function (type) {
                                             var card, j, len;
                                             for (j = 0, len = cards.length; j < len; j++) {
@@ -1258,7 +1183,6 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                             }
                                         };
-
                                         luhnCheck = function (num) {
                                             var digit, digits, j, len, odd, sum;
                                             odd = true;
@@ -1277,7 +1201,6 @@ echo md5('100746732112TESTAUTH');
                                             }
                                             return sum % 10 === 0;
                                         };
-
                                         hasTextSelected = function (target) {
                                             var e, error, ref;
                                             try {
@@ -1294,7 +1217,6 @@ echo md5('100746732112TESTAUTH');
                                             }
                                             return false;
                                         };
-
                                         reFormatCardNumber = function (e) {
                                             return setTimeout((function (_this) {
                                                 return function () {
@@ -1307,7 +1229,6 @@ echo md5('100746732112TESTAUTH');
                                                 };
                                             })(this));
                                         };
-
                                         formatCardNumber = function (maxLength) {
                                             return function (e) {
                                                 var card, digit, i, j, len, length, re, target, upperLength, upperLengths, value;
@@ -1352,7 +1273,6 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                             };
                                         };
-
                                         formatBackCardNumber = function (e) {
                                             var target, value;
                                             target = e.target;
@@ -1376,7 +1296,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         formatExpiry = function (e) {
                                             var digit, target, val;
                                             digit = String.fromCharCode(e.which);
@@ -1395,7 +1314,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         formatMonthExpiry = function (e) {
                                             var digit, target, val;
                                             digit = String.fromCharCode(e.which);
@@ -1414,7 +1332,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         formatForwardExpiry = function (e) {
                                             var digit, target, val;
                                             digit = String.fromCharCode(e.which);
@@ -1428,7 +1345,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         formatForwardSlash = function (e) {
                                             var slash, target, val;
                                             slash = String.fromCharCode(e.which);
@@ -1442,7 +1358,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         formatBackExpiry = function (e) {
                                             var target, value;
                                             if (e.metaKey) {
@@ -1466,7 +1381,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'change');
                                             }
                                         };
-
                                         restrictNumeric = function (e) {
                                             var input;
                                             if (e.metaKey || e.ctrlKey) {
@@ -1486,7 +1400,6 @@ echo md5('100746732112TESTAUTH');
                                                 return e.preventDefault();
                                             }
                                         };
-
                                         restrictCardNumber = function (maxLength) {
                                             return function (e) {
                                                 var card, digit, length, target, value;
@@ -1512,7 +1425,6 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                             };
                                         };
-
                                         restrictExpiry = function (e, length) {
                                             var digit, target, value;
                                             target = e.target;
@@ -1529,19 +1441,15 @@ echo md5('100746732112TESTAUTH');
                                                 return e.preventDefault();
                                             }
                                         };
-
                                         restrictCombinedExpiry = function (e) {
                                             return restrictExpiry(e, 6);
                                         };
-
                                         restrictMonthExpiry = function (e) {
                                             return restrictExpiry(e, 2);
                                         };
-
                                         restrictYearExpiry = function (e) {
                                             return restrictExpiry(e, 4);
                                         };
-
                                         restrictCVC = function (e) {
                                             var digit, target, val;
                                             target = e.target;
@@ -1557,7 +1465,6 @@ echo md5('100746732112TESTAUTH');
                                                 return e.preventDefault();
                                             }
                                         };
-
                                         setCardType = function (e) {
                                             var allTypes, card, cardType, target, val;
                                             target = e.target;
@@ -1580,7 +1487,6 @@ echo md5('100746732112TESTAUTH');
                                                 return QJ.trigger(target, 'payment.cardType', cardType);
                                             }
                                         };
-
                                         Payment = (function () {
                                             function Payment() {}
 
@@ -1689,21 +1595,17 @@ echo md5('100746732112TESTAUTH');
                                                     }
                                                 }
                                             };
-
                                             Payment.restrictNumeric = function (el) {
                                                 return QJ.on(el, 'keypress', restrictNumeric);
                                             };
-
                                             Payment.cardExpiryVal = function (el) {
                                                 return Payment.fns.cardExpiryVal(QJ.val(el));
                                             };
-
                                             Payment.formatCardCVC = function (el) {
                                                 Payment.restrictNumeric(el);
                                                 QJ.on(el, 'keypress', restrictCVC);
                                                 return el;
                                             };
-
                                             Payment.formatCardExpiry = function (el) {
                                                 var month, year;
                                                 Payment.restrictNumeric(el);
@@ -1719,13 +1621,11 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                                 return el;
                                             };
-
                                             Payment.formatCardExpiryMultiple = function (month, year) {
                                                 QJ.on(month, 'keypress', restrictMonthExpiry);
                                                 QJ.on(month, 'keypress', formatMonthExpiry);
                                                 return QJ.on(year, 'keypress', restrictYearExpiry);
                                             };
-
                                             Payment.formatCardNumber = function (el, maxLength) {
                                                 Payment.restrictNumeric(el);
                                                 QJ.on(el, 'keypress', restrictCardNumber(maxLength));
@@ -1736,20 +1636,16 @@ echo md5('100746732112TESTAUTH');
                                                 QJ.on(el, 'input', reFormatCardNumber);
                                                 return el;
                                             };
-
                                             Payment.getCardArray = function () {
                                                 return cards;
                                             };
-
                                             Payment.setCardArray = function (cardArray) {
                                                 cards = cardArray;
                                                 return true;
                                             };
-
                                             Payment.addToCardArray = function (cardObject) {
                                                 return cards.push(cardObject);
                                             };
-
                                             Payment.removeFromCardArray = function (type) {
                                                 var key, value;
                                                 for (key in cards) {
@@ -1760,17 +1656,11 @@ echo md5('100746732112TESTAUTH');
                                                 }
                                                 return true;
                                             };
-
                                             return Payment;
-
                                         })();
-
                                         module.exports = Payment;
-
                                         global.Payment = Payment;
-
                                     }).call(this);
-
                                     /* WEBPACK VAR INJECTION */}.call(exports, (function () {
                                     return this;
                                 }())))
@@ -1780,16 +1670,12 @@ echo md5('100746732112TESTAUTH');
                             /***/ (function (module, exports, __webpack_require__) {
 
                                 'use strict';
-
                                 module.exports = __webpack_require__(9);
-
-
                                 /***/ }),
                             /* 9 */
                             /***/ (function (module, exports, __webpack_require__) {
 
                                 'use strict';
-
                                 /*!
                                  * node.extend
                                  * Copyright 2011, John Resig
@@ -1800,14 +1686,12 @@ echo md5('100746732112TESTAUTH');
                                  * Port of jQuery.extend that actually works on node.js
                                  */
                                 var is = __webpack_require__(10);
-
                                 var extend = function extend() {
                                     var target = arguments[0] || {};
                                     var i = 1;
                                     var length = arguments.length;
                                     var deep = false;
                                     var options, name, src, copy, copyIsArray, clone;
-
                                     // Handle a deep copy situation
                                     if (typeof target === 'boolean') {
                                         deep = target;
@@ -1832,7 +1716,6 @@ echo md5('100746732112TESTAUTH');
                                             for (name in options) {
                                                 src = target[name];
                                                 copy = options[name];
-
                                                 // Prevent never-ending loop
                                                 if (target === copy) {
                                                     continue;
@@ -1849,7 +1732,6 @@ echo md5('100746732112TESTAUTH');
 
                                                     // Never move original objects, clone them
                                                     target[name] = extend(deep, clone, copy);
-
                                                     // Don't bring in undefined values
                                                 } else if (typeof copy !== 'undefined') {
                                                     target[name] = copy;
@@ -1861,18 +1743,14 @@ echo md5('100746732112TESTAUTH');
                                     // Return the modified object
                                     return target;
                                 };
-
                                 /**
                                  * @public
                                  */
                                 extend.version = '1.1.3';
-
                                 /**
                                  * Exports module.
                                  */
                                 module.exports = extend;
-
-
                                 /***/ }),
                             /* 10 */
                             /***/ (function (module, exports) {
@@ -1880,7 +1758,6 @@ echo md5('100746732112TESTAUTH');
                                 /* globals window, HTMLElement */
 
                                 'use strict';
-
                                 /**!
                                  * is
                                  * the definitive JavaScript type testing library
@@ -1905,16 +1782,13 @@ echo md5('100746732112TESTAUTH');
                                     string: 1,
                                     undefined: 1
                                 };
-
                                 var base64Regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
                                 var hexRegex = /^[A-Fa-f0-9]+$/;
-
                                 /**
                                  * Expose `is`
                                  */
 
                                 var is = {};
-
                                 /**
                                  * Test general.
                                  */
@@ -1932,7 +1806,6 @@ echo md5('100746732112TESTAUTH');
                                 is.a = is.type = function (value, type) {
                                     return typeof value === type;
                                 };
-
                                 /**
                                  * is.defined
                                  * Test if `value` is defined.
@@ -1945,7 +1818,6 @@ echo md5('100746732112TESTAUTH');
                                 is.defined = function (value) {
                                     return typeof value !== 'undefined';
                                 };
-
                                 /**
                                  * is.empty
                                  * Test if `value` is empty.
@@ -1958,7 +1830,6 @@ echo md5('100746732112TESTAUTH');
                                 is.empty = function (value) {
                                     var type = toStr.call(value);
                                     var key;
-
                                     if (type === '[object Array]' || type === '[object Arguments]' || type === '[object String]') {
                                         return value.length === 0;
                                     }
@@ -1974,7 +1845,6 @@ echo md5('100746732112TESTAUTH');
 
                                     return !value;
                                 };
-
                                 /**
                                  * is.equal
                                  * Test if `value` is equal to `other`.
@@ -1991,7 +1861,6 @@ echo md5('100746732112TESTAUTH');
 
                                     var type = toStr.call(value);
                                     var key;
-
                                     if (type !== toStr.call(other)) {
                                         return false;
                                     }
@@ -2033,7 +1902,6 @@ echo md5('100746732112TESTAUTH');
 
                                     return false;
                                 };
-
                                 /**
                                  * is.hosted
                                  * Test if `value` is hosted by `host`.
@@ -2048,7 +1916,6 @@ echo md5('100746732112TESTAUTH');
                                     var type = typeof host[value];
                                     return type === 'object' ? !!host[value] : !NON_HOST_TYPES[type];
                                 };
-
                                 /**
                                  * is.instance
                                  * Test if `value` is an instance of `constructor`.
@@ -2061,7 +1928,6 @@ echo md5('100746732112TESTAUTH');
                                 is.instance = is['instanceof'] = function (value, constructor) {
                                     return value instanceof constructor;
                                 };
-
                                 /**
                                  * is.nil / is.null
                                  * Test if `value` is null.
@@ -2074,7 +1940,6 @@ echo md5('100746732112TESTAUTH');
                                 is.nil = is['null'] = function (value) {
                                     return value === null;
                                 };
-
                                 /**
                                  * is.undef / is.undefined
                                  * Test if `value` is undefined.
@@ -2087,7 +1952,6 @@ echo md5('100746732112TESTAUTH');
                                 is.undef = is.undefined = function (value) {
                                     return typeof value === 'undefined';
                                 };
-
                                 /**
                                  * Test arguments.
                                  */
@@ -2106,7 +1970,6 @@ echo md5('100746732112TESTAUTH');
                                     var isOldArguments = !is.array(value) && is.arraylike(value) && is.object(value) && is.fn(value.callee);
                                     return isStandardArguments || isOldArguments;
                                 };
-
                                 /**
                                  * Test array.
                                  */
@@ -2123,7 +1986,6 @@ echo md5('100746732112TESTAUTH');
                                 is.array = Array.isArray || function (value) {
                                     return toStr.call(value) === '[object Array]';
                                 };
-
                                 /**
                                  * is.arguments.empty
                                  * Test if `value` is an empty arguments object.
@@ -2135,7 +1997,6 @@ echo md5('100746732112TESTAUTH');
                                 is.args.empty = function (value) {
                                     return is.args(value) && value.length === 0;
                                 };
-
                                 /**
                                  * is.array.empty
                                  * Test if `value` is an empty array.
@@ -2147,7 +2008,6 @@ echo md5('100746732112TESTAUTH');
                                 is.array.empty = function (value) {
                                     return is.array(value) && value.length === 0;
                                 };
-
                                 /**
                                  * is.arraylike
                                  * Test if `value` is an arraylike object.
@@ -2164,7 +2024,6 @@ echo md5('100746732112TESTAUTH');
                                             && is.number(value.length)
                                             && value.length >= 0;
                                 };
-
                                 /**
                                  * Test boolean.
                                  */
@@ -2181,7 +2040,6 @@ echo md5('100746732112TESTAUTH');
                                 is.bool = is['boolean'] = function (value) {
                                     return toStr.call(value) === '[object Boolean]';
                                 };
-
                                 /**
                                  * is.false
                                  * Test if `value` is false.
@@ -2194,7 +2052,6 @@ echo md5('100746732112TESTAUTH');
                                 is['false'] = function (value) {
                                     return is.bool(value) && Boolean(Number(value)) === false;
                                 };
-
                                 /**
                                  * is.true
                                  * Test if `value` is true.
@@ -2207,7 +2064,6 @@ echo md5('100746732112TESTAUTH');
                                 is['true'] = function (value) {
                                     return is.bool(value) && Boolean(Number(value)) === true;
                                 };
-
                                 /**
                                  * Test date.
                                  */
@@ -2224,7 +2080,6 @@ echo md5('100746732112TESTAUTH');
                                 is.date = function (value) {
                                     return toStr.call(value) === '[object Date]';
                                 };
-
                                 /**
                                  * is.date.valid
                                  * Test if `value` is a valid date.
@@ -2235,7 +2090,6 @@ echo md5('100746732112TESTAUTH');
                                 is.date.valid = function (value) {
                                     return is.date(value) && !isNaN(Number(value));
                                 };
-
                                 /**
                                  * Test element.
                                  */
@@ -2255,7 +2109,6 @@ echo md5('100746732112TESTAUTH');
                                             && value instanceof HTMLElement
                                             && value.nodeType === 1;
                                 };
-
                                 /**
                                  * Test error.
                                  */
@@ -2272,7 +2125,6 @@ echo md5('100746732112TESTAUTH');
                                 is.error = function (value) {
                                     return toStr.call(value) === '[object Error]';
                                 };
-
                                 /**
                                  * Test function.
                                  */
@@ -2294,7 +2146,6 @@ echo md5('100746732112TESTAUTH');
                                     var str = toStr.call(value);
                                     return str === '[object Function]' || str === '[object GeneratorFunction]' || str === '[object AsyncFunction]';
                                 };
-
                                 /**
                                  * Test number.
                                  */
@@ -2311,7 +2162,6 @@ echo md5('100746732112TESTAUTH');
                                 is.number = function (value) {
                                     return toStr.call(value) === '[object Number]';
                                 };
-
                                 /**
                                  * is.infinite
                                  * Test if `value` is positive or negative infinity.
@@ -2323,7 +2173,6 @@ echo md5('100746732112TESTAUTH');
                                 is.infinite = function (value) {
                                     return value === Infinity || value === -Infinity;
                                 };
-
                                 /**
                                  * is.decimal
                                  * Test if `value` is a decimal number.
@@ -2336,7 +2185,6 @@ echo md5('100746732112TESTAUTH');
                                 is.decimal = function (value) {
                                     return is.number(value) && !isActualNaN(value) && !is.infinite(value) && value % 1 !== 0;
                                 };
-
                                 /**
                                  * is.divisibleBy
                                  * Test if `value` is divisible by `n`.
@@ -2353,7 +2201,6 @@ echo md5('100746732112TESTAUTH');
                                     var isNonZeroNumber = is.number(value) && !isActualNaN(value) && is.number(n) && !isActualNaN(n) && n !== 0;
                                     return isDividendInfinite || isDivisorInfinite || (isNonZeroNumber && value % n === 0);
                                 };
-
                                 /**
                                  * is.integer
                                  * Test if `value` is an integer.
@@ -2366,7 +2213,6 @@ echo md5('100746732112TESTAUTH');
                                 is.integer = is['int'] = function (value) {
                                     return is.number(value) && !isActualNaN(value) && value % 1 === 0;
                                 };
-
                                 /**
                                  * is.maximum
                                  * Test if `value` is greater than 'others' values.
@@ -2384,7 +2230,6 @@ echo md5('100746732112TESTAUTH');
                                         throw new TypeError('second argument must be array-like');
                                     }
                                     var len = others.length;
-
                                     while (--len >= 0) {
                                         if (value < others[len]) {
                                             return false;
@@ -2393,7 +2238,6 @@ echo md5('100746732112TESTAUTH');
 
                                     return true;
                                 };
-
                                 /**
                                  * is.minimum
                                  * Test if `value` is less than `others` values.
@@ -2411,7 +2255,6 @@ echo md5('100746732112TESTAUTH');
                                         throw new TypeError('second argument must be array-like');
                                     }
                                     var len = others.length;
-
                                     while (--len >= 0) {
                                         if (value > others[len]) {
                                             return false;
@@ -2420,7 +2263,6 @@ echo md5('100746732112TESTAUTH');
 
                                     return true;
                                 };
-
                                 /**
                                  * is.nan
                                  * Test if `value` is not a number.
@@ -2433,7 +2275,6 @@ echo md5('100746732112TESTAUTH');
                                 is.nan = function (value) {
                                     return !is.number(value) || value !== value;
                                 };
-
                                 /**
                                  * is.even
                                  * Test if `value` is an even number.
@@ -2446,7 +2287,6 @@ echo md5('100746732112TESTAUTH');
                                 is.even = function (value) {
                                     return is.infinite(value) || (is.number(value) && value === value && value % 2 === 0);
                                 };
-
                                 /**
                                  * is.odd
                                  * Test if `value` is an odd number.
@@ -2459,7 +2299,6 @@ echo md5('100746732112TESTAUTH');
                                 is.odd = function (value) {
                                     return is.infinite(value) || (is.number(value) && value === value && value % 2 !== 0);
                                 };
-
                                 /**
                                  * is.ge
                                  * Test if `value` is greater than or equal to `other`.
@@ -2476,7 +2315,6 @@ echo md5('100746732112TESTAUTH');
                                     }
                                     return !is.infinite(value) && !is.infinite(other) && value >= other;
                                 };
-
                                 /**
                                  * is.gt
                                  * Test if `value` is greater than `other`.
@@ -2493,7 +2331,6 @@ echo md5('100746732112TESTAUTH');
                                     }
                                     return !is.infinite(value) && !is.infinite(other) && value > other;
                                 };
-
                                 /**
                                  * is.le
                                  * Test if `value` is less than or equal to `other`.
@@ -2510,7 +2347,6 @@ echo md5('100746732112TESTAUTH');
                                     }
                                     return !is.infinite(value) && !is.infinite(other) && value <= other;
                                 };
-
                                 /**
                                  * is.lt
                                  * Test if `value` is less than `other`.
@@ -2527,7 +2363,6 @@ echo md5('100746732112TESTAUTH');
                                     }
                                     return !is.infinite(value) && !is.infinite(other) && value < other;
                                 };
-
                                 /**
                                  * is.within
                                  * Test if `value` is within `start` and `finish`.
@@ -2547,7 +2382,6 @@ echo md5('100746732112TESTAUTH');
                                     var isAnyInfinite = is.infinite(value) || is.infinite(start) || is.infinite(finish);
                                     return isAnyInfinite || (value >= start && value <= finish);
                                 };
-
                                 /**
                                  * Test object.
                                  */
@@ -2563,7 +2397,6 @@ echo md5('100746732112TESTAUTH');
                                 is.object = function (value) {
                                     return toStr.call(value) === '[object Object]';
                                 };
-
                                 /**
                                  * is.primitive
                                  * Test if `value` is a primitive.
@@ -2581,7 +2414,6 @@ echo md5('100746732112TESTAUTH');
                                     }
                                     return true;
                                 };
-
                                 /**
                                  * is.hash
                                  * Test if `value` is a hash - a plain object literal.
@@ -2594,7 +2426,6 @@ echo md5('100746732112TESTAUTH');
                                 is.hash = function (value) {
                                     return is.object(value) && value.constructor === Object && !value.nodeType && !value.setInterval;
                                 };
-
                                 /**
                                  * Test regexp.
                                  */
@@ -2611,7 +2442,6 @@ echo md5('100746732112TESTAUTH');
                                 is.regexp = function (value) {
                                     return toStr.call(value) === '[object RegExp]';
                                 };
-
                                 /**
                                  * Test string.
                                  */
@@ -2628,7 +2458,6 @@ echo md5('100746732112TESTAUTH');
                                 is.string = function (value) {
                                     return toStr.call(value) === '[object String]';
                                 };
-
                                 /**
                                  * Test base64 string.
                                  */
@@ -2645,7 +2474,6 @@ echo md5('100746732112TESTAUTH');
                                 is.base64 = function (value) {
                                     return is.string(value) && (!value.length || base64Regex.test(value));
                                 };
-
                                 /**
                                  * Test base64 string.
                                  */
@@ -2662,7 +2490,6 @@ echo md5('100746732112TESTAUTH');
                                 is.hex = function (value) {
                                     return is.string(value) && (!value.length || hexRegex.test(value));
                                 };
-
                                 /**
                                  * is.symbol
                                  * Test if `value` is an ES6 Symbol
@@ -2675,16 +2502,12 @@ echo md5('100746732112TESTAUTH');
                                 is.symbol = function (value) {
                                     return typeof Symbol === 'function' && toStr.call(value) === '[object Symbol]' && typeof symbolValueOf.call(value) === 'symbol';
                                 };
-
                                 module.exports = is;
-
-
                                 /***/ }),
                             /* 11 */
                             /***/ (function (module, exports) {
 
                                 module.exports = jQuery;
-
                                 /***/ })
                                     /******/]);
     </script>

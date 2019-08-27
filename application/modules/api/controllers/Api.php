@@ -10,6 +10,32 @@ class Api extends MY_Controller {
         parent::__construct();
         $this->load->module('security');
         $this->security->security_test('client');
+        $this->load->library('bluepay');
+    }
+
+    function test_bluepay() {
+
+        $report = new CI_BluePay();
+
+        $report->getSingleTransQuery(array(
+            'transID' => 100765920893, // required transID:CI_BluePay:private
+            'errors' => '1' // Do not include errored transactions? Yes
+        ));
+// Makes the API request with BluePay 
+        $report->process();
+        echo '<pre>';
+        print_r($report);
+        echo '</pre>';
+        die;
+// Reads the response from BluePay
+        echo
+        'Response: ' . $report->getResponse() . "\n" .
+        'First Name: ' . $report->getName1() . "\n" .
+        'Last Name:  ' . $report->getName2() . "\n" .
+        'Transaction ID: ' . $report->getID() . "\n" .
+        'Payment Type ' . $report->getPaymentType() . "\n" .
+        'Transaction Type: ' . $report->getTransType() . "\n" .
+        'Amount: ' . $report->getAmount() . "\n";
     }
 
     function test_form_2() {
