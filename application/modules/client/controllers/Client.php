@@ -46,8 +46,8 @@ class Client extends MY_Controller {
 
         $session_data = $this->session->userdata();
         $data['transactions'] = $this->get_transactions()->result_array();
+        $data['transactions_summary'] = $this->get_transactions_summary()->result_array();
         $data['currencies_summary'] = $this->get_currencies_summary()->result_array();
-
         $data['content_view'] = 'client/wallet_v';
         $this->templates->client($data);
     }
@@ -56,6 +56,7 @@ class Client extends MY_Controller {
         $this->security->security_test('client');
 
         $session_data = $this->session->userdata();
+        $data['transactions_summary'] = $this->get_transactions_summary()->result_array();
         $data['currencies_summary'] = $this->get_currencies_summary()->result_array();
         $data['available_currencies'] = $this->currencies->get('currency_id')->result_array();
         $data['content_view'] = 'client/start_exchange_v';
@@ -82,14 +83,18 @@ class Client extends MY_Controller {
         }
     }
 
-    function _approve() {
-        echo 'simple test';
+    function check_exchange() {
+        $this->security->security_test('client');
+        $session_data = $this->session->userdata();
+        $post_data = $this->input->post();
+        $data['content_view'] = 'client/show_exchange_rates_v';
+        $this->templates->client($data);
     }
 
     function approve() {
         $this->security->security_test('client');
         $session_data = $this->session->userdata();
-        $get_data= $this->input->get();
+        $get_data = $this->input->get();
         //add database funding into a client here
 
         $data['currency'] = 'USD';
@@ -176,13 +181,6 @@ class Client extends MY_Controller {
             );
             $this->templates->client($data);
         }
-        /*
-          credit card info into database if I will decide to integrate with API
-          $credit_card= $post_data['credit_card'];
-          $cvv=$post_data['cvv'];
-          $currency=$post_data['currency'];
-          $amount=$post_data['amount'];
-         */
     }
 
     function get_transactions() {
@@ -198,6 +196,16 @@ class Client extends MY_Controller {
     }
 
     function get_currencies_summary() {
+        $this->security->security_test('client');
+        $this->load->model('mdl_client');
+        $session_data = $this->session->userdata();
+        $user_id = $session_data['user_id'];
+        $query = 'select a.currency_id, a.currency_name,b.fee_paid,b.user_id,b.currency_id,b.action,sum(amount),sum(fee_paid) from currencies a, transactions b where a.currency_id=b.currency_id and b.user_id=' . $user_id . ' group by a.currency_id, a.currency_name,b.user_id,b.currency_id,b.action;';
+        $data = $this->_custom_query($query);
+        return $data;
+    }
+
+    function get_transactions_summary() {
         $this->security->security_test('client');
         $this->load->model('mdl_client');
         $session_data = $this->session->userdata();

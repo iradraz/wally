@@ -13,31 +13,6 @@ class Api extends MY_Controller {
         $this->load->library('bluepay');
     }
 
-    function test_bluepay() {
-
-        $report = new CI_BluePay();
-
-        $report->getSingleTransQuery(array(
-            'transID' => 100765920893, // required transID:CI_BluePay:private
-            'errors' => '1' // Do not include errored transactions? Yes
-        ));
-// Makes the API request with BluePay 
-        $report->process();
-        echo '<pre>';
-        print_r($report);
-        echo '</pre>';
-        die;
-// Reads the response from BluePay
-        echo
-        'Response: ' . $report->getResponse() . "\n" .
-        'First Name: ' . $report->getName1() . "\n" .
-        'Last Name:  ' . $report->getName2() . "\n" .
-        'Transaction ID: ' . $report->getID() . "\n" .
-        'Payment Type ' . $report->getPaymentType() . "\n" .
-        'Transaction Type: ' . $report->getTransType() . "\n" .
-        'Amount: ' . $report->getAmount() . "\n";
-    }
-
     function test_form_2() {
         $session_data = $this->session->userdata();
         $data['content_view'] = 'client/test_fund_2_v';
@@ -51,62 +26,6 @@ class Api extends MY_Controller {
         $this->templates->client($data);
     }
 
-    function test_payment() {
-        $data['accountID'] = "1";
-        $data['secretKey'] = "2";
-        $data['mode'] = "TEST";
-
-        $payment = new bluepay($data);
-//        echo '<pre>';
-//        print_r($payment);
-//        echo '</pre>';
-        $payment->setCustomerInformation(array(
-            'firstName' => 'Bob',
-            'lastName' => 'Tester',
-            'addr1' => '1234 Test St.',
-            'addr2' => 'Apt #500',
-            'city' => 'Testville',
-            'state' => 'IL',
-            'zip' => '54321',
-            'country' => 'USA',
-            'phone' => '1231231234',
-            'email' => 'test@bluepay.com'
-        ));
-
-
-
-        $payment->setCCInformation(array(
-            'cardNumber' => '4111111111111111', // Card Number: 4111111111111111
-            'cardExpire' => '1225', // Card Expire: 12/25
-            'cvv2' => '123' // Card CVV2: 123
-        ));
-
-        $payment->sale('300.00'); // Sale Amount: $300.00
-        // Makes the API request with BluePAy
-        $payment->process();
-
-// Reads the response from BluePay
-        $payment->getStatus();
-        die;
-        if ($payment->isSuccessfulResponse()) {
-            echo
-            'Transaction Status: ' . $payment->getStatus() . "\n" .
-            'Transaction Message: ' . $payment->getMessage() . "\n" .
-            'Transaction ID: ' . $payment->getTransID() . "\n" .
-            'AVS Response: ' . $payment->getAVSResponse() . "\n" .
-            'CVS Response: ' . $payment->getCVV2Response() . "\n" .
-            'Masked Account: ' . $payment->getMaskedAccount() . "\n" .
-            'Card Type: ' . $payment->getCardType() . "\n" .
-            'Authorization Code: ' . $payment->getAuthCode() . "\n";
-        } else {
-            echo $payment->getMessage() . "\n";
-        }
-        echo '<pre>';
-        print_r($payment);
-        echo '</pre>';
-        die;
-    }
-
     function get_auth_1() {
 
         $url = "https://devapi.currencycloud.com/v2/authenticate/api";
@@ -115,15 +34,17 @@ class Api extends MY_Controller {
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
-            CURLOPT_POST => 0,
+            CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => [
                 'login_id' => 'iradra@mta.ac.il',
                 'api_key' => 'c3355e7a58cceaa964baa867e7b5db23dd8f3a9129aac698ccaf93c247e2613b'
             ]
         ]);
+
         $output = curl_exec($curl);
         $auth = json_decode($output)->auth_token;
         curl_close($curl);
+
         return $auth;
     }
 
@@ -147,10 +68,17 @@ class Api extends MY_Controller {
         echo '</pre>';
     }
 
-//https://devapi.currencycloud.com/v2/rates/find?currency_pair=GBPUSD
-//curl -X GET https://devapi.currencycloud.com/v2/rates/detailed?
-//      $url = sprintf("%s?%s", $url, http_build_query($data));
-    function get_rate_1($currency1, $currency2) {
+    function rate_test() {
+        $output = $this->get_rate_1('GBP', 'USD');
+        echo '<pre>';
+        print_r($output);
+        echo '</pre>';
+    }
+
+    function get_rate_1($currency1 = "", $currency2 = "") {
+        $currency1 = $this->uri->segment(3);
+        $currency2 = $this->uri->segment(4);
+
         $pair = strtoupper($currency1 . $currency2);
         $auth = $this->get_auth_1();
         $url = "https://devapi.currencycloud.com/v2/rates/find?currency_pair=$pair";
@@ -170,7 +98,7 @@ class Api extends MY_Controller {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
 
         $output = curl_exec($curl);
-
+        
         curl_close($curl);
 //        echo '<pre>';
 //        print_r($output);
@@ -208,6 +136,31 @@ class Api extends MY_Controller {
 //        print_r($output);
 //        echo '</pre>';
         return $output;
+    }
+
+    function test_bluepay() {
+
+        $report = new CI_BluePay();
+
+        $report->getSingleTransQuery(array(
+            'transID' => 100765920893, // required transID:CI_BluePay:private
+            'errors' => '1' // Do not include errored transactions? Yes
+        ));
+// Makes the API request with BluePay 
+        $report->process();
+        echo '<pre>';
+        print_r($report);
+        echo '</pre>';
+        die;
+// Reads the response from BluePay
+        echo
+        'Response: ' . $report->getResponse() . "\n" .
+        'First Name: ' . $report->getName1() . "\n" .
+        'Last Name:  ' . $report->getName2() . "\n" .
+        'Transaction ID: ' . $report->getID() . "\n" .
+        'Payment Type ' . $report->getPaymentType() . "\n" .
+        'Transaction Type: ' . $report->getTransType() . "\n" .
+        'Amount: ' . $report->getAmount() . "\n";
     }
 
 }

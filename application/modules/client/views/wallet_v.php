@@ -6,25 +6,26 @@ $locale = 'he-IL'; //browser or user locale
 header("Content-Type: text/html; charset=UTF-8;");
 ?>
 <div class="container-fluid wow fadeIn" data-wow-duration="2s">
-<!-- 
-    <div class="row justify-content-center">
-        <div class="col-3" style="min-width: 250px;">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Wally Wallet</h5>
-                    <p class="card-text">Review statement of the wallet</p>
-                    <a href="<?php echo base_url('client/deposit'); ?>" class="btn btn-primary">Add Funds</a>
+    <!-- 
+        <div class="row justify-content-center">
+            <div class="col-3" style="min-width: 250px;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Wally Wallet</h5>
+                        <p class="card-text">Review statement of the wallet</p>
+                        <a href="<?php // echo base_url('client/deposit');  ?>" class="btn btn-primary">Add Funds</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
--->
+    -->
     <div class="row justify-content-center">
         <div class="col-3">
             <h5 class="text-center text-primary">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
                     <tr>
+
                         <?php foreach ($currencies_summary as $key => $value) { ?>
                             <?php echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
                         <?php } ?>
@@ -38,7 +39,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php echo '<th scope="col">' . $symbol . ($currencies_summary[$key]['amount'] + $currencies_summary[$key]['fee_paid']) . '</th>'; ?>
+                        <?php echo '<th scope="col">' . $symbol . (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'])) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>
@@ -50,7 +51,7 @@ header("Content-Type: text/html; charset=UTF-8;");
 
     <div class="row justify-content-center">
         <div class="col-8 col-centered" >
-           
+
             <h5 class="text-primary text-center">Transaction Log</h5>
             <table class="table table-striped table-secondary table-hover">
                 <thead class="thead-light">
@@ -69,7 +70,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                 <tbody>
                     <?php foreach ($transactions as $key => $value) { ?>
                         <?php echo '<tr>'; ?>
-                       <!--     <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?> -->
+                        <!--     <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?> -->
                         <?php echo '<td scope="row">' . $transactions[$key]['transaction_id'] . '</td>'; ?>
                         <?php echo '<td scope="row">' . $transactions[$key]['action'] . '</td>'; ?>
                         <?php echo '<td>' . $transactions[$key]['currency_name'] . '</td>'; ?>
