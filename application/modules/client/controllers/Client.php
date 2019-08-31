@@ -8,6 +8,7 @@ class Client extends MY_Controller {
         $this->load->module('user');
         $this->load->module('transactions');
         $this->load->module('currencies');
+        $this->load->module('api');
     }
 
     function feedback_post() {
@@ -87,6 +88,16 @@ class Client extends MY_Controller {
         $this->security->security_test('client');
         $session_data = $this->session->userdata();
         $post_data = $this->input->post();
+
+        $first_rate = $this->api->get_rate_1($post_data['exch_from_currency'], $post_data['exch_to_currency'], $post_data['amount']);
+        $first_rate = json_decode($first_rate, true);
+        $second_rate = $this->api->get_rate_2($post_data['exch_from_currency'], $post_data['exch_to_currency'], $post_data['amount']);
+        $second_rate = json_decode($second_rate, true);
+
+        $data['first_rate'] = $first_rate;
+        $data['second_rate'] = $second_rate;
+
+        $data['post_data'] = $post_data;
         $data['content_view'] = 'client/show_exchange_rates_v';
         $this->templates->client($data);
     }
@@ -121,33 +132,6 @@ class Client extends MY_Controller {
 
         $session_data = $this->session->userdata();
         echo 'settings page will come here';
-    }
-
-    function use_curl2() {
-
-        $url = "https://api.sandbox.transferwise.tech/v1/profiles";
-
-        $curl = curl_init();
-        $headers = [
-            "Authorization: Bearer 140bef54-a3c6-4fb5-ad43-4a07cc1a8700"
-        ];
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt_array($curl, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => $url,
-            CURLOPT_POST => 0,
-            //CURLOPT_USERPWD => "111111:140bef54-a3c6-4fb5-ad43-4a07cc1a8700",
-            CURLOPT_HTTPHEADER => $headers
-        ]);
-// Send the request & save response to $resp
-        $resp = curl_exec($curl);
-// Close request to clear up some resources
-        curl_close($curl);
-        // echo '<pre>';
-        print_r($resp);
-        //  echo '</pre>';
-        //  curl_close($ch);
     }
 
     function transaction() {

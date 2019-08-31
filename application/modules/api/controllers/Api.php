@@ -26,8 +26,7 @@ class Api extends MY_Controller {
         $this->templates->client($data);
     }
 
-    function get_auth_1() {
-
+    function get_auth_1() { //currencycloud
         $url = "https://devapi.currencycloud.com/v2/authenticate/api";
         $curl = curl_init();
 
@@ -48,61 +47,76 @@ class Api extends MY_Controller {
         return $auth;
     }
 
-    function get_balance_1() {
-        $auth = $this->get_auth_1();
-        $url = "https://devapi.currencycloud.com/v2/balances/find";
+    function get_auth_2() { //transferwise
+        $url = "https://api.sandbox.transferwise.tech/v1/profiles";
+        $headers = [
+            "Content-Type: application/json;charset=UTF-8",
+            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+        ];
         $curl = curl_init();
-        $headers = array("X-Auth-Token: $auth");
-
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $url,
+            CURLOPT_POST => 0,
+            CURLOPT_HTTPHEADER => $headers,
+        ]);
 
         $output = curl_exec($curl);
-        $info = curl_getinfo($curl);
-
+        $business_id = json_decode($output)[1]->id;
         curl_close($curl);
-
-        echo '<pre>';
-        print_r($output);
-        echo '</pre>';
+        return $business_id;
     }
 
-    function rate_test() {
-        $output = $this->get_rate_1('GBP', 'USD');
-        echo '<pre>';
-        print_r($output);
-        echo '</pre>';
-    }
-
-    function get_rate_1($currency1 = "", $currency2 = "") {
-        $currency1 = $this->uri->segment(3);
-        $currency2 = $this->uri->segment(4);
-
+    function get_rate_1($currency1, $currency2, $amount) {
         $pair = strtoupper($currency1 . $currency2);
         $auth = $this->get_auth_1();
-        $url = "https://devapi.currencycloud.com/v2/rates/find?currency_pair=$pair";
+        $url = "https://devapi.currencycloud.com/v2/rates/detailed?sell_currency=$currency1&buy_currency=$currency2&fixed_side=sell&amount=$amount";
         $curl = curl_init();
 
         $headers = array(
             "X-Auth-Token: $auth",
             'Content-Type: application/json'
         );
-        $data = array('currency_pair' => 'GBPUSD');
-        $data_string = json_encode($data);
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
 
         $output = curl_exec($curl);
-        
         curl_close($curl);
 //        echo '<pre>';
 //        print_r($output);
 //        echo '</pre>';
+        return $output;
+    }
+
+    function get_rate_2($currency1, $currency2, $amount) {
+
+        $auth = $this->get_auth_2();
+        $url = "https://api.sandbox.transferwise.tech/v1/quotes";
+        $data = array(
+            "profile" => 7850,
+            "source" => "$currency1",
+            "target" => "$currency2",
+            "rateType" => "FIXED",
+            "sourceAmount" => $amount,
+            "type" => "BALANCE_PAYOUT"
+        );
+        $data_string = json_encode($data);
+        $curl = curl_init();
+        $headers = [
+            "Content-Type: application/json;charset=UTF-8",
+            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+        ];
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+        $output = curl_exec($curl);
+        curl_close($curl);
         return $output;
     }
 

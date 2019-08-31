@@ -52,25 +52,25 @@
 <div class="bg">
     <form action="<?php echo base_url('/home/provider'); ?>" method="post">
         <div class="form-group text-info col-md-6">
-            <label for="provider">* Provider Name:</label>
-            <input type="provider" class="form-control" value="<?php echo set_value('provider'); ?>" placeholder="Cloud Currency" name="provider">
+            <label for="provider_name">* Provider Name:</label>
+            <input class="form-control" value="<?php echo set_value('provider_name'); ?>" placeholder="Cloud Currency" name="provider_name">
             <span class="text-danger"><?php echo form_error('first'); ?></span>
             <span class="text-danger"><?php echo form_error('last'); ?></span>
         </div>
         <div class="form-group text-info col-md-6">
             <label for="currencies">* Supported Currencies:</label>
-            <textarea type="text" class="form-control" value="<?php echo set_value('provider'); ?>" placeholder="Cloud Currency" name="provider"></textarea>
-            <span class="text-danger"><?php echo form_error('currencies'); ?></span>
+            <textarea type="text" class="form-control" value="<?php echo set_value('supported_currencies'); ?>" placeholder="EURUSD, GBPUSD" name="supported_currencies"></textarea>
+            <span class="text-danger"><?php echo form_error('supported_currencies'); ?></span>
         </div>
         <div class="form-group text-info col-md-6">
             <label for="email">* Email: </label>
-            <input type="email" class="form-control" id="email" value="<?php echo set_value('email'); ?>" placeholder="Enter Email" name="email">
-            <span class="text-danger"><?php echo form_error('email'); ?></span>
+            <input type="email" class="form-control" id="email" value="<?php echo set_value('contact_email'); ?>" placeholder="Enter Email" name="contact_email">
+            <span class="text-danger"><?php echo form_error('contact_email'); ?></span>
         </div>
         <div class="form-group text-info col-md-6">
             <label for="phone">Phone Number:</label>
-            <input type="phone" class="form-control" id="phone" value="<?php echo set_value('phone'); ?>" placeholder="Enter Phone Number" name="phone">
-            <span class="text-danger"><?php echo form_error('phone'); ?></span>
+            <input type="phone" class="form-control" id="phone" value="<?php echo set_value('phone'); ?>" placeholder="Enter Phone Number" name="contact_phone">
+            <span class="text-danger"><?php echo form_error('contact_phone'); ?></span>
         </div>
 
         <ul>

@@ -54,7 +54,10 @@
                             $currency = $transactions_summary[0]['currency_name'];
                         }
                         ?>
-                        <option value="<?php echo $currency ?>" selected hidden><?php echo $currency ?></option>
+                        <?php foreach ($currencies_summary as $key => $value) { ?>
+                            <option value="<?php echo $currencies_summary[$key]['currency_name'] ?>"><?php echo $currencies_summary[$key]['currency_name'] ?></option>
+                        <?php } ?>
+
                         <?php foreach ($transactions_summary as $key => $value) { ?>
                             <?php echo ($transactions_summary[$key]['SUM(transactions.amount)'] == 0 ? '' : '<option value="' . $transactions_summary[$key]['currency_name'] . '">' . $transactions_summary[$key]['currency_name'] . '</option>'); ?>
                         <?php } ?>
