@@ -100,8 +100,8 @@ class Api extends MY_Controller {
             "source" => "$currency1",
             "target" => "$currency2",
             "rateType" => "FIXED",
-            "sourceAmount" => $amount,
-            "type" => "BALANCE_PAYOUT"
+            "sourceAmount" => "$amount",
+            "type" => "BALANCE_CONVERSION"
         );
         $data_string = json_encode($data);
         $curl = curl_init();

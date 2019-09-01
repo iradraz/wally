@@ -39,7 +39,7 @@ class Home extends MY_Controller {
         $supported_currencies = $post_data['supported_currencies'];
         $contact_email = $post_data['contact_email'];
         $contact_phone = $post_data['contact_phone'];
-        
+
         print_r($post_data);
 
         $sql = "INSERT into providers(`provider_name`,`supported_currencies`,`contact_email`,`contact_phone`)"

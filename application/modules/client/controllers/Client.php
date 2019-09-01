@@ -102,6 +102,15 @@ class Client extends MY_Controller {
         $this->templates->client($data);
     }
 
+    function create_exchange() {
+        $this->security->security_test('client');
+        $session_data = $this->session->userdata();
+        $post_data = $this->input->post();
+
+        $data['content_view'] = 'client/exchange_success_v';
+        $this->templates->client($data);
+    }
+
     function approve() {
         $this->security->security_test('client');
         $session_data = $this->session->userdata();

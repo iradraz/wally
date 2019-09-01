@@ -1,0 +1,1 @@
+You've exchanged succesfully foreign currency

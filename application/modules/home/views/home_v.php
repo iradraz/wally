@@ -8,6 +8,10 @@
     <ul class="main-menu__list text-center">
         <a href="<?php echo base_url('user/login'); ?>" class="btn btn-warning btn-sm wow <?php echo ($random == 0 ? 'rotateInDownRight' : 'slideInLeft'); ?>" data-wow-duration="2s" style="margin:10px;">LOGIN</a>
         <a href="<?php echo base_url('user/register'); ?>" class="btn btn-warning btn-lg wow <?php echo ($random == 0 ? 'rotateInDownLeft' : 'slideInRight'); ?>" data-wow-duration="2s">REGISTER NEW ACCOUNT</a>
+        
+    </ul>
+    <ul class="text-center">
+        <a href="#page2">Are you a provider?<br>click here and work with us!</a>
     </ul>
 </div>
 

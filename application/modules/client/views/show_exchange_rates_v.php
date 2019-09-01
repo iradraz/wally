@@ -130,8 +130,8 @@
 
     <ul class="row">
         <li class="legend"><span class="text-warning">Wally</span> Fee</li>
-        <li><?php echo $first_rate['client_buy_amount'] * 0.010 . ' ' . $first_rate['client_buy_currency']; ?></li>
-        <li><?php echo $second_rate['targetAmount'] * 0.010 . ' ' . $second_rate['target']; ?></li>
+        <li><?php echo number_format(($first_rate['client_buy_amount'] * 0.010), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
+        <li><?php echo number_format(($second_rate['targetAmount'] * 0.010), 2) . ' ' . $second_rate['target']; ?></li>
     </ul>
 
     <ul class="row">
@@ -140,28 +140,44 @@
         $currencycloudopt = ($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * 0.010));
         $transferwiseopt = $second_rate['targetAmount'] - ($second_rate['targetAmount'] * 0.010) - ($second_rate['fee']);
         ?>
-        <li><?php echo $first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * 0.010) . ' ' . $first_rate['client_buy_currency']; ?></li>
-        <li><?php echo $second_rate['targetAmount'] - ($second_rate['targetAmount'] * 0.010) - ($second_rate['fee']) . ' ' . $second_rate['target']; ?></li>
+        <li><?php echo number_format(($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * 0.010)), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
+        <li><?php echo number_format($second_rate['targetAmount'] - ($second_rate['targetAmount'] * 0.010) - ($second_rate['fee']), 2) . ' ' . $second_rate['target']; ?></li>
     </ul>
 
     <ul class="row">
         <li class="legend"></li>
         <li>
-            <?php echo ($currencycloudopt < $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($currencycloudopt - $transferwiseopt),2) . ' ' . $first_rate['client_buy_currency'] . ' using CurrencyCloud</ul>' ?>
+            <?php echo ($currencycloudopt < $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($currencycloudopt - $transferwiseopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using CurrencyCloud</ul>' ?>
             <ul><a href="" class="calltoaction" rel="nofollow" <?php echo ($currencycloudopt < $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using CurrencyCloud</a></ul>
         </li>
         <li>
-            <?php echo ($currencycloudopt > $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($transferwiseopt - $currencycloudopt),2) . ' ' . $first_rate['client_buy_currency'] . ' using TransferWise</ul>' ?>
+            <?php echo ($currencycloudopt > $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($transferwiseopt - $currencycloudopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using TransferWise</ul>' ?>
             <a href="" class="calltoaction" rel="nofollow" <?php echo ($currencycloudopt > $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using TransferWise</a>
         </li>
     </ul>
 </div>
-
+<?php // if ($currencycloudopt < $transferwiseopt) { ?>
+<!--    <form action="https://secure.bluepay.com/interfaces/bp10emu" method="post">
+        <input type=hidden name=id value="<?php echo $second_rate['id']; ?>">
+        <input type="hidden" name=source value="" />
+        <input type=hidden name=target value="">
+        <input type=hidden name=  value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+        <input type=hidden name=       value="">
+    </form>-->
+<?php // } ?>
 <?php
-//echo '<pre>';
-//print_r($first_rate);
-//echo '</pre>';
-//echo '<pre>';
-//print_r($second_rate);
-//echo '</pre>';
+echo '<pre>';
+print_r($first_rate);
+echo '</pre>';
+echo '<pre>';
+print_r($second_rate);
+echo '</pre>';
 ?>
