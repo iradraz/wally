@@ -96,7 +96,7 @@ class Client extends MY_Controller {
 
         $data['first_rate'] = $first_rate;
         $data['second_rate'] = $second_rate;
-
+        $data['wally_fee_rate'] = $this->get_currency_rate($post_data['exch_to_currency'])->result_array()[0]['fee_rate'];
         $data['post_data'] = $post_data;
         $data['content_view'] = 'client/show_exchange_rates_v';
         $this->templates->client($data);
@@ -134,6 +134,44 @@ class Client extends MY_Controller {
 
         $data['content_view'] = 'client/add_funds_step_2_v';
         $this->templates->client($data);
+    }
+
+    function make_exchange_tw() {
+        $this->security->security_test('client');
+        $session_data = $this->session->userdata();
+        $post_data = $this->input->post();
+        $output = $this->api->make_transfer_2($post_data['quoteid']); //create transferid
+        $output = json_decode($output, true);
+        $fund_confirm = $this->api->make_fund_2($output['id']); //using transfer id to commit the transfer
+        $sell_currency = $this->get_currency_rate($post_data['source'])->result_array()[0];
+        $buy_currency = $this->get_currency_rate($post_data['target'])->result_array()[0];
+        if ($fund_confirm == 'success') { // succed to make the transaction
+            $this->transactions->_insert(//sell transaction
+                    array(
+                        'user_id' => $session_data['user_id'],
+                        'currency_id' => $sell_currency['currency_id'],
+                        'action' => 'Sell',
+                        'amount' => -$post_data['sourceAmount'],
+                        'fee_paid' => 0,
+                        'broker_name' => 'transferwise',
+                        'quote_id' => $post_data['quoteid'],
+                        'transaction_key' => $output['id']
+                    )
+            );
+            $this->transactions->_insert(//buy transaction
+                    array(
+                        'user_id' => $session_data['user_id'],
+                        'currency_id' => $buy_currency['currency_id'],
+                        'action' => 'Buy',
+                        'amount' => $post_data['targetAmount']-$post_data['fee'],
+                        'fee_paid' => -$buy_currency['fee_rate']*$post_data['targetAmount'],
+                        'broker_name' => 'transferwise',
+                        'quote_id' => $post_data['quoteid'],
+                        'transaction_key' => $output['id']
+                    )
+            );
+        }
+        
     }
 
     function settings() {
@@ -193,7 +231,7 @@ class Client extends MY_Controller {
         $this->load->model('mdl_client');
         $session_data = $this->session->userdata();
         $user_id = $session_data['user_id'];
-        $query = 'select a.currency_id, a.currency_name,b.fee_paid,b.user_id,b.currency_id,b.action,sum(amount),sum(fee_paid) from currencies a, transactions b where a.currency_id=b.currency_id and b.user_id=' . $user_id . ' group by a.currency_id, a.currency_name,b.user_id,b.currency_id,b.action;';
+        $query = 'select a.currency_id, a.currency_name,b.fee_paid,b.user_id,b.currency_id,b.action,sum(amount),sum(fee_paid) from currencies a, transactions b where a.currency_id=b.currency_id and b.user_id=' . $user_id . ' group by a.currency_id, a.currency_name,b.user_id,b.currency_id;';
         $data = $this->_custom_query($query);
         return $data;
     }
@@ -210,6 +248,16 @@ class Client extends MY_Controller {
                 . 'GROUP BY currencies.currency_name;';
         $data = $this->_custom_query($query);
         // $data = $this->mdl_client->join_group_by($session_data['user_id']);
+        return $data;
+    }
+
+    //
+    function get_currency_rate($currency_name) {
+        $this->security->security_test('client');
+        $this->load->model('mdl_client');
+
+        $query = "select a.currency_id,a.currency_name,b.fee_rate from currencies a,fees b where a.currency_id=b.currency_id and a.currency_name='$currency_name'";
+        $data = $this->_custom_query($query);
         return $data;
     }
 
