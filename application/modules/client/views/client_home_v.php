@@ -1,7 +1,12 @@
 
 <?php $session_data = $this->session->userdata(); ?>
 
-
+<div class="loader">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container-fluid wow fadeIn" data-wow-duration="2s">
     <div class="row justify-content-center">
         <div class="col-12">

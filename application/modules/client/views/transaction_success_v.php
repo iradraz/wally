@@ -5,6 +5,12 @@ $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
 $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 header("Content-Type: text/html; charset=UTF-8;");
 ?>
+<div class="loader">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
         <div class="progress-bar" role="progressbar" aria-valuenow="100"

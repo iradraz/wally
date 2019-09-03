@@ -19,7 +19,7 @@
                     <tr>
 
                         <?php foreach ($currencies_summary as $key => $value) { ?>
-                            <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
+                            <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
                         <?php } ?>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $symbol . ' ' . (number_format(($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']), 2)) . '</th>'; ?>
+                        <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) echo '<th scope="col">' . $symbol . ' ' . (number_format(($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']), 2)) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>
@@ -54,13 +54,15 @@
                             $currency = $transactions_summary[0]['currency_name'];
                         }
                         ?>
-                        <?php foreach ($currencies_summary as $key => $value) if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)){ ?>
-                            <option value="<?php echo $currencies_summary[$key]['currency_name'] ?>"><?php echo $currencies_summary[$key]['currency_name'] ?></option>
-                        <?php } ?>
+                        <?php foreach ($currencies_summary as $key => $value)
+                            if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) { ?>
+                                <option value="<?php echo $currencies_summary[$key]['currency_name'] ?>"><?php echo $currencies_summary[$key]['currency_name'] ?></option>
+                            <?php } ?>
 
-                        <?php foreach ($transactions_summary as $key => $value) if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)){ ?>
-                            <?php echo ($transactions_summary[$key]['SUM(transactions.amount)'] == 0 ? '' : '<option value="' . $transactions_summary[$key]['currency_name'] . '">' . $transactions_summary[$key]['currency_name'] . '</option>'); ?>
-                        <?php } ?>
+                        <?php foreach ($transactions_summary as $key => $value)
+                            if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) { ?>
+        <?php echo ($transactions_summary[$key]['SUM(transactions.amount)'] == 0 ? '' : '<option value="' . $transactions_summary[$key]['currency_name'] . '">' . $transactions_summary[$key]['currency_name'] . '</option>'); ?>
+    <?php } ?>
 
                     </select>
                     <div style="position: relative" class="wow rubberBand" data-wow-duration="2s" data-wow-iteration="5">
@@ -80,8 +82,8 @@
                         ?>
                         <option value="<?php echo $currency ?>" selected hidden><?php echo $currency ?></option>
                         <?php foreach ($available_currencies as $key => $value) { ?>
-                            <?php echo '<option value="' . $available_currencies[$key]['currency_name'] . '">' . $available_currencies[$key]['currency_name'] . '</option>'; ?>
-                        <?php } ?>
+    <?php echo '<option value="' . $available_currencies[$key]['currency_name'] . '">' . $available_currencies[$key]['currency_name'] . '</option>'; ?>
+<?php } ?>
                     </select>
                     <div style="position:relative">
                         <span class="text-danger"><?php echo form_error('exch_to_currency'); ?></span>

@@ -11,6 +11,12 @@ $symbol2 = $fmt2->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
 header("refresh:10; url=/wally");
 ?>
+<div class="loader">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
         <div class="progress-bar" role="progressbar" aria-valuenow="75"
@@ -26,7 +32,7 @@ header("refresh:10; url=/wally");
                     <div class="card-body">
                         <h1 class="text-danger text-center">Exchange Failed!</h1>
                         <h2 class="text-danger text-center">You tried to Exchange <?php echo $post_data['sourceAmount'] . ' ' . $symbol1 . ' into ' . $post_data['targetAmount'] . ' ' . $symbol2; ?> but failed</h2>
-                        <h3 class="text-primary text-center">This event has been logged, Review your steps and proceed</h3>
+                        <h3 class="text-primary text-center">You need to exchange more funds, Review your step and proceed</h3>
                         <div class="container wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
                             <h3 class="text-center"> Redirecting back to your wallet</h3>
                         </div>

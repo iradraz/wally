@@ -5,7 +5,7 @@
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="<?php echo base_url('/css/animate.css'); ?>">
-        <!--<script src="<?php // echo base_url('/jquery/jquery-3.4.1.min.js');    ?>" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
+        <!--<script src="<?php // echo base_url('/jquery/jquery-3.4.1.min.js');      ?>" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="<?php echo base_url('/jquery/jquery-3.4.1.slim.min.js'); ?>" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
         <script src="<?php echo base_url('/jquery/wow.min.js'); ?>"></script>
@@ -73,6 +73,7 @@
     <script type="text/javascript" src="https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js"></script>
 
     <script>
+
             $(document).ready(function () {
                 $('#fullpage').fullpage({
                     anchors: ['page1', 'page2', 'page3', 'page4'],

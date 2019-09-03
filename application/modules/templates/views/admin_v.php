@@ -44,21 +44,29 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('/admin/management'); ?>">System Management</a>
-                            </li>
+                            <!--                            <li class="nav-item">
+                                                            <a class="nav-link" href="<?php echo base_url('/admin/management'); ?>">System Management</a>
+                                                        </li>-->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('/admin/currencies'); ?>">Add Currencies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url('/admin/fees'); ?>">Fees</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('/admin/transactions'); ?>">Review Transactions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('/admin/feedback'); ?>">Review Feedbacks</a>
+                                <a class="nav-link" href="<?php echo base_url('/admin/statistics'); ?>">Statistics</a>
+                            </li>
+                            <hr>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url('/admin/review_providers'); ?>">Review Providers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('/admin/fees'); ?>">Fees</a>
+                                <a class="nav-link" href="<?php echo base_url('/admin/feedback'); ?>">Review Feedbacks</a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('/home/logout'); ?>">Logout</a>
                             </li>
@@ -76,17 +84,17 @@
     </body>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.leftmenutrigger').on('click', function (e) {
-                $('.side-nav').toggleClass("open");
-                e.preventDefault();
-            });
+        $('.leftmenutrigger').on('click', function (e) {
+        $('.side-nav').toggleClass("open");
+        e.preventDefault();
+        });
         });</script>
     <script type="text/javascript">
         (function ($) {
-            $('#theme_chooser').change(function () {
-                whichCSS = $(this).val();
-                document.getElementById('snippet-preview').contentWindow.changeCSS(whichCSS);
-            });
+        $('#theme_chooser').change(function () {
+        whichCSS = $(this).val();
+        document.getElementById('snippet-preview').contentWindow.changeCSS(whichCSS);
+        });
         })(jQuery);
     </script>
 

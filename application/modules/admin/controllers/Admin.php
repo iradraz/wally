@@ -36,7 +36,7 @@ class Admin extends MY_Controller {
     function transactions() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
-        
+
         $data['transactions'] = $this->get_transactions_data()->result_array();
 
         $data['content_view'] = 'admin/transactions_v';
@@ -53,6 +53,24 @@ class Admin extends MY_Controller {
         }
         $data['currencies_data'] = $this->currencies->get('currency_id')->result_array();
         $data['content_view'] = 'admin/add_currencies_v';
+        $this->templates->admin($data);
+    }
+
+    function review_providers() {
+        $this->security->security_test('admin');
+        $session_data = $this->session->userdata();
+
+        //gather all transaction info here and put it in $data
+        $data['content_view'] = 'admin/review_providers_v';
+        $this->templates->admin($data);
+    }
+
+    function statistics() {
+        $this->security->security_test('admin');
+        $session_data = $this->session->userdata();
+
+        //gather all transaction info here and put it in $data
+        $data['content_view'] = 'admin/statistics_v';
         $this->templates->admin($data);
     }
 

@@ -214,8 +214,10 @@ class Client extends MY_Controller {
     function settings() {
         $this->security->security_test('client');
 
+
         $session_data = $this->session->userdata();
-        echo 'settings page will come here';
+        $data['content_view'] = 'client/settings_v';
+        $this->templates->client($data);
     }
 
     function transaction() {

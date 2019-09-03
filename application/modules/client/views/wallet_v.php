@@ -5,6 +5,7 @@ $locale = 'he-IL'; //browser or user locale
 //$symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 header("Content-Type: text/html; charset=UTF-8;");
 ?>
+
 <div class="container-fluid wow fadeIn" data-wow-duration="2s">
     <!-- 
         <div class="row justify-content-center">
@@ -13,7 +14,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                     <div class="card-body">
                         <h5 class="card-title">Wally Wallet</h5>
                         <p class="card-text">Review statement of the wallet</p>
-                        <a href="<?php // echo base_url('client/deposit');   ?>" class="btn btn-primary">Add Funds</a>
+                        <a href="<?php // echo base_url('client/deposit');        ?>" class="btn btn-primary">Add Funds</a>
                     </div>
                 </div>
             </div>
@@ -27,7 +28,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                     <tr>
 
                         <?php foreach ($currencies_summary as $key => $value) { ?>
-                            <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
+                            <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
                         <?php } ?>
                     </tr>
                 </thead>
@@ -39,7 +40,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $symbol . ' ' . (number_format(($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']), 2)) . '</th>'; ?>
+                        <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'] > 0)) echo '<th scope="col">' . $symbol . ' ' . (number_format(($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']), 2)) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>
