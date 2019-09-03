@@ -13,21 +13,21 @@ header("Content-Type: text/html; charset=UTF-8;");
                     <div class="card-body">
                         <h5 class="card-title">Wally Wallet</h5>
                         <p class="card-text">Review statement of the wallet</p>
-                        <a href="<?php // echo base_url('client/deposit');  ?>" class="btn btn-primary">Add Funds</a>
+                        <a href="<?php // echo base_url('client/deposit');   ?>" class="btn btn-primary">Add Funds</a>
                     </div>
                 </div>
             </div>
         </div>
     -->
     <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-4">
             <h5 class="text-center text-primary">Current Account Statement</h5>
             <table class="table table-success">
                 <thead class="table-stiped thead-light">
                     <tr>
 
                         <?php foreach ($currencies_summary as $key => $value) { ?>
-                            <?php echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
+                            <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $currencies_summary[$key]['currency_name'] . '</th>'; ?>
                         <?php } ?>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
-                        <?php echo '<th scope="col">' . $symbol . (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)'])) . '</th>'; ?>
+                        <?php if (($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']>0)) echo '<th scope="col">' . $symbol . ' ' . (number_format(($currencies_summary[$key]['sum(amount)']) + ($currencies_summary[$key]['sum(fee_paid)']), 2)) . '</th>'; ?>
                     <?php } ?>
 
                     <?php echo '</tr>'; ?>
@@ -80,7 +80,7 @@ header("Content-Type: text/html; charset=UTF-8;");
                         $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
                         ?>
                         <?php echo '<td>' . $symbol . ' ' . $transactions[$key]['amount'] . '</td>'; ?>
-                        <?php echo '<td>' . (($transactions[$key]['fee_paid'] == 0) ? '0' : $symbol . ' ' . $transactions[$key]['fee_paid']) . '</td>'; ?>    
+                        <?php echo '<td>' . (($transactions[$key]['fee_paid'] == 0) ? '0' : $symbol . ' ' . number_format($transactions[$key]['fee_paid'], 2)) . '</td>'; ?>    
                         <?php echo '<td>' . $transactions[$key]['transaction_date'] . '</td>'; ?>
                         <?php
                         echo '</tr>';

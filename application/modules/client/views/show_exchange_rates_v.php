@@ -130,54 +130,62 @@
 
     <ul class="row">
         <li class="legend"><span class="text-warning">Wally</span> Fee</li>
-        <li><?php echo number_format(($first_rate['client_buy_amount'] * 0.010), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
-        <li><?php echo number_format(($second_rate['targetAmount'] * 0.010), 2) . ' ' . $second_rate['target']; ?></li>
+        <li><?php echo number_format(($first_rate['client_buy_amount'] * $wally_fee_rate), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
+        <li><?php echo number_format(($second_rate['targetAmount'] * $wally_fee_rate), 2) . ' ' . $second_rate['target']; ?></li>
     </ul>
 
     <ul class="row">
         <li class="legend">Total (Inc. fees)</li>
         <?php
-        $currencycloudopt = ($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * 0.010));
-        $transferwiseopt = $second_rate['targetAmount'] - ($second_rate['targetAmount'] * 0.010) - ($second_rate['fee']);
+        $currencycloudopt = ($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * $wally_fee_rate));
+        $transferwiseopt = $second_rate['targetAmount'] - ($second_rate['targetAmount'] * $wally_fee_rate) - ($second_rate['fee']);
         ?>
-        <li><?php echo number_format(($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * 0.010)), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
-        <li><?php echo number_format($second_rate['targetAmount'] - ($second_rate['targetAmount'] * 0.010) - ($second_rate['fee']), 2) . ' ' . $second_rate['target']; ?></li>
+        <li><?php echo number_format(($first_rate['client_buy_amount'] - ($first_rate['client_buy_amount'] * $wally_fee_rate)), 2) . ' ' . $first_rate['client_buy_currency']; ?></li>
+        <li><?php echo number_format($second_rate['targetAmount'] - ($second_rate['targetAmount'] * $wally_fee_rate) - ($second_rate['fee']), 2) . ' ' . $second_rate['target']; ?></li>
     </ul>
 
     <ul class="row">
         <li class="legend"></li>
         <li>
-            <?php echo ($currencycloudopt < $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($currencycloudopt - $transferwiseopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using CurrencyCloud</ul>' ?>
-            <ul><a href="" class="calltoaction" rel="nofollow" <?php echo ($currencycloudopt < $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using CurrencyCloud</a></ul>
-        </li>
+            <?php if ($currencycloudopt > $transferwiseopt) { ?>
+                <form action="<?php echo base_url('/client/make_exchange_cc'); ?>" method="post">
+                    <input type=hidden name=source value="<?php echo $first_rate['client_sell_currency']; ?>">
+                    <input type=hidden name=target value="<?php echo $first_rate['client_buy_currency']; ?>">
+                    <input type=hidden name=sourceAmount value="<?php echo $first_rate['client_sell_amount']; ?>">
+                    <input type=hidden name=targetAmount value="<?php echo $first_rate['client_buy_amount']; ?>">
+                    <?php echo ($currencycloudopt < $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($currencycloudopt - $transferwiseopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using CurrencyCloud</ul>' ?>
+                    <ul>   <button type="submit" class="calltoaction btn btn-primary" <?php echo ($currencycloudopt < $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using CurrencyCloud</ul>
+                </form>
+            </li>
+        <?php } ?>
         <li>
-            <?php echo ($currencycloudopt > $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($transferwiseopt - $currencycloudopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using TransferWise</ul>' ?>
-            <a href="" class="calltoaction" rel="nofollow" <?php echo ($currencycloudopt > $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using TransferWise</a>
-        </li>
+            <?php if ($currencycloudopt < $transferwiseopt) { ?>
+
+                <form action="<?php echo base_url('/client/make_exchange_tw') ?>" method="post">
+                    <input type=hidden name=quoteid value="<?php echo $second_rate['id']; ?>">
+                    <input type=hidden name=source value="<?php echo $second_rate['source']; ?>">
+                    <input type=hidden name=target value="<?php echo $second_rate['target']; ?>">
+                    <input type=hidden name=sourceAmount value="<?php echo $second_rate['sourceAmount']; ?>">
+                    <input type=hidden name=targetAmount value="<?php echo $second_rate['targetAmount']; ?>">
+                    <input type=hidden name=fee value="<?php echo $second_rate['fee']; ?>">
+
+                    <?php echo ($currencycloudopt > $transferwiseopt) ? '' : '<ul>you\'ll save up to ' . number_format(($transferwiseopt - $currencycloudopt), 2) . ' ' . $first_rate['client_buy_currency'] . ' using TransferWise</ul>' ?>
+                    <button type="submit" class="calltoaction btn btn-primary" rel="nofollow" <?php echo ($currencycloudopt > $transferwiseopt) ? 'hidden' : ''; ?>>Exchange using TransferWise</ul>
+                </form>
+            </li>
+        <?php } ?>
     </ul>
 </div>
-<?php // if ($currencycloudopt < $transferwiseopt) { ?>
-<!--    <form action="https://secure.bluepay.com/interfaces/bp10emu" method="post">
-        <input type=hidden name=id value="<?php echo $second_rate['id']; ?>">
-        <input type="hidden" name=source value="" />
-        <input type=hidden name=target value="">
-        <input type=hidden name=  value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-        <input type=hidden name=       value="">
-    </form>-->
-<?php // } ?>
+
+
+
+
 <?php
-echo '<pre>';
-print_r($first_rate);
-echo '</pre>';
-echo '<pre>';
-print_r($second_rate);
-echo '</pre>';
+// debugging section
+//echo '<pre>';
+//print_r($first_rate);
+//echo '</pre>';
+//echo '<pre>';
+//print_r($second_rate);
+//echo '</pre>';
 ?>

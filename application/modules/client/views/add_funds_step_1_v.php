@@ -20,8 +20,8 @@ $session_data = $this->session->userdata();
             <input type=hidden name=TRANSACTION_TYPE value="SALE">
             <input type=hidden name=TAMPER_PROOF_SEAL  value="a93d8d3d6f38e42b78b0e4d536bf1034">
             <input type=hidden name=APPROVED_URL       value="<?php echo base_url('client/approve'); ?>">
-            <!--<input type=hidden name=DECLINED_URL       value="http://decline.com">-->
-            <!--<input type=hidden name=MISSING_URL        value="http://err.com">-->
+            <input type=hidden name=DECLINED_URL       value="<?php echo base_url('client/decline'); ?>">
+            <input type=hidden name=MISSING_URL        value="<?php echo base_url('client/error'); ?>">
             <input type=hidden name=MODE               value="TEST">
             <!--<input type=hidden name=AUTOCAP            value="0">-->
             <input type=hidden name=TPS_HASH_TYPE      value="MD5">
@@ -35,7 +35,7 @@ $session_data = $this->session->userdata();
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <label for="AMOUNT" class="text-warning">Amount</label>
-                    <input type="text" class="form-control required" name="AMOUNT" value="21" data-toggle-required> 
+                    <input type="text" class="form-control required" name="AMOUNT" value="" data-toggle-required> 
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -52,7 +52,7 @@ $session_data = $this->session->userdata();
             <div class="form-row mb-4">
                 <div class="col">
                     <label for="CC_NUM" class="text-warning">Card Number</label>
-                    <input type="text" class="form-control required" name="CC_NUM" maxlength="19" value="411111111111111" >
+                    <input type="text" class="form-control required" name="CC_NUM" maxlength="19" value="" >
                 </div>
                 <div class="col">
                     <label for="CC_EXPIRES" class="text-warning">Card Expiration Date</label>

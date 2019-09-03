@@ -13,9 +13,10 @@ class Home extends MY_Controller {
         }
 
         if ($session_data['user_role'] == 'client') {
-            $data['content_view'] = 'client/client_home_v';
-
-            $this->templates->client($data);
+            /*$data['content_view'] = 'client/client_home_v'; // this is a way around to avoid the front page
+             $this->templates->client($data);*/
+            $this->load->module('client');
+            $this->client->wallet();
         } else if ($session_data['user_role'] == 'admin') {
             $data['content_view'] = 'admin/admin_home_v';
             $this->templates->admin($data);

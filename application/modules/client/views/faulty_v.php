@@ -1,8 +1,8 @@
 <?php
 $session_data = $this->session->userdata();
 $locale = 'he-IL'; //browser or user locale
-$currency1 = $post_data['source'];
-$currency2 = $post_data['target'];
+$currency1 = $post_data['exch_from_currency'];
+$currency2 = $post_data['exch_to_currency'];
 $fmt1 = new NumberFormatter("@currency=$currency1", NumberFormatter::CURRENCY);
 $fmt2 = new NumberFormatter("@currency=$currency2", NumberFormatter::CURRENCY);
 
@@ -10,7 +10,7 @@ $symbol1 = $fmt1->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 $symbol2 = $fmt2->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
 $session_data = $this->session->userdata();
-header("refresh:7; url=/wally");
+header("refresh:10; url=/wally");
 ?>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
@@ -22,11 +22,12 @@ header("refresh:7; url=/wally");
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-md-8"> 
+            <div class="col-md-10"> 
                 <div class="card">  
                     <div class="card-body">
-                        <h1 class="text-warning text-center">Exchange Success!</h1>
-                        <h2 class="text-primary text-center">You just Exchanged <?php echo $post_data['sourceAmount'] . ' ' . $symbol1 . ' into ' . $post_data['targetAmount'] . ' ' . $symbol2; ?> </h2>
+                        <h1 class="text-danger text-center">Exchange Failed!</h1>
+                        <h2 class="text-danger text-center">You tried to Exchange <?php echo $post_data['amount'] . ' ' . $symbol1 . ' into ' . $symbol2; ?> but failed</h2>
+                        <h3 class="text-primary text-center">This event has been logged, Review your steps and proceed</h3>
                         <div class="container wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
                             <h3 class="text-center"> Redirecting now to your wallet</h3>
                         </div>

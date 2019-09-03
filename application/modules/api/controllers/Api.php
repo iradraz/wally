@@ -13,19 +13,12 @@ class Api extends MY_Controller {
         $this->load->library('bluepay');
     }
 
-    function test_form_2() {
-        $session_data = $this->session->userdata();
-        $data['content_view'] = 'client/test_fund_2_v';
-        $this->templates->client($data);
-    }
+    //Bluepay api is within the funding form
 
-    function test_form() {
-        $this->security->security_test('client');
-        $session_data = $this->session->userdata();
-        $data['content_view'] = 'client/test_fund_v';
-        $this->templates->client($data);
-    }
-
+    /**
+     * first section is for CurrencyCloud API integration
+     * 
+     */
     function get_auth_1() { //currencycloud
         $url = "https://devapi.currencycloud.com/v2/authenticate/api";
         $curl = curl_init();
@@ -45,26 +38,6 @@ class Api extends MY_Controller {
         curl_close($curl);
 
         return $auth;
-    }
-
-    function get_auth_2() { //transferwise
-        $url = "https://api.sandbox.transferwise.tech/v1/profiles";
-        $headers = [
-            "Content-Type: application/json;charset=UTF-8",
-            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
-        ];
-        $curl = curl_init();
-        curl_setopt_array($curl, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => $url,
-            CURLOPT_POST => 0,
-            CURLOPT_HTTPHEADER => $headers,
-        ]);
-
-        $output = curl_exec($curl);
-        $business_id = json_decode($output)[1]->id;
-        curl_close($curl);
-        return $business_id;
     }
 
     function get_rate_1($currency1, $currency2, $amount) {
@@ -91,8 +64,69 @@ class Api extends MY_Controller {
         return $output;
     }
 
-    function get_rate_2($currency1, $currency2, $amount) {
+    //curl -X POST -d "buy_currency=GBP&sell_currency=USD&fixed_side=BUY&amount=100&term_agreement=1" --header "X-Auth-Token: XXXX-XXXXX-XXXX"  https://devapi.currencycloud.com/v2/conversions/create
+    function create_conversion_1() {
+        $post_data = $this->input->post();
+        $currency1 = strtoupper($post_data['source']);
+        $currency2 = strtoupper($post_data['target']);
+        $amount = $post_data['sourceAmount'];
+        $auth = $this->get_auth_1();
+        $url = "https://devapi.currencycloud.com/v2/conversions/create";
+        $curl = curl_init();
 
+        $headers = array(
+            "X-Auth-Token: $auth",
+            'Content-Type: application/json'
+        );
+        $data = array(
+            'sell_currency' => "$currency1",
+            'buy_currency' => "$currency2",
+            'fixed_side' => "sell",
+            'amount' => $amount,
+            'term_agreement' => true
+            );
+        $data_string = json_encode($data);
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+
+        $output = curl_exec($curl);
+
+        curl_close($curl);
+//        echo '<pre>';
+//        print_r($output);
+//        echo '</pre>';die;
+        return $output;
+    }
+
+    /**
+     * second section is for TransferWise API integration
+     * 
+     */
+    function get_auth_2() { //transferwise
+        $url = "https://api.sandbox.transferwise.tech/v1/profiles";
+        $headers = [
+            "Content-Type: application/json;charset=UTF-8",
+            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $url,
+            CURLOPT_POST => 0,
+            CURLOPT_HTTPHEADER => $headers,
+        ]);
+
+        $output = curl_exec($curl);
+        $business_id = json_decode($output)[1]->id;
+        curl_close($curl);
+        return $business_id;
+    }
+
+    function get_rate_2($currency1, $currency2, $amount) { //transferwise
         $auth = $this->get_auth_2();
         $url = "https://api.sandbox.transferwise.tech/v1/quotes";
         $data = array(
@@ -120,61 +154,33 @@ class Api extends MY_Controller {
         return $output;
     }
 
-    //curl -X POST -d "buy_currency=GBP&sell_currency=USD&fixed_side=BUY&amount=100&term_agreement=1" --header "X-Auth-Token: XXXX-XXXXX-XXXX"  https://devapi.currencycloud.com/v2/conversions/create
-    function create_conversion_1() {
-        $post_data = $this->input->post();
-        $currency1 = strtoupper($post_data['currency1']);
-        $currency2 = strtoupper($post_data['currency2']);
-
-        $auth = $this->get_auth_1();
-        $url = "https://devapi.currencycloud.com/v2/conversions/create";
-        $curl = curl_init();
-
-        $headers = array(
-            "X-Auth-Token: $auth",
-            'Content-Type: application/json'
+    function make_transfer_2($quoteid) { //transferwise
+        $auth = $this->get_auth_2();
+        $url = "https://api.sandbox.transferwise.tech/v1/transfers";
+        $data = array(
+            "targetAccount" => 14382604, //this is our profile unique recipent ID -> we get this is we check our profile id which is 7850
+            "quote" => $quoteid,
+            "customerTransactionId" => "b0cfbd04-cc1f-11e9-a32f-2a2ae2dbcce6", //this is just a generic UUID to make the transaction going, in real environment we need to make it unique
         );
-        $data = array('currency_pair' => 'GBPUSD');
         $data_string = json_encode($data);
+        $curl = curl_init();
+        $headers = [
+            "Content-Type: application/json;charset=UTF-8",
+            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+        ];
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-
         $output = curl_exec($curl);
-
         curl_close($curl);
-//        echo '<pre>';
-//        print_r($output);
-//        echo '</pre>';
         return $output;
     }
 
-    function test_bluepay() {
-
-        $report = new CI_BluePay();
-
-        $report->getSingleTransQuery(array(
-            'transID' => 100765920893, // required transID:CI_BluePay:private
-            'errors' => '1' // Do not include errored transactions? Yes
-        ));
-// Makes the API request with BluePay 
-        $report->process();
-        echo '<pre>';
-        print_r($report);
-        echo '</pre>';
-        die;
-// Reads the response from BluePay
-        echo
-        'Response: ' . $report->getResponse() . "\n" .
-        'First Name: ' . $report->getName1() . "\n" .
-        'Last Name:  ' . $report->getName2() . "\n" .
-        'Transaction ID: ' . $report->getID() . "\n" .
-        'Payment Type ' . $report->getPaymentType() . "\n" .
-        'Transaction Type: ' . $report->getTransType() . "\n" .
-        'Amount: ' . $report->getAmount() . "\n";
+    function make_fund_2($transferid) {
+        return 'success';
     }
 
 }

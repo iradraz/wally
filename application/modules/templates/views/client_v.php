@@ -1,6 +1,5 @@
 <?php
 $session_data = $this->session->userdata();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +48,7 @@ $session_data = $this->session->userdata();
         <div id="wrapper" class="animate">
             <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
                 <span class="navbar-toggler-icon leftmenutrigger"></span>
-                <a class="navbar-brand" href="<?php echo base_url('/home/'); ?>"><img src="<?php echo base_url('/img/footer-logo.png'); ?>" class="img-responsive" width="20" height="20" />ally</a><span class="text-warning"><?php // echo $session_data['user_firstname'];     ?> Wallet</span> 
+                <a class="navbar-brand" href="<?php echo base_url('/home/'); ?>"><img src="<?php echo base_url('/img/footer-logo.png'); ?>" class="img-responsive" width="20" height="20" />ally</a><span class="text-warning"><?php // echo $session_data['user_firstname'];      ?> Wallet</span> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,7 +56,7 @@ $session_data = $this->session->userdata();
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav animate side-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url('/'); ?>">Home
+                            <a class="nav-link" href="<?php echo base_url('/'); ?>" hidden>Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -70,9 +69,9 @@ $session_data = $this->session->userdata();
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('/client/exchange'); ?>">Exchange Funds</a>
                         </li>                            
-                        <!--                        <li class="nav-item">
-                                                    <a class="nav-link" href="<?php // echo base_url('/client/withdraw');     ?>">Withdraw Funds</a>
-                                                </li>-->
+                        <!--  <li class="nav-item">
+                                  <a class="nav-link" href="<?php // echo base_url('/client/withdraw');      ?>">Withdraw Funds</a>
+                              </li>-->
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('/client/feedback'); ?>">Feedback</a>
