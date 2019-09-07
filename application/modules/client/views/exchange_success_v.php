@@ -12,7 +12,7 @@ $symbol2 = $fmt2->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 $session_data = $this->session->userdata();
 header("refresh:7; url=/wally");
 ?>
-<div class="loader">
+<div class="loader text-center">
     <img src="<?php
     $random = rand(1, 4);
     echo base_url('img/loader' . $random . '.gif');

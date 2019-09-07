@@ -4,8 +4,9 @@ $locale = 'he-IL'; //browser or user locale
 $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
 $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 header("Content-Type: text/html; charset=UTF-8;");
+header("refresh:7; url=/wally");
 ?>
-<div class="loader">
+<div class="loader text-center">
     <img src="<?php
     $random = rand(1, 4);
     echo base_url('img/loader' . $random . '.gif');

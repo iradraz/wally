@@ -6,8 +6,14 @@ $fmt = new NumberFormatter("@currency=USD", NumberFormatter::CURRENCY);
 $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
 $session_data = $this->session->userdata();
-header("refresh:10; url=/wally");
+header("refresh:10; url=/wally/client/deposit");
 ?>
+<div class="loader text-center">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
         <div class="progress-bar" role="progressbar" aria-valuenow="75"
@@ -25,7 +31,7 @@ header("refresh:10; url=/wally");
                         <h2 class="text-danger text-center">Failed to deposit <?php echo $get_data['AMOUNT'] . ' ' . $symbol; ?> into your account</h2>
                         <h3 class="text-primary text-center">This event has been logged, Review your steps and proceed</h3>
                         <div class="container wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
-                            <h3 class="text-center"> Redirecting back to your wallet</h3>
+                            <h3 class="text-center">Redirecting back to deposit section</h3>
                         </div>
                     </div>
                 </div>

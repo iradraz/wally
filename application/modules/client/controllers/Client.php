@@ -13,7 +13,7 @@ class Client extends MY_Controller {
 
     function wallet() {
         $this->security->security_test('client');
-        
+
         $session_data = $this->session->userdata();
         $data['transactions'] = $this->get_transactions()->result_array();
         $data['transactions_summary'] = $this->get_transactions_summary()->result_array();
@@ -213,11 +213,20 @@ class Client extends MY_Controller {
 
     function settings() {
         $this->security->security_test('client');
-
-
         $session_data = $this->session->userdata();
+        $data['summary'] = $this->user_summary($session_data['user_id']);
         $data['content_view'] = 'client/settings_v';
         $this->templates->client($data);
+    }
+
+    function user_summary($user_id) {
+        $sql = "select user_id,user_firstname,user_lastname,user_email,user_phone,user_registered_date,user_last_login from user where user_id=$user_id";
+        $output = $this->_custom_query($sql)->result_array();
+        $sql2 = "select count(*) from transactions where user_id=$user_id and action='deposit'";
+        $output[0]['deposit_count'] = $this->_custom_query($sql2)->result_array()[0]['count(*)'];
+        $sql3 = "select count(*) from transactions where user_id=$user_id and action='sell'";
+        $output[0]['exchange_count'] = $this->_custom_query($sql3)->result_array()[0]['count(*)'];
+        return $output;
     }
 
     function transaction() {

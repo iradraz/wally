@@ -10,8 +10,14 @@ $symbol1 = $fmt1->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 $symbol2 = $fmt2->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
 $session_data = $this->session->userdata();
-header("refresh:10; url=/wally");
+header("refresh:10; url=/wally/client/exchange");
 ?>
+<div class="loader text-center">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
         <div class="progress-bar" role="progressbar" aria-valuenow="75"
@@ -29,7 +35,7 @@ header("refresh:10; url=/wally");
                         <h2 class="text-danger text-center">You tried to Exchange <?php echo $post_data['amount'] . ' ' . $symbol1 . ' into ' . $symbol2; ?> but failed</h2>
                         <h3 class="text-primary text-center">This event has been logged, Review your steps and proceed</h3>
                         <div class="container wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
-                            <h3 class="text-center"> Redirecting now to your wallet</h3>
+                            <h3 class="text-center"> Redirecting now to your Exchange</h3>
                         </div>
                     </div>
                 </div>

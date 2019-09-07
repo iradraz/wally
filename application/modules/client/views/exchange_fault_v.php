@@ -9,9 +9,9 @@ $fmt2 = new NumberFormatter("@currency=$currency2", NumberFormatter::CURRENCY);
 $symbol1 = $fmt1->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 $symbol2 = $fmt2->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
-header("refresh:10; url=/wally");
+header("refresh:10; url=/wally/client/exchange");
 ?>
-<div class="loader">
+<div class="loader text-center">
     <img src="<?php
     $random = rand(1, 4);
     echo base_url('img/loader' . $random . '.gif');

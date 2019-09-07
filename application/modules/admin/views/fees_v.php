@@ -1,83 +1,120 @@
 <script type="text/javascript" src="<?php echo base_url('jquery/tabledit.min.js'); ?>"></script>
 <script>
-    $('#example3').Tabledit({
-        url: 'example.php',
-        editButton: false,
-        deleteButton: false,
-        hideIdentifier: true,
-        columns: {
-            identifier: [0, 'id'],
-            editable: [[2, 'firstname'], [3, 'Email']]
-        }
+    $(document).ready(function () {
+        $('.editBtn').on('click', function () {
+            //hide edit span
+            $(this).closest("tr").find(".editSpan").hide();
+            //show edit input
+            $(this).closest("tr").find(".editInput").show();
+            //hide edit button
+            $(this).closest("tr").find(".editBtn").hide();
+            //show edit button
+            $(this).closest("tr").find(".saveBtn").show();
+
+        });
+
+        $('.saveBtn').on('click', function () {
+            var trObj = $(this).closest("tr");
+            var ID = $(this).closest("tr").attr('id');
+            var inputData = $(this).closest("tr").find(".editInput").serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'admin/update_fee',
+                dataType: "json",
+                data: 'action=edit&fee_id=' + ID + '&' + inputData,
+                success: function (response) {
+                    if (response.status == 'ok') {
+                        trObj.find(".editSpan.fee_rate").text(response.data.fee_rate);
+
+                        trObj.find(".editInput.fee_rate").text(response.data.fee_rate);
+
+                        trObj.find(".editInput").hide();
+                        trObj.find(".saveBtn").hide();
+                        trObj.find(".editSpan").show();
+                        trObj.find(".editBtn").show();
+                    } else {
+                        alert(response.msg);
+                    }
+                }
+            });
+        });
+
+//        $('.deleteBtn').on('click', function () {
+//            //hide delete button
+//            $(this).closest("tr").find(".deleteBtn").hide();
+//
+//            //show confirm button
+//            $(this).closest("tr").find(".confirmBtn").show();
+//
+//        });
+
+//        $('.confirmBtn').on('click', function () {
+//            var trObj = $(this).closest("tr");
+//            var ID = $(this).closest("tr").attr('id');
+//            $.ajax({
+//                type: 'POST',
+//                url: 'admin/confirm_delete_fee',
+//                dataType: "json",
+//                data: 'action=delete&id=' + ID,
+//                success: function (response) {
+//                    if (response.status == 'ok') {
+//                        trObj.remove();
+//                    } else {
+//                        trObj.find(".confirmBtn").hide();
+//                        trObj.find(".deleteBtn").show();
+//                        alert(response.msg);
+//                    }
+//                }
+//            });
+//        });
     });
 </script>
-<table class="table" id="my-table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Firstname</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="alert alert-success" id="message" style="display: none;">
-</div>
-<div class="col-md-4"></div>
-<div class="col-md-3">
-    <h3>Fees rate for supported currencies:</h3>
-    <table class="table wow slideInLeft " data-wow-duration="1s">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Fee Rate</th>
-                <th scope="col">Change Date</th>
-
-                <th scope="col">Action</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($currencies_data as $key => $value) { ?>
-                <?php echo '<tr>'; ?>
-                <?php echo '<th scope="row">' . $currencies_data[$key]['currency_id'] . '</th>'; ?>
-                <?php echo '<td>' . $currencies_data[$key]['currency_name'] . '</td>'; ?>
-                <?php
-                $currency = $currencies_data[$key]['currency_name'];
-                $fmt = new NumberFormatter("@currency=$currency", NumberFormatter::CURRENCY);
-                $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
-                ?>
-                <?php echo '<td>' . $currencies_data[$key]['fee_rate'] . '%</td>'; ?>
-                <?php echo '<td>' . $currencies_data[$key]['change_date'] . '</td>'; ?>
-                <?php echo '<td id="' . $currencies_data[$key]['currency_id'] . '"><a href="#" class="delete_data btn btn-danger btn-sm" id="' . $currencies_data[$key]['currency_id'] . '"><div class="edit">edit</div></td>'; ?>
-                <?php
-                echo '</tr>';
-            }
-            ?>
-        </tbody>
-    </table>
-    <!--try add ajax call here to sequence the currencies-->        
-</div>
-<div class="col-md-1"></div>
-<div class="col-md-3">
-
-</div>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default users-content">
+            <table class="table table-striped">
+                <h3>Fees rate for supported currencies:</h3>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Currency</th>
+                        <th>Fee Rate</th>
+                        <th>Change Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userData"><?php // print_r($currencies_data);die;  ?>
+                    <?php if (!empty($currencies_data)): foreach ($currencies_data as $key => $value): ?>
+                            <tr id="<?php echo $currencies_data[$key]['fee_id']; ?>">
+                                <td><?php echo $currencies_data[$key]['fee_id']; ?></td>
+                                <td>
+                                    <span class=" fname"><?php echo $currencies_data[$key]['currency_name']; ?></span>
+                                    <input class=" fname form-control input-sm" type="text" name="currency_name" value="<?php echo $currencies_data[$key]['currency_name']; ?>" style="display: none;">
+                                </td>
+                                <td>
+                                    <span class="editSpan fee_rate"><?php echo $currencies_data[$key]['fee_rate']; ?></span>
+                                    <input class="editInput form-control input-sm fee_rate" type="text" name="fee_rate" value="<?php echo $currencies_data[$key]['fee_rate']; ?>" style="display: none;">
+                                </td>
+                                <td>
+                                    <span class="change_date"><?php echo $currencies_data[$key]['change_date']; ?></span>
+                                    <input class="change_date form-control input-sm" type="text" name="email" value="<?php echo $currencies_data[$key]['change_date']; ?>" style="display: none;">
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-sm btn-danger editBtn" style="float: none;"><span class="glyphicon glyphicon-pencil">Edit</span></button>
+                                        <!--<button type="button" class="btn btn-sm btn-default deleteBtn" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>-->
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-success saveBtn" style="float: none; display: none;">Save</button>
+                                    <!--<button type="button" class="btn btn-sm btn-danger confirmBtn" style="float: none; display: none;">Confirm</button>-->
+                                </td>
+                            </tr>
+                        <?php endforeach;
+                    else:
+                        ?>
+                        <tr><td colspan="5">No user(s) found......</td></tr>
+<?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

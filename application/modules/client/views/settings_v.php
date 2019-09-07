@@ -101,15 +101,6 @@
     <form method="post">
         <div class="row">
             <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="<?php echo base_url('img/loader3.gif'); ?>" alt=""/>
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
                 <div class="profile-head">
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -128,8 +119,6 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-            </div>
-            <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
@@ -137,7 +126,7 @@
                                 <label>User Id</label>
                             </div>
                             <div class="col-md-6">
-                                <p><?php echo $session_data['user_id']; ?></p>
+                                <p><?php echo $summary[0]['user_id']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -145,7 +134,7 @@
                                 <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p><?php echo $session_data['user_firstname'] . ' ' . $session_data['user_lastname']; ?></p>
+                                <p><?php echo $summary[0]['user_firstname'] . ' ' . $summary[0]['user_lastname']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -153,7 +142,7 @@
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p><?php echo $session_data['user_email']; ?></p>
+                                <p><?php echo $summary[0]['user_email']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -161,7 +150,7 @@
                                 <label>Phone</label>
                             </div>
                             <div class="col-md-6">
-                                <p><?php echo 'select phonenubmber from users where user_id=...'; ?></p>
+                                <p><?php echo $summary[0]['user_phone'] ?></p>
                             </div>
                         </div>
                     </div>
@@ -171,23 +160,23 @@
                                 <label>Registered date</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Expert</p>
+                                <p><?php echo $summary[0]['user_registered_date'] ?></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Total exchange transactions</label>
+                                <label>Total Exchanges</label>
                             </div>
                             <div class="col-md-6">
-                                <p>15</p>
+                                <p><?php echo $summary[0]['exchange_count'] ?></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Total deposit transactions</label>
+                                <label>Total Deposits</label>
                             </div>
                             <div class="col-md-6">
-                                <p></p>
+                                <p><?php echo $summary[0]['deposit_count'] ?></p>
                             </div>
                         </div>
                     </div>

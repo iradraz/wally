@@ -19,7 +19,7 @@ class Admin extends MY_Controller {
     function user_management() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
-        $data['users']=$this->get_users_summary();
+        $data['users'] = $this->get_users_summary();
         $data['content_view'] = 'admin/user_management_v';
         $this->templates->admin($data);
     }
@@ -36,6 +36,23 @@ class Admin extends MY_Controller {
         $data['currencies_data'] = $this->currencies->_join_fees()->result_array();
         $data['content_view'] = 'admin/fees_v';
         $this->templates->admin($data);
+    }
+
+    function update_fee() {
+        $this->security->security_test('admin');
+        $post_data = $this->input->post();
+        $fee_id = $post_data['fee_id'];
+        $fee_rate = $post_data['fee_rate'];
+        $current_date= date("Y-m-d H:i:s");
+        $update_data = array('fee_id' => $post_data['fee_id'], 'fee_rate' => $post_data['fee_rate'], 'change_date' => $current_date);
+        $sql = "update fees set fee_rate='$fee_rate', change_date='$current_date' where fee_id='$fee_id';";
+        $result = $this->_custom_query($sql);
+        $returnData = array(
+            'status' => 'ok',
+            'msg' => 'User data has been updated successfully.',
+            'data' => $update_data
+        );
+        echo json_encode($returnData);
     }
 
     function get_transactions_data() {
