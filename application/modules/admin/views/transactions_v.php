@@ -29,7 +29,7 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody><?php // print_r($transactions);die;?>
                             <?php foreach ($transactions as $key => $value) { ?>
                                 <?php echo '<tr>'; ?>
                                 <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?>
@@ -44,7 +44,7 @@
                                 ?>
                                 <?php echo '<td>' . $symbol . ' ' . $transactions[$key]['amount'] . '</td>';
                                 ?>
-                                <?php echo '<td scope="row">' . '' . '</td>'; ?>                            
+                                <?php echo '<td scope="row">' . $transactions[$key]['fee_paid'] . '</td>'; ?>                            
                                 <?php echo '<td>' . $transactions[$key]['transaction_date'] . '</td>'; ?>
                                 <?php
                                 echo '</tr>';

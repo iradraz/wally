@@ -13,8 +13,8 @@ class Home extends MY_Controller {
         }
 
         if ($session_data['user_role'] == 'client') {
-            /*$data['content_view'] = 'client/client_home_v'; // this is a way around to avoid the front page
-             $this->templates->client($data);*/
+            /* $data['content_view'] = 'client/client_home_v'; // this is a way around to avoid the front page
+              $this->templates->client($data); */
             $this->load->module('client');
             $this->client->wallet();
         } else if ($session_data['user_role'] == 'admin') {
@@ -27,26 +27,48 @@ class Home extends MY_Controller {
     }
 
     function provider() {
-//               $this->transactions->_insert(
-//                array(
-//                    'user_id' => $session_data['user_id'],
-//                    'currency_id' => $data['currency_id'],
-//                    'action' => 'DEPOSIT',
-//                    'amount' => $get_data['AMOUNT']
-//                )
-//        );
         $post_data = $this->input->post();
+        $config['allowed_types'] = 'pdf';
+        $config['upload_path'] = './files/' . $post_data['provider_name'];
+        if (!is_dir('./files/' . $post_data['provider_name'])) {
+            mkdir('./files/' . $post_data['provider_name'], 0777, TRUE);
+        }
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
         $provider_name = $post_data['provider_name'];
         $supported_currencies = $post_data['supported_currencies'];
         $contact_email = $post_data['contact_email'];
         $contact_phone = $post_data['contact_phone'];
 
-        print_r($post_data);
+        //$this->upload->do_upload('file');
+        if (!$this->upload->do_upload('file')) {
+            $error = array('error' => $this->upload->display_errors());
+            $error_explode = explode(' ', $error['error']);
+            if (strcmp($error_explode[2], 'not') == 0 && strcmp($error_explode[3], 'select') == 0) { //no files have been uploaded, insert into db without filename
+                $data = array('upload_data' => $this->upload->data());
+                $filename = $data['upload_data']['file_name'];
+                $sql = "INSERT into providers(`provider_name`,`supported_currencies`,`contact_email`,`contact_phone`,`file`)"
+                        . " values ('$provider_name','$supported_currencies','$contact_email','$contact_phone','')";
+                $this->_custom_query($sql);
 
-        $sql = "INSERT into providers(`provider_name`,`supported_currencies`,`contact_email`,`contact_phone`)"
-                . " values ('$provider_name','$supported_currencies','$contact_email','$contact_phone')";
-        $this->_custom_query($sql);
-        $this->load->view('home/provider_sign_thank_you_v');
+                $data['content_view'] = 'home/provider_sign_thank_you_v';
+                $this->templates->landing($data);
+            } else { //something wrong with uploaded files
+                $data['error'] = $error;
+                $data['content_view'] = 'home/provider_sign_failed_v';
+                $this->templates->landing($data);
+            }
+        } else { // uploaded succesfully, insert filename into database
+            $data = array('upload_data' => $this->upload->data());
+            $filename = $data['upload_data']['file_name'];
+            $sql = "INSERT into providers(`provider_name`,`supported_currencies`,`contact_email`,`contact_phone`,`file`)"
+                    . " values ('$provider_name','$supported_currencies','$contact_email','$contact_phone','$filename')";
+            $this->_custom_query($sql);
+
+            $data['content_view'] = 'home/provider_sign_thank_you_v';
+            $this->templates->landing($data);
+        }
     }
 
     function about() {

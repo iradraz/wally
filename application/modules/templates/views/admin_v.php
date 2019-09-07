@@ -44,9 +44,9 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <!--                            <li class="nav-item">
-                                                            <a class="nav-link" href="<?php echo base_url('/admin/management'); ?>">System Management</a>
-                                                        </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url('/admin/user_management'); ?>">User Management</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('/admin/currencies'); ?>">Add Currencies</a>
                             </li>
@@ -54,8 +54,8 @@
                                 <a class="nav-link" href="<?php echo base_url('/admin/fees'); ?>">Fees</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('/admin/transactions'); ?>">Review Transactions</a>
-                            </li>
+                                <a class="nav-link" href="<?php echo base_url('/admin/transactions'); ?>">Transactions Log</a>
+                            </li>                      
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('/admin/statistics'); ?>">Statistics</a>
                             </li>

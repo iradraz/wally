@@ -13,7 +13,7 @@ class Client extends MY_Controller {
 
     function wallet() {
         $this->security->security_test('client');
-
+        
         $session_data = $this->session->userdata();
         $data['transactions'] = $this->get_transactions()->result_array();
         $data['transactions_summary'] = $this->get_transactions_summary()->result_array();

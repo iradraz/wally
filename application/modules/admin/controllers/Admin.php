@@ -16,6 +16,20 @@ class Admin extends MY_Controller {
         $this->load->module('fees');
     }
 
+    function user_management() {
+        $this->security->security_test('admin');
+        $session_data = $this->session->userdata();
+        $data['users']=$this->get_users_summary();
+        $data['content_view'] = 'admin/user_management_v';
+        $this->templates->admin($data);
+    }
+
+    function get_users_summary() {
+        $sql = 'select user_id,user_firstname,user_lastname,user_email,user_phone,user_role,user_registered_date,user_last_login from user where user_role != "admin";';
+        $output = $this->_custom_query($sql)->result_array();
+        return $output;
+    }
+
     function fees() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
@@ -33,16 +47,6 @@ class Admin extends MY_Controller {
         return $result;
     }
 
-    function transactions() {
-        $this->security->security_test('admin');
-        $session_data = $this->session->userdata();
-
-        $data['transactions'] = $this->get_transactions_data()->result_array();
-
-        $data['content_view'] = 'admin/transactions_v';
-        $this->templates->admin($data);
-    }
-
     function currencies() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
@@ -56,13 +60,29 @@ class Admin extends MY_Controller {
         $this->templates->admin($data);
     }
 
+    function transactions() {
+        $this->security->security_test('admin');
+        $session_data = $this->session->userdata();
+
+        $data['transactions'] = $this->get_transactions_data()->result_array();
+
+        $data['content_view'] = 'admin/transactions_v';
+        $this->templates->admin($data);
+    }
+
     function review_providers() {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
 
-        //gather all transaction info here and put it in $data
+        $data['providers'] = $this->providers_summary();
         $data['content_view'] = 'admin/review_providers_v';
         $this->templates->admin($data);
+    }
+
+    function providers_summary() {
+        $query = 'select * from providers';
+        $output = $this->_custom_query($query)->result_array();
+        return $output;
     }
 
     function statistics() {
@@ -93,66 +113,66 @@ class Admin extends MY_Controller {
 
     function get($order_by) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->get($order_by);
+        $query = $this->mdl_admin->get($order_by);
         return $query;
     }
 
     function get_rand($order_by) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->get_rand($order_by);
+        $query = $this->mdl_admin->get_rand($order_by);
         return $query;
     }
 
     function get_with_limit($limit, $offset, $order_by) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->get_with_limit($limit, $offset, $order_by);
+        $query = $this->mdl_admin->get_with_limit($limit, $offset, $order_by);
         return $query;
     }
 
     function get_where($id) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->get_where($id);
+        $query = $this->mdl_admin->get_where($id);
         return $query;
     }
 
     function get_where_custom($col, $value) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->get_where_custom($col, $value);
+        $query = $this->mdl_admin->get_where_custom($col, $value);
         return $query;
     }
 
     function _insert($data) {
         $this->load->model('mdl_admin');
-        $insert_id = $this->mdl_test->_insert($data);
+        $insert_id = $this->mdl_admin->_insert($data);
 
         return $insert_id;
     }
 
     function _update($id, $data) {
         $this->load->model('mdl_admin');
-        $this->mdl_test->_update($id, $data);
+        $this->mdl_admin->_update($id, $data);
     }
 
     function _delete($id) {
         $this->load->model('mdl_admin');
-        $this->mdl_test->_delete($id);
+        $this->mdl_admin->_delete($id);
     }
 
     function count_where($column, $value) {
         $this->load->model('mdl_admin');
-        $count = $this->mdl_test->count_where($column, $value);
+        $count = $this->mdl_admin->count_where($column, $value);
         return $count;
     }
 
     function get_max() {
         $this->load->model('mdl_admin');
-        $max_id = $this->mdl_test->get_max();
+        $max_id = $this->mdl_admin->get_max();
         return $max_id;
     }
 
     function _custom_query($mysql_query) {
         $this->load->model('mdl_admin');
-        $query = $this->mdl_test->_custom_query($mysql_query);
+        $query = $this->mdl_admin->_custom_query($mysql_query);
         return $query;
     }
 
