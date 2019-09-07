@@ -44,7 +44,7 @@
                                 <?php echo '<td scope="row">' . $users[$key]['user_last_login'] . '</td>'; ?>
                                 <?php echo ($users[$key]['user_role'] == 'client') ? '<td scope="row" class="text-primary">Active</td>' : '<td scope="row" class="text-danger">Suspended</td>'; ?>
                                 <?php
-                                echo ($users[$key]['user_role'] == 'client') ?m
+                                echo ($users[$key]['user_role'] == 'client') ?
                                         '<td id="' . $users[$key]['user_id'] . '"><a href="#" class="suspend_user btn btn-danger btn-sm" id="' . $users[$key]['user_id'] . '"><span class="glyphicon glyphicon-remove"></span> Suspend </a></td>' :
                                         '<td id="' . $users[$key]['user_id'] . '"><a href="#" class="unsuspend_user btn btn-danger btn-sm" id="' . $users[$key]['user_id'] . '"><span class="glyphicon glyphicon-add"></span> Revert </a></td>'
                                 ?>
