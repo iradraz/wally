@@ -24,6 +24,30 @@ class Admin extends MY_Controller {
         $this->templates->admin($data);
     }
 
+    function suspend_revert() {
+        $this->security->security_test('admin');
+
+        $post_data = $this->input->post();
+        $user_id = $post_data['user_id'];
+        $sql_user_role = "select user_role from user where user_id='$user_id';";
+        $user_role = $this->_custom_query($sql_user_role)->result_array()[0]['user_role'];
+        if($user_role=='client'){ // need to suspend client
+            $user_role='suspended';
+            $status='Suspended';
+        } else{
+            $user_role='client';
+            $status='Active';
+        }
+        $sql = "update user set user_role='$user_role' where user_id='$user_id';";
+        $result = $this->_custom_query($sql);
+        $returnData = array(
+            'status' => 'ok',
+            'msg' => 'User data has been updated successfully.',
+            'data' => array('user_role'=>$status)
+        );
+        echo json_encode($returnData);
+    }
+
     function get_users_summary() {
         $sql = 'select user_id,user_firstname,user_lastname,user_email,user_phone,user_role,user_registered_date,user_last_login from user where user_role != "admin";';
         $output = $this->_custom_query($sql)->result_array();
@@ -43,7 +67,7 @@ class Admin extends MY_Controller {
         $post_data = $this->input->post();
         $fee_id = $post_data['fee_id'];
         $fee_rate = $post_data['fee_rate'];
-        $current_date= date("Y-m-d H:i:s");
+        $current_date = date("Y-m-d H:i:s");
         $update_data = array('fee_id' => $post_data['fee_id'], 'fee_rate' => $post_data['fee_rate'], 'change_date' => $current_date);
         $sql = "update fees set fee_rate='$fee_rate', change_date='$current_date' where fee_id='$fee_id';";
         $result = $this->_custom_query($sql);
@@ -58,7 +82,7 @@ class Admin extends MY_Controller {
     function get_transactions_data() {
         $this->security->security_test('admin');
 
-        $query = 'select transactions.transaction_id,transactions.user_id,transactions.currency_id,currencies.currency_name,transactions.action,transactions.amount,transactions.fee_paid,transactions.transaction_date from transactions,currencies where transactions.currency_id=currencies.currency_id';
+        $query = 'select transactions.transaction_id,transactions.user_id,transactions.transaction_date,transactions.currency_id,currencies.currency_name,transactions.action,transactions.amount,transactions.fee_paid,transactions.transaction_date from transactions,currencies where transactions.currency_id=currencies.currency_id order by transactions.transaction_id desc';
         $result = $this->transactions->_custom_query($query);
 
         return $result;

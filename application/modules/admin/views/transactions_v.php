@@ -1,4 +1,5 @@
-
+<link href="<?php echo base_url('css/pagination.css'); ?>" rel="stylesheet">
+<script src="<?php echo base_url('jquery/pagination.js'); ?>"></script>
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-5" style="min-width: 250px;">
@@ -10,6 +11,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function ()
+        {
+            $("#tab").pagination({
+                items: 10,
+                contents: 'contents',
+                previous: 'Previous',
+                next: 'Next',
+                position: 'bottom',
+            });
+        });
+    </script>
     <div class="row justify-content-center">
         <div class="col-10" style="flex-grow: 1; min-width: 500px;">
             <div class="card bg-light">
@@ -18,7 +32,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
+                                <th scope="col">#</th>
                                 <th scope="col">Transaction ID #</th>
                                 <th scope="col">User ID #</th>
                                 <th scope="col">Action</th>
@@ -29,13 +43,13 @@
 
                             </tr>
                         </thead>
-                        <tbody><?php // print_r($transactions);die;?>
+                        <tbody class="contents"><?php // print_r($transactions);die;  ?>
                             <?php foreach ($transactions as $key => $value) { ?>
                                 <?php echo '<tr>'; ?>
-                                <?php echo '<th scope="row">' . ($key + 1) . '</th>'; ?>
+                                <?php echo '<td scope="row">' . ($key + 1) . '</th>'; ?>
                                 <?php echo '<td scope="row">' . $transactions[$key]['transaction_id'] . '</td>'; ?>
                                 <?php echo '<td scope="row">' . $transactions[$key]['user_id'] . '</td>'; ?>                            
-                                <?php echo '<td scope="row">' . $transactions[$key]['action'] .  '</td>'; ?>
+                                <?php echo '<td scope="row">' . $transactions[$key]['action'] . '</td>'; ?>
                                 <?php echo '<td>' . $transactions[$key]['currency_name'] . '</td>'; ?>
                                 <?php
                                 $currency = $transactions[$key]['currency_name'];

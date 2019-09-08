@@ -97,91 +97,148 @@
         color: #0062cc;
     }
 </style>
-<div class="container emp-profile">
-    <form method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-head">
+<script>
+    $(document).ready(function () {
+        $('.editBtn').on('click', function () {
+            //hide edit span
+            $(this).parents("div").find(".editSpan").hide();
+            //show edit input
+            $(this).parents("div").find(".editInput").show();
+            //hide edit button
+            $(this).closest("div").find(".editBtn").hide();
+            //show edit button
+            $(this).closest("div").find(".saveBtn").show();
 
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['user_id']; ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['user_firstname'] . ' ' . $summary[0]['user_lastname']; ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['user_email']; ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['user_phone'] ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Registered date</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['user_registered_date'] ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Total Exchanges</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['exchange_count'] ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Total Deposits</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $summary[0]['deposit_count'] ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        });
+
+        $('.saveBtn').on('click', function () {
+            var trObj = $(this).closest("div");
+            var ID = $('p#user_id').attr('value');
+
+            var email = $('.editInput.email').val();
+            var phone = $('.editInput.phone').val();
+            $.ajax({
+                type: 'POST',
+                url: 'client/update_settings',
+                dataType: "json",
+                data: 'action=edit&user_id=' + ID + '&email=' + email + '&phone=' + phone,
+                success: function (response) {
+                    if (response.status == 'ok') {
+                        trObj.find(".editSpan.email").text(response.data.email);
+                        trObj.find(".editInput.email").text(response.data.email);
+
+                        trObj.parents("div").find(".editInput").hide();
+                        trObj.find(".saveBtn").hide();
+                        trObj.parents("div").find(".editSpan").fadeIn(1000);
+                        trObj.parents("div").find(".editBtn").show();
+                        $('p.editSpan.email').text(email);
+                        $('p.editSpan.phone').text(phone);
+                        $('#success').fadeIn().delay(3000).fadeOut('slow'); 
+
+                    } else {
+                        alert(response.msg);
+                    }
+                }
+            });
+        });
+    });
+</script>
+<div class="container emp-profile">
+    <!--<form method="post">-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-head">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </form>           
+        <div class="col-md-2">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-sm btn-danger editBtn" style="float: none;"><span class="glyphicon glyphicon-pencil">Edit Profile</span></button>
+                <button type="button" class="btn btn-sm btn-success saveBtn" style="float: none; display: none;">Save</button>
+
+            </div>
+            <div class="text-success" id="success" style="display: none;">Settings saved...</div>
+
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>User Id</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="user_id" value="<?php echo $summary[0]['user_id']; ?>"><?php echo $summary[0]['user_id']; ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $summary[0]['user_firstname'] . ' ' . $summary[0]['user_lastname']; ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="editSpan email"><?php echo $summary[0]['user_email']; ?></p>
+                            <input class="editInput form-control input-sm email" type="text" name="email" value="<?php echo $summary[0]['user_email']; ?>" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="editSpan phone"><?php echo $summary[0]['user_phone'] ?></p>
+                            <input class="editInput form-control input-sm phone" type="text" name="user_phone" value="<?php echo $summary[0]['user_phone']; ?>" style="display: none;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Registered date</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $summary[0]['user_registered_date'] ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Total Exchanges</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $summary[0]['exchange_count'] ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Total Deposits</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $summary[0]['deposit_count'] ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--</form>-->           
 </div>

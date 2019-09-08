@@ -10,7 +10,7 @@ class Api extends MY_Controller {
         parent::__construct();
         $this->load->module('security');
         $this->security->security_test('client');
-        $this->load->library('bluepay');
+       // $this->load->library('bluepay');
     }
 
     //Bluepay api is within the funding form

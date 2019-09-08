@@ -25,13 +25,16 @@
                 success: function (response) {
                     if (response.status == 'ok') {
                         trObj.find(".editSpan.fee_rate").text(response.data.fee_rate);
-
                         trObj.find(".editInput.fee_rate").text(response.data.fee_rate);
+                        trObj.find(".change_date").text(response.data.change_date);
+                        trObj.find(".change_date").hide().fadeIn(1000);
 
                         trObj.find(".editInput").hide();
                         trObj.find(".saveBtn").hide();
-                        trObj.find(".editSpan").show();
+                        trObj.find(".editSpan").fadeIn(1000);
                         trObj.find(".editBtn").show();
+                        $('#success').fadeIn(500).delay(3000).fadeOut('slow');
+
                     } else {
                         alert(response.msg);
                     }
@@ -69,7 +72,7 @@
 //        });
     });
 </script>
-<div class="container">
+<div class="container text-center col-5">
     <div class="row">
         <div class="panel panel-default users-content">
             <table class="table table-striped">
@@ -83,7 +86,8 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="userData"><?php // print_r($currencies_data);die;  ?>
+
+                <tbody id="userData"><?php // print_r($currencies_data);die;     ?>
                     <?php if (!empty($currencies_data)): foreach ($currencies_data as $key => $value): ?>
                             <tr id="<?php echo $currencies_data[$key]['fee_id']; ?>">
                                 <td><?php echo $currencies_data[$key]['fee_id']; ?></td>
@@ -92,12 +96,12 @@
                                     <input class=" fname form-control input-sm" type="text" name="currency_name" value="<?php echo $currencies_data[$key]['currency_name']; ?>" style="display: none;">
                                 </td>
                                 <td>
-                                    <span class="editSpan fee_rate"><?php echo $currencies_data[$key]['fee_rate']; ?></span>
-                                    <input class="editInput form-control input-sm fee_rate" type="text" name="fee_rate" value="<?php echo $currencies_data[$key]['fee_rate']; ?>" style="display: none;">
+                                    <span class="editSpan fee_rate"><?php echo $currencies_data[$key]['fee_rate']; ?>%</span>
+                                    <input class="editInput form-control input-sm fee_rate" type="text" name="fee_rate" value="<?php echo $currencies_data[$key]['fee_rate']; ?>%" style="display: none; max-width:70px;">
                                 </td>
                                 <td>
                                     <span class="change_date"><?php echo $currencies_data[$key]['change_date']; ?></span>
-                                    <input class="change_date form-control input-sm" type="text" name="email" value="<?php echo $currencies_data[$key]['change_date']; ?>" style="display: none;">
+                                    <!--<input class="change_date form-control input-sm" type="text" name="date" value="<?php // echo $currencies_data[$key]['change_date'];  ?>" style="display: none;">-->
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
@@ -108,13 +112,16 @@
                                     <!--<button type="button" class="btn btn-sm btn-danger confirmBtn" style="float: none; display: none;">Confirm</button>-->
                                 </td>
                             </tr>
-                        <?php endforeach;
+                            <?php
+                        endforeach;
                     else:
                         ?>
                         <tr><td colspan="5">No user(s) found......</td></tr>
-<?php endif; ?>
+                    <?php endif; ?>
                 </tbody>
+
             </table>
         </div>
     </div>
+    <div class="text-success" id="success" style="display: none;">Fee changed succesfully.</div>
 </div>
