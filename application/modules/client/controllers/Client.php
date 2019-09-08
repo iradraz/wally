@@ -65,7 +65,7 @@ class Client extends MY_Controller {
 
             $data['first_rate'] = $first_rate;
             $data['second_rate'] = $second_rate;
-            $data['wally_fee_rate'] = $this->get_currency_rate($post_data['exch_to_currency'])->result_array()[0]['fee_rate'];
+            $data['wally_fee_rate'] = $this->get_currency_rate($post_data['exch_to_currency'])->result_array()[0]['fee_rate']/100;
             $data['post_data'] = $post_data;
             $data['content_view'] = 'client/show_exchange_rates_v';
             $this->templates->client($data);
@@ -121,7 +121,6 @@ class Client extends MY_Controller {
         $this->security->security_test('client');
         $session_data = $this->session->userdata();
         $get_data = $this->input->get();
-
         $data['get_data'] = $get_data;
 
         $data['content_view'] = 'client/error_deposit_v';
@@ -156,7 +155,7 @@ class Client extends MY_Controller {
                         'currency_id' => $buy_currency['currency_id'],
                         'action' => 'Buy',
                         'amount' => $post_data['targetAmount'],
-                        'fee_paid' => -$buy_currency['fee_rate'] * $post_data['targetAmount'],
+                        'fee_paid' => -$buy_currency['fee_rate']/100 * $post_data['targetAmount'],
                         'broker_name' => 'currencycloud',
                         'transaction_key' => $output['id']
                     )
@@ -200,7 +199,7 @@ class Client extends MY_Controller {
                         'currency_id' => $buy_currency['currency_id'],
                         'action' => 'Buy',
                         'amount' => $post_data['targetAmount'] - $post_data['fee'],
-                        'fee_paid' => -$buy_currency['fee_rate'] * $post_data['targetAmount'],
+                        'fee_paid' => -$buy_currency['fee_rate']/100 * $post_data['targetAmount'],
                         'broker_name' => 'transferwise',
                         'quote_id' => $post_data['quoteid'],
                         'transaction_key' => $output['id']
@@ -217,6 +216,24 @@ class Client extends MY_Controller {
         $data['summary'] = $this->user_summary($session_data['user_id']);
         $data['content_view'] = 'client/settings_v';
         $this->templates->client($data);
+    }
+
+    function update_settings() {
+        $this->security->security_test('client');
+        $post_data = $this->input->post();
+        $session_data = $this->session->userdata();
+        $user_id = $session_data['user_id'];
+        $email= $post_data['email'];
+        $phone=$post_data['phone'];
+        //run form validation to either success or fail
+        $sql = "update user set user_email='$email', user_phone='$phone' where user_id='$user_id';";
+        $result = $this->_custom_query($sql);
+        $returnData = array(
+            'status' => 'ok',
+            'msg' => 'User data has been updated successfully.',
+            'data' => '$update_data'
+        );
+        echo json_encode($returnData);
     }
 
     function user_summary($user_id) {
@@ -267,7 +284,7 @@ class Client extends MY_Controller {
         $this->load->model('mdl_client');
         $session_data = $this->session->userdata();
         $user_id = $session_data['user_id'];
-        $query = 'select * from user,transactions,currencies where user.user_id=transactions.user_id and transactions.currency_id=currencies.currency_id and user.user_id=' . $user_id . ' order by transactions.transaction_id asc';
+        $query = 'select * from user,transactions,currencies where user.user_id=transactions.user_id and transactions.currency_id=currencies.currency_id and user.user_id=' . $user_id . ' order by transactions.transaction_id desc';
         $data = $this->_custom_query($query);
 
         // $data = $this->mdl_client->join($session_data['user_id']);

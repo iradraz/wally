@@ -69,7 +69,7 @@
 //        });
     });
 </script>
-<div class="container">
+<div class="container text-center col-3">
     <div class="row">
         <div class="panel panel-default users-content">
             <table class="table table-striped">
@@ -92,8 +92,8 @@
                                     <input class=" fname form-control input-sm" type="text" name="currency_name" value="<?php echo $currencies_data[$key]['currency_name']; ?>" style="display: none;">
                                 </td>
                                 <td>
-                                    <span class="editSpan fee_rate"><?php echo $currencies_data[$key]['fee_rate']; ?></span>
-                                    <input class="editInput form-control input-sm fee_rate" type="text" name="fee_rate" value="<?php echo $currencies_data[$key]['fee_rate']; ?>" style="display: none;">
+                                    <span class="editSpan fee_rate"><?php echo $currencies_data[$key]['fee_rate']; ?>%</span>
+                                    <input class="editInput form-control input-sm fee_rate" type="text" name="fee_rate" value="<?php echo $currencies_data[$key]['fee_rate']; ?>%" style="display: none;">
                                 </td>
                                 <td>
                                     <span class="change_date"><?php echo $currencies_data[$key]['change_date']; ?></span>

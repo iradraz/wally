@@ -2,7 +2,27 @@
 $post_data = $this->input->post();
 $session_data = $this->session->userdata();
 ?>
-
+<style>
+    .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: rgba(0,0,0,0.5); /*dim the background*/
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("form").on("submit", function () {
+            $(".loader").show();
+            $(".overlay").show();
+            $(".proceed").hide();
+        });//submit
+    });//document ready
+</script>
+<div class="overlay" style="display:none;"></div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="1"
          aria-valuemin="0" aria-valuemax="100" style="width:1%">
@@ -35,7 +55,7 @@ $session_data = $this->session->userdata();
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <label for="AMOUNT" class="text-warning">Amount</label>
-                    <input type="text" class="form-control required" name="AMOUNT" value="" data-toggle-required> 
+                    <input type="text" class="form-control required" name="AMOUNT" value="" data-toggle-required required> 
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -52,15 +72,15 @@ $session_data = $this->session->userdata();
             <div class="form-row mb-4">
                 <div class="col">
                     <label for="CC_NUM" class="text-warning">Card Number</label>
-                    <input type="text" class="form-control required" name="CC_NUM" maxlength="19" value="" >
+                    <input type="text" class="form-control required" name="CC_NUM" maxlength="19" value="" required>
                 </div>
                 <div class="col">
                     <label for="CC_EXPIRES" class="text-warning">Card Expiration Date</label>
-                    <input type="text" class="form-control required"name="CC_EXPIRES" value="" maxlength="5">
+                    <input type="text" class="form-control required"name="CC_EXPIRES" value="" maxlength="5" required>
                 </div>
                 <div class="col">
                     <label for="CARD_CVV2" class="text-warning">CVV</label>
-                    <input type="text" class="form-control required" name="CARD_CVV2"  maxlength="3" autocomplete="off" value="" data-cvv>
+                    <input type="text" class="form-control required" name="CARD_CVV2"  maxlength="3" autocomplete="off" value="" data-cvv required>
                 </div>
             </div>
 
@@ -70,6 +90,12 @@ $session_data = $this->session->userdata();
             <!-- Terms of service -->
             <p class="text-warning">By clicking "Proceed"<em></em> you agree to our <a href="" target="_blank">terms of service</a>
                 <button class="btn btn-info my-4 proceed" type="submit">Proceed</button>
+            <div class="loader text-center" style="display: none;">
+                <img src="<?php
+                $random = rand(1, 4);
+                echo base_url('img/loader' . $random . '.gif');
+                ?>" alt="Loading..." />
+            </div>
         </form>
 
     </div>

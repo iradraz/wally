@@ -58,7 +58,7 @@ class Admin extends MY_Controller {
     function get_transactions_data() {
         $this->security->security_test('admin');
 
-        $query = 'select transactions.transaction_id,transactions.user_id,transactions.currency_id,currencies.currency_name,transactions.action,transactions.amount,transactions.fee_paid,transactions.transaction_date from transactions,currencies where transactions.currency_id=currencies.currency_id';
+        $query = 'select transactions.transaction_id,transactions.user_id,transactions.transaction_date,transactions.currency_id,currencies.currency_name,transactions.action,transactions.amount,transactions.fee_paid,transactions.transaction_date from transactions,currencies where transactions.currency_id=currencies.currency_id order by transactions.transaction_id desc';
         $result = $this->transactions->_custom_query($query);
 
         return $result;

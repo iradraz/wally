@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row justify-content-center">
+<!--    <div class="row justify-content-center">
         <div class="col-5" style="min-width: 250px;">
             <div class="card text-center">
                 <div class="card-body">
@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="row justify-content-center">
         <div class="col-10" style="flex-grow: 1; min-width: 500px;">
             <div class="card bg-light">

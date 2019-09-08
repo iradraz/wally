@@ -19,7 +19,7 @@ header("refresh:10; url=/wally/client/exchange");
 </div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
-        <div class="progress-bar" role="progressbar" aria-valuenow="75"
+        <div class="progress-bar-danger" role="progressbar" aria-valuenow="75"
              aria-valuemin="0" aria-valuemax="0" style="width:100%">
             <span class="sr-only">0% Complete</span>
         </div>

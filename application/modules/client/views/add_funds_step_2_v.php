@@ -4,8 +4,14 @@ $fmt = new NumberFormatter("@currency=USD", NumberFormatter::CURRENCY);
 $symbol = $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL);
 
 $session_data = $this->session->userdata();
-header("refresh:7; url=/wally");
+header("refresh:5; url=/wally");
 ?>
+<div class="loader text-center">
+    <img src="<?php
+    $random = rand(1, 4);
+    echo base_url('img/loader' . $random . '.gif');
+    ?>" alt="Loading..." />
+</div>
 <div class="container">
     <div class="progress" style="margin-bottom: 5px;">
         <div class="progress-bar" role="progressbar" aria-valuenow="75"
