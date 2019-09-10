@@ -25,7 +25,7 @@
 
                                 <th scope="col">Developers API</th>
                                 <th scope="col">Date Created</th>
-                                <th scope="col">ACTION</th>
+                                <!--<th scope="col">ACTION</th>-->
 
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 <?php $first = explode('.pdf', $providers[$key]['file']); ?>
                                 <?php echo '<td scope="row"><a href="' . base_url('files/') . $providers[$key]['provider_name'] . '/' . $providers[$key]['file'] . '">' . $first[0] . '</a></td>' ?> 
                                 <?php echo '<td>' . $providers[$key]['creation_date'] . '</td>'; ?>
-                                <?php echo '<td id="' . $providers[$key]['provider_id'] . '"><a href="#" class="delete_data btn btn-danger btn-sm" id="' . $providers[$key]['provider_id'] . '"><span class="glyphicon glyphicon-remove"></span> Remove </a></td>'; ?>
+                                <?php // echo '<td id="' . $providers[$key]['provider_id'] . '"><a href="#" class="delete_data btn btn-danger btn-sm" id="' . $providers[$key]['provider_id'] . '"><span class="glyphicon glyphicon-remove"></span> Remove </a></td>'; ?>
 
                                 <?php
                                 echo '</tr>';
