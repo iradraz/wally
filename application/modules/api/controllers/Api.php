@@ -110,7 +110,7 @@ class Api extends MY_Controller {
         $url = "https://api.sandbox.transferwise.tech/v1/profiles";
         $headers = [
             "Content-Type: application/json;charset=UTF-8",
-            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+            "Authorization: Bearer 58cef0a9-71a9-44bc-87dd-1701114f0a73"
         ];
         $curl = curl_init();
         curl_setopt_array($curl, [
@@ -130,7 +130,7 @@ class Api extends MY_Controller {
         $auth = $this->get_auth_2();
         $url = "https://api.sandbox.transferwise.tech/v1/quotes";
         $data = array(
-            "profile" => 7850,
+            "profile" => 70,
             "source" => "$currency1",
             "target" => "$currency2",
             "rateType" => "FIXED",
@@ -141,7 +141,7 @@ class Api extends MY_Controller {
         $curl = curl_init();
         $headers = [
             "Content-Type: application/json;charset=UTF-8",
-            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+            "Authorization: Bearer 58cef0a9-71a9-44bc-87dd-1701114f0a73"
         ];
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -151,6 +151,7 @@ class Api extends MY_Controller {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         $output = curl_exec($curl);
         curl_close($curl);
+       // print_r($output);die;
         return $output;
     }
 
@@ -158,15 +159,15 @@ class Api extends MY_Controller {
         $auth = $this->get_auth_2();
         $url = "https://api.sandbox.transferwise.tech/v1/transfers";
         $data = array(
-            "targetAccount" => 14382604, //this is our profile unique recipent ID -> we get this is we check our profile id which is 7850
+            "targetAccount" => 13693025, //this is our profile unique recipent ID -> we get this is we check our profile id which is 7850
             "quote" => $quoteid,
-            "customerTransactionId" => "b0cfbd04-cc1f-11e9-a32f-2a2ae2dbcce6", //this is just a generic UUID to make the transaction going, in real environment we need to make it unique
+            "customerTransactionId" => "bd244a95-dcf8-4c31-aac8-bf5e2f3e54c0", //this is just a generic UUID to make the transaction going, in real environment we need to make it unique
         );
         $data_string = json_encode($data);
         $curl = curl_init();
         $headers = [
             "Content-Type: application/json;charset=UTF-8",
-            "Authorization: Bearer 9d95ff59-f7e5-434e-a8e3-951b3e51920e"
+            "Authorization: Bearer 58cef0a9-71a9-44bc-87dd-1701114f0a73"
         ];
 
         curl_setopt($curl, CURLOPT_URL, $url);

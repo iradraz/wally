@@ -31,19 +31,19 @@ class Admin extends MY_Controller {
         $user_id = $post_data['user_id'];
         $sql_user_role = "select user_role from user where user_id='$user_id';";
         $user_role = $this->_custom_query($sql_user_role)->result_array()[0]['user_role'];
-        if($user_role=='client'){ // need to suspend client
-            $user_role='suspended';
-            $status='Suspended';
-        } else{
-            $user_role='client';
-            $status='Active';
+        if ($user_role == 'client') { // need to suspend client
+            $user_role = 'suspended';
+            $status = 'Suspended';
+        } else {
+            $user_role = 'client';
+            $status = 'Active';
         }
         $sql = "update user set user_role='$user_role' where user_id='$user_id';";
         $result = $this->_custom_query($sql);
         $returnData = array(
             'status' => 'ok',
             'msg' => 'User data has been updated successfully.',
-            'data' => array('user_role'=>$status)
+            'data' => array('user_role' => $status)
         );
         echo json_encode($returnData);
     }
@@ -130,9 +130,26 @@ class Admin extends MY_Controller {
         $this->security->security_test('admin');
         $session_data = $this->session->userdata();
 
+        $data['summary'] = $this->gather_statistics();
+//        echo '<pre>';
+//        print_r(sizeof($data['summary']['buy_summary']));
+//
+//        print_r($data['summary']);
+//        echo '</pre>';
+//        die;
         //gather all transaction info here and put it in $data
         $data['content_view'] = 'admin/statistics_v';
         $this->templates->admin($data);
+    }
+
+    function gather_statistics() {
+        $this->security->security_test('admin');
+        $session_data = $this->session->userdata();
+        $sql = "select a.currency_id,b.currency_name,a.action,a.amount, a.fee_paid from transactions a,currencies b where a.currency_id = b.currency_id and action='buy' GROUP by a.currency_id;";
+        $result['sell_summary'] = $this->_custom_query($sql)->result_array();
+        $sql = "select a.currency_id,b.currency_name,a.action,a.amount, a.fee_paid from transactions a,currencies b where a.currency_id = b.currency_id and action='sell' GROUP by a.currency_id;";
+        $result['buy_summary'] = $this->_custom_query($sql)->result_array();
+        return $result;
     }
 
     function feedback() {
